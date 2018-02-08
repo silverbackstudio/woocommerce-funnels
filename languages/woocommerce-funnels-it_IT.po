@@ -1,0 +1,154 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: _s 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
+"POT-Creation-Date: 2018-02-08 09:03+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-02-08 13:17+0000\n"
+"Last-Translator: SilverbackStudio <webmaster@silverbackstudio.it>\n"
+"Language-Team: Italian\n"
+"Language: it-IT\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: includes/class-wc-integration-funnels.php:44
+msgid "Funnels"
+msgstr "Funnels"
+
+#. Description of the plugin
+#: includes/class-wc-integration-funnels.php:45
+msgid "Changes the WooCommerce Purchase Flow to allow Funnels"
+msgstr "Modifica le caratteristiche di WooCommerce per generare Funnel"
+
+#: includes/class-wc-integration-funnels.php:95
+msgid "Courses Menu Label"
+msgstr "Etichetta Menu Corsi"
+
+#: includes/class-wc-integration-funnels.php:97
+#: includes/class-wc-integration-funnels.php:104
+msgid "The label for Courses in account menu"
+msgstr "L'etichetta nel menu account per i corsi"
+
+#: includes/class-wc-integration-funnels.php:102
+msgid "Affiliate Menu Label"
+msgstr "Etichetta Menu Affiliazione"
+
+#: includes/class-wc-integration-funnels.php:109
+msgid "Orders Menu Label"
+msgstr "Etichetta Menu Ordini"
+
+#: includes/class-wc-integration-funnels.php:111
+msgid "The label for orders in account menu"
+msgstr "L'etichetta nel menu account per gli ordini"
+
+#: includes/class-wc-integration-funnels.php:113
+msgid "Orders / Invoices"
+msgstr "Ordini / Fatture"
+
+#: includes/class-wc-integration-funnels.php:116
+msgid "Account Product Categories"
+msgstr "Categorie Prodotto nel menu Account"
+
+#: includes/class-wc-integration-funnels.php:118
+msgid ""
+"Select the product categories that you want to be shown in My Account Menu"
+msgstr ""
+"Seleziona le categorie di prodotto che vuoi che vengano mostrate nel menu "
+"dell'account utente (solo prodotti acquistati)"
+
+#: includes/class-wc-integration-funnels.php:129
+msgid "Debug Log"
+msgstr "Monitoraggio errori"
+
+#: includes/class-wc-integration-funnels.php:131
+msgid "Enable logging"
+msgstr "Attiva Moniotoraggio"
+
+#: includes/class-wc-integration-funnels.php:133
+msgid "Log events such as API requests"
+msgstr "Registra eventi come richieste API"
+
+#: includes/class-wc-integration-funnels.php:673
+msgid "Disable Default Template"
+msgstr "Disattiva Template Prodotto"
+
+#: includes/class-wc-integration-funnels.php:674
+msgid ""
+"Disable WooCommerce product template, you must create the page content "
+"manually"
+msgstr ""
+"Disattiva il template di base del prodotto, dovrai creare il contenuto della "
+"pagina manualmente"
+
+#: includes/class-wc-integration-funnels.php:686
+msgid "Add to Cart Text"
+msgstr "Testo pulsante aggiunta al carrello"
+
+#: includes/class-wc-integration-funnels.php:687
+msgid "The text displayed in Add to cart button"
+msgstr "Testo mostrato nel pulsante di aggiunta al carrello/acquisto"
+
+#: includes/class-wc-integration-funnels.php:699
+msgid "Skip Cart"
+msgstr "Salta carrello"
+
+#: includes/class-wc-integration-funnels.php:700
+msgid "This will skip the cart and redirect the user directly to checkout page"
+msgstr ""
+"Salta la pagina del carrello e invia l'utente direttamente al pagamento"
+
+#: includes/class-wc-integration-funnels.php:709
+msgid "Direct Upsell Product"
+msgstr "Prodotto in Upsell Diretto"
+
+#: includes/class-wc-integration-funnels.php:722
+msgid "This lets you choose which product will be redirected to after checkout"
+msgstr ""
+"Scegli verso quale prodotto vorresti che l'utente venga reindirizzato dopo "
+"il pagamento"
+
+#: includes/class-wc-integration-funnels.php:826
+msgid "Invalid order key"
+msgstr "Chiave ordine non valida"
+
+#: includes/class-wc-integration-funnels.php:832
+msgid "Invalid order"
+msgstr "Ordine non valido o non presente"
+
+#. Name of the plugin
+msgid "WooCommerce - Funnels"
+msgstr "WooCommerce - Funnels"
+
+#. Author URI of the plugin
+msgid "http://www.silverbackstudio.it/"
+msgstr "http://www.silverbackstudio.it/"
+
+#: includes/class-wc-integration-funnels.php:99
+#: includes/class-wc-integration-funnels.php:386
+msgid "My Courses"
+msgstr "I miei corsi"
+
+#: includes/class-wc-integration-funnels.php:106
+#: includes/class-wc-integration-funnels.php:360
+#: includes/class-wc-integration-funnels.php:494
+msgid "Affiliate"
+msgstr "Affiliazione"
+
+#: includes/class-wc-integration-funnels.php:325
+msgid "Toggle Account Menu"
+msgstr "Mostra/Nascondi il menu Account"
+
+#: includes/class-wc-integration-funnels.php:389
+#: includes/class-wc-integration-funnels.php:423
+msgid "Messages"
+msgstr "Messaggi"
+
+#: includes/class-wc-integration-funnels.php:435
+msgid "Courses"
+msgstr "Corsi"
+
+#. Author of the theme
+msgid "Silverback Studio"
+msgstr "Silverback Studio"
