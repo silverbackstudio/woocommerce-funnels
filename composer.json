@@ -18,7 +18,7 @@
     "require": {
         "php": ">=5.6",
         "psr/log": "^1.0",        
-        "wpackagist-plugin/woocommerce" : "~3.2.0",
+        "wpackagist-plugin/woocommerce" : "~3.3.0",
         "silverbackstudio/wp-themehelper": "^2.4.0"        
     },
     "require-dev": {
