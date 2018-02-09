@@ -1,0 +1,28 @@
+{
+  "name": "woocommerce-funnels",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silverbackstudio/woocommerce-funnels.git"
+  },
+  "author": "Brando Meniconi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/silverbackstudio/woocommerce-funnels/issues"
+  },
+  "homepage": "https://github.com/silverbackstudio/woocommerce-funnels#readme",
+  "devDependencies": {
+    "browser-sync": "^2.16.0",
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^6.2.0",
+    "gulp-ruby-sass": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "postcss-object-fit-images": "^1.1.2",
+    "autoprefixer": "^6.7.0"
+  }  
+}

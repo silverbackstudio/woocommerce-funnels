@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _s 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2018-02-08 09:01+0000\n"
+"POT-Creation-Date: 2018-02-09 17:11+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,125 +14,185 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: includes/class-wc-integration-funnels.php:44
+#: includes/class-wc-integration-funnels.php:51
 msgid "Funnels"
 msgstr ""
 
 #. Description of the plugin
-#: includes/class-wc-integration-funnels.php:45
+#: includes/class-wc-integration-funnels.php:52
 msgid "Changes the WooCommerce Purchase Flow to allow Funnels"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:95
-msgid "Courses Menu Label"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:97
-#: includes/class-wc-integration-funnels.php:104
-msgid "The label for Courses in account menu"
+#: includes/class-wc-integration-funnels.php:70
+msgid "Private area"
 msgstr ""
 
 #: includes/class-wc-integration-funnels.php:99
-#: includes/class-wc-integration-funnels.php:386
-msgid "My Courses"
+msgid "Select the product that has to be purchased"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:102
-msgid "Affiliate Menu Label"
+#: includes/class-wc-integration-funnels.php:103
+msgid ""
+"Select the page to where we redirect the user if the product has not been "
+"purchased"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:106
-#: includes/class-wc-integration-funnels.php:360
-#: includes/class-wc-integration-funnels.php:494
-msgid "Affiliate"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:109
-msgid "Orders Menu Label"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:111
-msgid "The label for orders in account menu"
+#: includes/class-wc-integration-funnels.php:107
+msgid "Select the label for readmore button in account product category view"
 msgstr ""
 
 #: includes/class-wc-integration-funnels.php:113
+msgid "Product Restrict"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:126
+msgid "Dashboard Content Page"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:128
+msgid ""
+"Select thte page with the content to be shown in MyAcoount Dasboard page"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:134
+msgid "Courses Menu Label"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:136
+#: includes/class-wc-integration-funnels.php:143
+msgid "The label for Courses in account menu"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:138
+#: includes/class-wc-integration-funnels.php:564
+msgid "My Courses"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:141
+msgid "Affiliate Menu Label"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:145
+#: includes/class-wc-integration-funnels.php:538
+#: includes/class-wc-integration-funnels.php:688
+msgid "Affiliate"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:148
+msgid "Orders Menu Label"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:150
+msgid "The label for orders in account menu"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:152
 msgid "Orders / Invoices"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:116
+#: includes/class-wc-integration-funnels.php:155
 msgid "Account Product Categories"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:118
+#: includes/class-wc-integration-funnels.php:157
 msgid ""
 "Select the product categories that you want to be shown in My Account Menu"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:129
+#: includes/class-wc-integration-funnels.php:168
+msgid "Disable WooCommerce Styles"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:170
+msgid "Disable WooCommerce CSS styles"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:175
+msgid "Disable Sensei Styles"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:177
+msgid "Disable Sensei CSS styles"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:182
 msgid "Debug Log"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:131
+#: includes/class-wc-integration-funnels.php:184
 msgid "Enable logging"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:133
+#: includes/class-wc-integration-funnels.php:186
 msgid "Log events such as API requests"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:325
+#: includes/class-wc-integration-funnels.php:385
+msgid ""
+"You are not allowed to access this page, please purchase the linked product"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:505
 msgid "Toggle Account Menu"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:389
-#: includes/class-wc-integration-funnels.php:423
+#: includes/class-wc-integration-funnels.php:567
+#: includes/class-wc-integration-funnels.php:601
 msgid "Messages"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:435
+#: includes/class-wc-integration-funnels.php:613
 msgid "Courses"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:673
+#: includes/class-wc-integration-funnels.php:867
 msgid "Disable Default Template"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:674
+#: includes/class-wc-integration-funnels.php:868
 msgid ""
 "Disable WooCommerce product template, you must create the page content "
 "manually"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:686
+#: includes/class-wc-integration-funnels.php:880
 msgid "Add to Cart Text"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:687
+#: includes/class-wc-integration-funnels.php:881
 msgid "The text displayed in Add to cart button"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:699
+#: includes/class-wc-integration-funnels.php:893
 msgid "Skip Cart"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:700
+#: includes/class-wc-integration-funnels.php:894
 msgid "This will skip the cart and redirect the user directly to checkout page"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:709
+#: includes/class-wc-integration-funnels.php:903
 msgid "Direct Upsell Product"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:722
+#: includes/class-wc-integration-funnels.php:916
 msgid "This lets you choose which product will be redirected to after checkout"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:826
+#: includes/class-wc-integration-funnels.php:1020
 msgid "Invalid order key"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:832
+#: includes/class-wc-integration-funnels.php:1026
 msgid "Invalid order"
+msgstr ""
+
+#: templates/woocommerce/myaccount/dashboard.php:31
+msgid "Dashboard"
+msgstr ""
+
+#: templates/woocommerce/myaccount/productpage/thumb.php:21
+msgid "View the product content"
 msgstr ""
 
 #. Name of the plugin

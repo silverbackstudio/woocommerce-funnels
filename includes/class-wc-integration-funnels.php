@@ -4,6 +4,7 @@ namespace Svbk\WP\Plugins\WooCommerce\Funnels;
 
 use WC_Integration;
 use Svbk\WP\Helpers\Lists\Utils;
+use Svbk\WP\Helpers;
 use Wp_Query;
 
 
@@ -28,9 +29,15 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		public $affiliate_menu_label;
 		public $orders_menu_label;
 		public $account_product_categories;
+		public $dashboard_content_page;
+
+		public $disable_woocommerce_styles;
+		public $disable_sensei_styles;
 
 		public $sensei       = true;
 		public $affiliate_wp = true;
+
+		public $page_templates = array();
 
 		public $debug = false;
 
@@ -52,9 +59,16 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			$this->affiliate_menu_label       = $this->get_option( 'affiliate_menu_label' );
 			$this->orders_menu_label          = $this->get_option( 'orders_menu_label' );
 			$this->account_product_categories = $this->get_option( 'account_product_categories' );
+			$this->dashboard_content_page	  = $this->get_option( 'dashboard_content_page' );
+			$this->disable_woocommerce_styles  = $this->get_option( 'disable_woocommerce_styles' );
+			$this->disable_sensei_styles  = $this->get_option( 'disable_sensei_styles' );
 
 			add_action( 'init', array( $this, 'init_form_fields' ), 30 );
 			add_action( 'init', array( $this, 'init' ), 50 );
+			
+			$this->page_templates = array(
+				'page-templates/private-area.php' => __( 'Private area', 'woocommerce-funnels' )
+			);
 
 			// Actions.
 			add_action( 'woocommerce_update_options_integration_' . $this->id, array( $this, 'process_admin_options' ) );
@@ -77,6 +91,28 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			if ( $this->sensei ) {
 				$this->sensei_hooks();
 			}
+			
+			$mb = new Helpers\Post\MetaBox(
+				'funnels-restrict-to-product',
+				array(
+					'restrict_to_purchased_product_id' => array(
+						'label' => __('Select the product that has to be purchased', 'woocommerce-funnels'),
+						'type' => 'number',
+					),
+					'not_purchased_redirect_page_id' => array(
+						'label' => __('Select the page to where we redirect the user if the product has not been purchased', 'woocommerce-funnels'),
+						'type' => 'number',
+					),
+					'purchased_product_readmore_label' => array(
+						'label' => __('Select the label for readmore button in account product category view', 'woocommerce-funnels'),
+						'type' => 'text',
+					),					
+				),
+				array(
+					'post_type' => 'page',
+					'title' => __('Product Restrict', 'woocommerce-funnels'),
+				)
+			);
 
 		}
 
@@ -86,6 +122,14 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		public function init_form_fields() {
 
 			$this->form_fields = array(
+				'dashboard_content_page' => array(
+					'title'       => __( 'Dashboard Content Page', 'woocommerce-funnels' ),
+					'type'        => 'select',
+					'description' => __( 'Select thte page with the content to be shown in MyAcoount Dasboard page', 'woocommerce-funnels' ),
+					'desc_tip'    => true,
+					'default'     => '',
+					'options'     => wp_list_pluck( get_pages(), 'post_title', 'ID' ),
+				),				
 				'mycourses_menu_label'       => array(
 					'title'       => __( 'Courses Menu Label', 'woocommerce-funnels' ),
 					'type'        => 'text',
@@ -120,6 +164,20 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 						)
 					),
 				),
+				'disable_woocommerce_styles' => array(
+					'title'       => __( 'Disable WooCommerce Styles', 'woocommerce-funnels' ),
+					'type'        => 'checkbox',
+					'description' => __( 'Disable WooCommerce CSS styles', 'woocommerce-funnels' ),
+					'desc_tip'    => true,
+					'default'     => false,
+				),				
+				'disable_sensei_styles' => array(
+					'title'       => __( 'Disable Sensei Styles', 'woocommerce-funnels' ),
+					'type'        => 'checkbox',
+					'description' => __( 'Disable Sensei CSS styles', 'woocommerce-funnels' ),
+					'desc_tip'    => true,
+					'default'     => false,
+				),				
 				'debug'                      => array(
 					'title'       => __( 'Debug Log', 'woocommerce-funnels' ),
 					'type'        => 'checkbox',
@@ -193,6 +251,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			add_filter( 'woocommerce_account_menu_items', array( $this, 'woocommerce_menu_items' ), 80 );
 
 			add_action( 'init', array( $this, 'woocommerce_endpoints' ), 99 );
+			
 			add_action( 'woocommerce_account_affiliate_endpoint', array( $this, 'affiliate_page_content' ) );
 
 			foreach ( $this->woocommerce_account_product_categories() as $term ) {
@@ -238,8 +297,19 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			add_action( 'template_redirect', array( $this, 'wooocommerce_product_upsell_redirect' ) );
 
 			add_action( 'wp', array( $this, 'woocommerce_product_remove_default_contents' ) );
+			add_action( 'template_redirect', array( $this, 'woocommerce_product_page_restrict' ) );
 
 			add_filter( 'affwp_affiliate_area_page_url', array( $this, 'affiliate_area_page_url' ), 10, 3 );
+			
+			add_filter( 'wc_get_template_part', array( $this, 'plugin_template_part' ), 10, 3 );
+			add_filter( 'wc_get_template', array( $this, 'plugin_template' ), 10, 5 );
+			
+			add_filter( 'theme_page_templates', array( $this, 'add_page_template' ), 10, 4 );
+			add_filter( 'template_include', array( $this, 'include_page_template') );	
+			
+			if( $this->disable_woocommerce_styles ) {
+				add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+			}
 
 			$this->disable_checkout_notifications();
 
@@ -273,6 +343,116 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 
 		}
 
+		public function woocommerce_product_page_restrict() {
+			
+			global $post;
+
+			if( is_admin() || ! is_page() || current_user_can('edit_others_pages') || empty( $post )  ) {
+				return;
+			}
+
+			$current_user = wp_get_current_user();
+			
+			$required_product = apply_filters(
+				'woocommerce_funnels_page_restrict_purchased_product',
+				get_post_meta(get_the_ID(), 'restrict_to_purchased_product_id', true ),
+				$post,
+				$current_user
+			);
+
+			if ( 
+				! $required_product || 
+				( 
+					is_user_logged_in() && 
+					wc_customer_bought_product( $current_user->user_email, $current_user->ID, $required_product ) 
+				) 
+			) {
+				return;
+			}
+			
+			$redirect_page = get_post_meta(get_the_ID(), 'not_purchased_redirect_page_id', true );			
+			
+			if( $redirect_page ) {
+				wp_safe_redirect( 
+					apply_filters(
+						'woocommerce_funnels_page_not_purchased_product_redirect',
+						get_permalink($redirect_page),
+						$redirect_page,
+						$post
+					) 
+				);
+			} else {
+				wp_die( __('You are not allowed to access this page, please purchase the linked product', 'woocommerce-funnels') );
+			}
+		}
+		
+		public function plugin_template_part($template, $slug, $name) {
+		
+			if( !$template && $name && file_exists( plugin_dir() . "templates/woocommerce/{$slug}-{$name}.php" ) ) {
+				$template = plugin_dir() . "templates/woocommerce/{$slug}-{$name}.php";
+			}
+			
+			if( !$template && file_exists( plugin_dir() . "templates/woocommerce/{$slug}.php" ) ) {
+				$template = plugin_dir() . "templates/woocommerce/{$slug}.php";
+			}			
+		
+			return $template;
+		}
+		
+		public function plugin_template($located, $template_name, $args, $template_path, $default_path) {
+		
+			$plugin_located = wc_locate_template($template_name, '', plugin_dir() . '/templates/woocommerce/' );
+
+			$force_override = array(
+				'myaccount/dashboard.php'
+			);
+
+			if( ! $plugin_located || ! file_exists( $plugin_located ) ) {
+				return $located;
+			}
+			
+			if ( !$located || in_array( $template_name, $force_override ) )  {
+				$located = $plugin_located;
+			}
+		
+			return $located;
+		}		
+		
+		public function add_page_template( $post_templates, $theme, $post, $post_type ) {
+			
+			$post_templates = array_merge( $post_templates, $this->page_templates );
+				
+			return $post_templates;
+		}
+		
+		public function include_page_template( $template ) {
+			
+			// Get global post
+			global $post;
+	
+			// Return template if post is empty
+			if ( ! $post ) {
+				return $template;
+			}
+		
+			$template_file = get_post_meta( $post->ID, '_wp_page_template', true );
+		
+			// Return default template if we don't have a custom one defined
+			if ( ! $template_file || ! isset( $this->page_templates[$template_file] ) ) {
+				return $template;
+			} 
+	
+			$template_path = plugin_dir() . '/templates/' . $template_file;
+	
+			// Just to be safe, we check if the file exist first
+			if ( file_exists( $template_path ) ) {
+				return $template_path;
+			} 
+	
+			// Return template
+			return $template;
+		}		
+
 		public function disable_checkout_notifications() {
 			add_filter( 'woocommerce_enable_order_notes_field', '__return_false' );
 			add_filter( 'wc_add_to_cart_message_html', '__return_empty_string' );
@@ -301,13 +481,11 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 
 		public function sensei_hooks() {
 
-			add_action( 'woocommerce_account_dashboard', array( $this, 'myaccount_all_courses_page_content' ), 9 );
+			add_action( 'init', array( $this, 'sensei_endpoints' ), 99 );
 
 			// Hack to edit the shortcode tabs url.
 			add_action( 'sensei_loop_course_before', array( $this, 'sensei_replace_mycourses_url_activate' ), 9 );
-
-			add_action( 'init', array( $this, 'woocommerce_endpoints' ), 99 );
-
+			add_action( 'woocommerce_account_mycourses_endpoint', array( $this, 'myaccount_user_courses_page_content' ) );
 			add_filter( 'woocommerce_account_menu_items', array( $this, 'sensei_menu_items' ), 90 );
 
 			if ( ! Sensei()->settings->get( 'messages_disable' ) ) {
@@ -315,29 +493,30 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			}
 
 			add_filter( 'post_type_archive_link', array( $this, 'sensei_post_types_archive_link' ), 10, 2 );
+			
+			if( $this->disable_sensei_styles ) {
+				add_filter( 'sensei_disable_styles', '__return_true' );
+			}
 
 		}
 
 		public function woocommerce_myaccount_sidebar_profile_before() {
 		?>
-
-		<button class="toggle-secondary"><span class="screen-reader-text"><?php esc_html_e( 'Toggle Account Menu', 'woocommerce-funnels' ); ?></span></button>
-
-		<div id="secondary" class="my-account togglable">
-
-		<?php
-		if ( is_user_logged_in() ) :
-			$member = wp_get_current_user();
-		?>
-
-			<div id="profile">
-				<?php echo get_avatar( $member->ID, 'thumbnail' ); ?>
-				<div class="user-name"><?php echo $member->user_firstname . '&nbsp;' . $member->user_lastname; ?></div>    
-			<div class="user-email"><?php echo esc_html( $member->user_email ); ?></div>
-		</div>
-
-		<?php
-		endif;
+			<button class="toggle-secondary"><span class="screen-reader-text"><?php esc_html_e( 'Toggle Account Menu', 'woocommerce-funnels' ); ?></span></button>
+	
+			<div id="secondary" class="my-account togglable">
+	
+			<?php
+			if ( is_user_logged_in() ) :
+				$member = wp_get_current_user();
+			?>
+				<div id="profile">
+					<?php echo get_avatar( $member->ID, 'thumbnail' ); ?>
+					<div class="user-name"><?php echo $member->user_firstname . '&nbsp;' . $member->user_lastname; ?></div>    
+				<div class="user-email"><?php echo esc_html( $member->user_email ); ?></div>
+			</div>
+			<?php
+			endif;
 		}
 
 		public function woocommerce_myaccount_sidebar_profile_after() {
@@ -405,11 +584,11 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		}
 
 		public function sensei_replace_mycourses_url_activate( $url ) {
-			add_filter( 'page_link', 'giordanoguerrieri_replace_sensei_mycourses_url' );
+			add_filter( 'page_link', array($this, 'sensei_replace_mycourses_url_apply') );
 		}
 
 		public function sensei_replace_mycourses_url_apply( $url ) {
-			remove_filter( 'page_link', 'giordanoguerrieri_replace_sensei_mycourses_url' );
+			remove_filter( 'page_link', array($this, 'sensei_replace_mycourses_url_apply') );
 			return wc_get_endpoint_url( 'mycourses' );
 		}
 
@@ -428,11 +607,11 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		/**
 		 * Courses page in WC Account content
 		 */
-		public function myaccount_all_courses_page_content() {
+		public function myaccount_user_courses_page_content() {
 		?>
 		<section id="dashboard-courses">
 			<h2><?php esc_html_e( 'Courses', 'woocommerce-funnels' ); ?></h2>
-			<?php echo do_shortcode( '[sensei_courses]' ); ?>
+			<?php echo do_shortcode( '[sensei_user_courses]' ); ?>
 		</section>    
 		<?php
 		}
@@ -443,41 +622,57 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		public function account_product_categories_page_content( $term ) {
 		?>
 		<div class="content-wrapper">
-			<h2><?php echo esc_html( apply_filters( 'single_term_title', $term->name ) ); ?></h2>
-
+			<header class="privatearea-header"> 
+				<h2><?php echo esc_html( apply_filters( 'single_term_title', $term->name ) ); ?></h2>
+				<?php 
+				$description = get_term_field( 'description', $term, 'product_cat' );
+				if ( !is_wp_error( $description ) && $description ) : ?>
+				<p class="subtitle"><?php echo $description; ?></p>
+				<?php endif; ?>
+			</header>
 			<?php
 			$current_user = wp_get_current_user();
-			$args         = array(
+			
+			$args = array(
 				'post_type'   => 'product',
 				'product_cat' => $term->slug,
+				'fields' => 'ids'
 			);
-			$loop         = new \WP_Query( $args );
+			
+			$product_ids = get_posts( $args );
+			
+			$bought_product_ids = array_filter($product_ids, function ( $product_id ) use ( $current_user )  { 
+				return wc_customer_bought_product( $current_user->user_email, $current_user->ID, $product_id );
+			});
 
-			woocommerce_product_loop_start();
+			$args = array(
+				'post_status' => 'publish',
+				'post_type' => 'page',
+				'ignore_sticky_posts' => true,
+				'meta_query' => array(
+					array(
+				        'key'     => 'restrict_to_purchased_product_id',
+				        'value'   => $bought_product_ids,
+				        'compare' => 'IN'
+				    )
+				)
+			);
 
-			$found = false;
+			$pages_query = new WP_Query( $args );
 
-			while ( $loop->have_posts() ) :
-				$loop->the_post();
-
-				if ( wc_customer_bought_product( $current_user->user_email, $current_user->ID, get_the_ID() ) ) {
-					wc_get_template_part( 'content', 'product' );
-					$found = true;
-				}
-			endwhile;
-
-			woocommerce_product_loop_end();
-
-			if ( ! $found ) {
-				/**
-				 * Hook: woocommerce_no_products_found.
-				 *
-				 * @hooked wc_no_products_found - 10
-				 */
-				do_action( 'woocommerce_no_products_found' );
+			if( !empty( $bought_product_ids ) && $pages_query->have_posts() ) { ?>
+			<div class="product-page-list">
+			<?php 
+				while ( $pages_query->have_posts() ) : $pages_query->the_post();
+						wc_get_template_part( 'myaccount/productpage/thumb', $term->slug );
+				endwhile;
+			?>
+			</div>
+			<?php
+			} else {
+				wc_no_products_found();
 			}
 
-			woocommerce_reset_loop();
 			wp_reset_postdata();
 			?>
 		</div>
@@ -723,19 +918,19 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			</div>
 
 			<div class="options_group">
-			<?php
-			$args = array(
-				'show_option_none' => __( 'Default order summary', 'woocommerce' ),
-				'name'             => '_funnels_thankyou_page',
-				'id'               => 'funnels_thankyou_page',
-				'selected'         => get_post_meta( $post->ID, '_funnels_thankyou_page', true ),
-				'class'            => 'select short',
-			);
+				<?php
+				$args = array(
+					'show_option_none' => __( '-- Default order summary --', 'woocommerce' ),
+					'name'             => '_funnels_thankyou_page',
+					'id'               => 'funnels_thankyou_page',
+					'selected'         => get_post_meta( $post->ID, '_funnels_thankyou_page', true ),
+					'class'            => 'select short',
+				);
 				?>
 				<p class="form-field dimensions_field">
 					<label for="funnels_thankyou_page"><?php esc_html_e( 'Thank you page', 'woocommerce' ); ?></label>
-			<?php wp_dropdown_pages( $args ); ?>
-			<?php echo wc_help_tip( __( 'Select this to set the thankyou page after a successful checkout', 'woocommerce' ) ); ?>
+					<?php wp_dropdown_pages( $args ); ?>
+					<?php echo wc_help_tip( __( 'Select this to set the thankyou page after a successful checkout', 'woocommerce' ) ); ?>
 				</p>		
 			</div>
 		</div>

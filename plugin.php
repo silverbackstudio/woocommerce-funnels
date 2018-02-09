@@ -63,3 +63,7 @@ add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\admin_scripts' );
 function admin_scripts() {
 	wp_enqueue_style( 'woocommerce-funnels-admin', plugins_url( '/assets/css/admin.css', __FILE__ ), false, '1.0.0' );
 }
+
+function plugin_dir(){
+	return plugin_dir_path( __FILE__ );
+}
