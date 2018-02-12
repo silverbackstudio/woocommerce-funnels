@@ -22,3 +22,302 @@
         }
     }
 }
+
+/*---------- Breadcrumbs ---------*/
+
+.woocommerce-breadcrumb {
+    background: #f5f5f5;
+    padding: 20px 15px;
+    margin: 20px 0;
+}
+
+/*---------- Notices ---------*/
+
+.woocommerce-NoticeGroup {
+    
+    .woocommerce-error {
+        border: 1px solid;
+        padding: 15px;
+    
+         li {
+            
+            &:before {
+                font-family: "icons-set";
+                content: "\e90c";
+                display: inline-block;
+                margin-right: 10px;
+                vertical-align: middle;
+            }
+         }
+    }
+}
+
+/*---------- Forms ---------*/
+
+.woocommerce form {
+    
+    .form-row-first,
+    .form-row-last {
+        width: 100%;
+    }
+    
+    @media screen and (min-width: 64em) {
+        
+        .form-row-first,
+        .form-row-last {
+            width: 49%;
+        }
+        
+        .form-row-first {
+            float: left;
+        }
+        
+        .form-row-last {
+            float: right;
+        }
+    }
+}
+
+/*---------- Tables ---------*/
+
+.woocommerce table {
+    border-radius: 0;
+    border: 1px solid #f5f5f5;
+    text-align: left;
+    
+    tr {
+        border-top: 1px solid #f5f5f5;
+    }
+    
+    th, td {
+        padding: 15px 10px;
+        border-right: 1px solid #f5f5f5;
+        
+        &:last-child {
+            border-right: none;
+        }
+    }
+    
+    thead, tfoot {
+        font-weight: bold;
+    }
+    
+    tbody {
+        
+        tr:nth-of-type(even) {
+            background: #fbfbfb;
+        }
+    }
+    
+    tfoot {
+        background: #f7f7f7;
+        
+        td, th {
+            padding: 15px 10px;
+            border-right: 1px solid #f0f0f0;
+            
+            &:last-child {
+                border-right: none;
+            }
+        }
+    }
+    
+    &.shop_table_responsive {
+        font-size: .9em;
+        
+        thead {
+            display: none;
+        }
+        
+        tbody {
+
+            tr {
+                border-top: 1px solid #ddd;
+                display: block;
+                
+                &:first-of-type {
+                    border-top: none;
+                }
+                
+                td {
+                    padding: 0;
+                    position: relative;
+                    padding: 10px 15px;
+                    border-top: 1px solid #f5f5f5;
+                    padding-left: 50%;
+                    display: block;
+                    text-align: right;
+                    vertical-align: middle;
+                                    
+                    &:before {
+                        content: attr(data-title) ": ";
+                        font-weight: 700;
+                        float: left;
+                        width: 50%;
+                        width: 50%;
+                        text-align: left;
+                        background: #f5f5f5;
+                        position: absolute;
+                        padding: 10px 15px;
+                        left: 0;
+                        top: 0;
+                        bottom: 0;
+                    }
+                }
+            }
+            
+            .button {
+                background: none;
+                box-shadow: none;
+                color: #f05a24;
+                text-transform: none;
+                padding: 0;
+                display: block;
+                text-align: right;
+            }
+        }
+        
+        @media screen and (min-width: 48em) {
+            
+            thead {
+                display: table-header-group;
+            }
+            
+            thead, tr, tfoot {
+                width: 100%;
+            }
+            
+            tbody {
+                
+                tr {
+                    display: table-row;
+                
+                    td {
+                        display: table-cell;
+                        padding-left: 0;
+                        text-align: left;
+                        padding: 10px;
+                        
+                        &:before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.woocommerce-checkout-payment {
+    padding: 20px 25px;
+}
+
+/*---------- Product cards ---------*/
+
+.woocommerce ul.products,
+.product-page-list {
+    padding: 0 15px;
+    
+    &:after {
+        @include clearfix();
+        @include clearfix-after();
+    }
+}
+
+.woocommerce .products .product,
+.product-page-list .post-thumb {
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    width: 100%;
+    padding: 20px 15px 30px;
+    margin: 20px 0;
+
+    a {
+        text-decoration: none;
+    }
+    
+    img {
+       height: 300px;
+       width: 100%;
+       object-fit: contain;
+       border-bottom: 1px solid #ddd;
+       padding-bottom: 10px;
+    }
+    
+    .price {
+        font-size: 2.2em;
+        display: block;
+        margin: 10px auto;
+    }
+    
+    .button {
+        display: block;
+        margin: 20px 0 0;
+    }
+    
+    @media screen and (min-width: 48em) {
+        width: 49%;
+        float: left;
+        margin: 0 0 20px;
+        
+        &:nth-of-type(2n + 2) {
+            margin-left: 2%;
+            clear: right;
+        }
+    }
+}
+
+.woocommerce .products .product {
+    
+    &:before {
+        display: none;    
+    }
+    
+    .woocommerce-loop-product__title {
+        text-align: left;
+        text-decoration: none;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    @media screen and (min-width: 64em) {
+        width: 32%;
+        
+        &:nth-of-type(2n + 2) {
+            margin-left: 0;
+            clear: none;
+        }
+        
+        &:nth-of-type(3n + 2) {
+            margin: 0 2%;
+        }
+        
+        &:nth-of-type(3n + 3) {
+            clear: right;
+        }
+    }
+}
+
+.woocommerce-MyAccount-content .products .product {
+
+    @media screen and (min-width: 64em) {
+        width: 49%;
+        float: left;
+        margin: 0 0 20px;
+        
+        &:nth-of-type(2n + 2) {
+            margin-left: 2%;
+            clear: right;
+        }
+    }
+}
+
+.product-page-list .post-thumb {
+
+    .entry-header {
+        padding: 0;
+    }
+    
+    .entry-title {
+        font-size: 1.4rem;
+    }
+}

@@ -4,11 +4,16 @@ body.woocommerce-checkout {
         padding: 0 15px;
     }
     
+    h1 {
+        @include screen-reader-text();
+    }
+    
     /* Woocommerce info */
     .woocommerce-info {
         background: #f3f3f3;
         padding: 20px 15px;
         text-align: center;
+        margin-top: 30px;
         
         a {
             display: block;
@@ -17,126 +22,73 @@ body.woocommerce-checkout {
     
     /* Coupon form */
     .checkout_coupon {
-        background: #f3f3f3;
+        background: #eaeaea;
         text-align: center;
         padding: 15px;
         
         p {
             margin: 0;
         }
+        
+        button {
+            margin: 20px auto 10px;
+        }
+        
+        @media screen and (min-width: 64em) {
+            text-align: left;
+            padding: 30px 25px;
+            
+            button {
+                margin: 0;
+            }
+        }
+    }
+    
+    .woocommerce-checkout-payment {
+        padding: 20px 15px;
+        background: #f3f3f3;
+        
+        ul {
+            
+            li {
+                margin-bottom: 10px;
+                
+                &:before {
+                    display: none;
+                }
+            }
+        }
+        
+        .payment_method_ppec_paypal {
+            
+            img {
+                vertical-align: middle;
+            }
+        }
+        
+        fieldset {
+            border: none;
+        }
+        
+        button {
+            display: block;
+            width: 100%;
+        }
     }
     
     h3 {
         font-size: 1.5em;
         font-weight: 400;
-    }
-    
-    article {
-        margin-top: 50px;
-        
-        > .entry-header {
-            display: none;
-        }
-        
-        form.checkout div.product .entry-summary {
-            text-align: center;
-            
-            h1 {
-                font-weight: bold;
-                margin-bottom: 30px;
-            }
-            
-            &:before {
-                content: "";
-                display: block;
-                width: 100%;
-                height: 300px;
-                background: url("media/giordano_guerrieri-offerta.png") center no-repeat;
-                background-size: contain;
-            }
-            
-            .price {
-                
-                del, ins {
-                    display: block;
-                    color: #555;
-                    font-size: 1.5em;
-                }
-                
-                del {
-                    opacity: .7;
-                }
-                
-                ins {
-                    font-size: 2em;
-                }
-            }
-        }
-        
-        .stock {
-            display: none;
-        }
-        
-        #customer_details {
-            
-            > .col-2 {
-                float: none;
-                width: 100%;
-            }
-            
-            > .col-1 {
-                width: 100%;
-            }
-        }
-    }
-    
-    #payment .payment_method_paypal .about_paypal {
-        float: none;
-        margin-left: 10px;
-    }
-    
-    #place_order {
-        display: block;
-        width: 100%;
-        margin-top: 30px;
-    }
-    
-    #order_review_heading {
-        margin: 30px 0 0;
-    }
-    
-    .opc-complete-order {
-        display: block;
-        margin-top: 20px;
-    }
-    
-    input[type="checkbox"] {
-        display: inline-block;
-    }
-    
-    .woocommerce-additional-fields {
-        margin-top: 20px;
+        margin-bottom: 20px;
     }
     
     @media screen and (min-width: 48em) {
-        
+
         article.page {
-        
-            form.checkout div.product .entry-summary {
-                width: 100%;
-                padding: 30px 15px 30px 50%;
-                
-                &:before {
-                    width: 50%;
-                    position: absolute;
-                    top: 20px;
-                    bottom: 0;
-                    left: 0;
-                }
-            }
             
-            .checkout_coupon {
-                text-align: left;
+            form.woocommerce-checkout:after {
+                @include clearfix();
+                @include clearfix-after();
             }
             
             #customer_details {
@@ -150,10 +102,11 @@ body.woocommerce-checkout {
                 float: right;
                 clear: right;
             }
-            
-            #order_review_heading {
-                margin: 0;
-            }
         }
     }
+}
+
+.checkout-warranty {
+    clear: both;
+    margin: 30px auto;
 }

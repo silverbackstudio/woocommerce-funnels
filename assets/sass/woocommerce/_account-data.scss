@@ -1,0 +1,144 @@
+.woocommerce-account {
+    
+    h2 {
+        font-weight: 600;
+        margin: 0 0 20px;
+        font-size: 2.5em;
+        text-align: center;
+        padding-top: 20px;
+    }
+    
+    .login-form {
+        max-width: 600px;
+        margin: 60px auto 40px;
+        padding: 25px 25px 10px;
+        position: relative;
+        font-size: .9em;
+        
+        h2 {
+            font-size: 2.3em;
+        }
+    
+        .woocommerce-form-login {
+            margin: 0;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            
+            button[type="submit"] {
+                display: block;
+                margin: 30px auto 20px;
+                width: 100%;
+            }
+        }
+        
+        .lost_password {
+            text-align: center;
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+            width: 100%;
+        }
+        
+        @media screen and (min-width: 48em) {
+            margin: 20px auto 40px;
+        }
+    }
+    
+    &.logged-in {
+
+        .button {
+            padding: .5em 1em;
+            font-size: 1em;
+        }
+        
+        fieldset {
+            background: #f9f9f9;
+            border: none;
+            margin-top: 20px;
+            padding: 20px 10px;
+            
+            legend {
+                display: none;
+            }
+        }
+        
+        label {
+            line-height: normal;
+            margin-bottom: 5px;
+        }
+    }
+    
+    #user-avatar,
+    #edit-address {
+        
+        h2 {
+            font-weight: 400;
+            font-size: 1.8em;
+        }
+    }
+    
+    #user-avatar {
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        
+        #wpua-undo-existing {
+            background: none;
+            box-shadow: none;
+            text-decoration: underline;
+            padding: 0;
+        }
+        
+        #wpua-upload-messages-existing {
+            
+            span {
+                display: block;
+                font-size: .9em;
+            }
+        }
+        
+        #wpua-file-existing {
+            background: #f9f9f9;
+            padding: 15px;
+            line-height: 1em;
+            margin-bottom: 10px;
+            max-width: 100%;
+            
+            + button {
+                margin-left: 10px;
+            }
+        }
+        
+        #wpua-undo-existing {
+            
+            &:before {
+                font-family: "icons-set";
+                content: "\e909";
+                border: 1px solid;
+                display: inline-block;
+                width: 23px;
+                height: 23px;
+                border-radius: 23px;
+                line-height: 22px;
+                margin-right: 5px;
+            }
+        }
+    }
+    
+    #edit-address {
+        
+        .woocommerce-Address {
+            
+            address {
+                font-style: normal;
+            }
+        }
+    }
+    
+    @media screen and (min-width: 48em) {
+        
+        h2 {
+            font-size: 2.5em;
+        }
+    }
+}

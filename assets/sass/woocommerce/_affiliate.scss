@@ -1,0 +1,136 @@
+#affwp-affiliate-dashboard {
+    text-align: left;
+    
+    h4, h5 {
+        font-weight: 400;
+        font-size: 1.7em;
+        margin-bottom: 0;
+        margin-top: 20px;
+    }
+    
+    p {
+        margin-top: 0;
+    }
+    
+    .url-referral {
+        font-weight: bold;
+        
+        &:before {
+            font-family: "icons-set";
+            content: "\e914";
+            margin-right: 5px;
+            font-size: .8em;
+        }
+    }
+        
+    #affwp-affiliate-dashboard-tabs {
+        text-align: center;
+    
+        li {
+            
+            &:before {
+                content: "|";
+                color: #aaa;
+            }
+            
+            &:first-of-type:before {
+                display: none;
+            }
+        }
+    }
+    
+    ol {
+        
+        li {
+            text-indent: -1.2em;
+            padding-left: 1.2em;
+        }
+    }
+    
+    .referral-url {
+        display: block;
+        margin: 60px auto 10px;
+        border: 2px solid;
+        padding: 50px 15px 30px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 1.5em;
+        line-height: 1em;
+        position: relative;
+        max-width: 600px;
+        
+        &:before {
+            display: block;
+            font-family: "icons-set";
+            content: "\e914";
+            font-weight: 200;
+            font-size: 38px;
+            border: 2px solid;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            position: absolute;
+            border-radius: 50px;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+        }
+        
+        strong {
+            font-weight: 200;
+            font-size: .7em;
+            display: block;
+            margin-top: 10px;
+        }
+        
+        &:before {
+            font-family: "icons-set";
+            content: "\e914";
+        }
+    }
+    
+    .share-buttons {
+        text-align: center;
+        margin: 0 0 30px;
+    }
+    
+    .whatsapp-share {
+        background: #25D366;
+        color: #fff;
+        font-size: .9em;
+        text-decoration: none;
+        padding: 4px 6px 5px;
+        border-radius: 4px;
+        position: relative;
+        top: -2px;
+        transition: background  .2s ease-in-out;
+        
+        &:before {
+            font-family: "icons-set";
+            content: "\e915";
+            margin-right: 5px;
+        }
+        
+        &:hover {
+            background: #20c15b;
+        }
+    }
+    
+    .highlighted {
+        font-style: normal;
+        font-size: 1.1em;
+    }
+    
+    #affwp-affiliate-dashboard-profile {
+        
+        .affwp-wrap {
+            margin: 25px 0;
+            
+            label {
+                display: inline-block;
+            }
+        }
+    }
+}

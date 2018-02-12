@@ -1,0 +1,25 @@
+.shop_table_responsive {
+    
+    button {
+        
+        &.view {
+        
+            &:before {
+                font-family: "icons-set";
+                content: "\e913";
+                margin-right: 5px;
+                font-weight: 400;
+            }
+    }
+    
+    &.fattureincloud-invoice {
+        
+            &:before {
+                font-family: "icons-set";
+                content: "\e90a";
+                margin-right: 5px;
+                font-weight: 400;
+            }    
+        }
+    }
+}
