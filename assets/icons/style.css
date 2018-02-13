@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icons-set';
-  src:  url('fonts/icons-set.eot?mb7mnp');
-  src:  url('fonts/icons-set.eot?mb7mnp#iefix') format('embedded-opentype'),
-    url('fonts/icons-set.ttf?mb7mnp') format('truetype'),
-    url('fonts/icons-set.woff?mb7mnp') format('woff'),
-    url('fonts/icons-set.svg?mb7mnp#icons-set') format('svg');
+  src:  url('fonts/icons-set.eot?b3m94e');
+  src:  url('fonts/icons-set.eot?b3m94e#iefix') format('embedded-opentype'),
+    url('fonts/icons-set.ttf?b3m94e') format('truetype'),
+    url('fonts/icons-set.woff?b3m94e') format('woff'),
+    url('fonts/icons-set.svg?b3m94e#icons-set') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -86,6 +86,9 @@
 }
 .icon-question:before {
   content: "\e912";
+}
+.icon-trash:before {
+  content: "\e916";
 }
 .icon-view-show:before {
   content: "\e913";
