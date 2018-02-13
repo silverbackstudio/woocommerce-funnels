@@ -86,3 +86,41 @@ body.woocommerce-checkout {
     clear: both;
     margin: 30px auto;
 }
+
+i.stripe-pf-mastercard,
+i.stripe-pf-american-express,
+i.stripe-pf-visa {
+    
+    &:before {
+        content: "";
+        height: 25px;
+        width: 40px;
+        display: inline-block;
+        background-size: contain;
+        margin-left: 2px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+i.stripe-pf-mastercard {
+    
+    &:before {
+        background-image: url(../images/mastercard.png);
+    }
+}
+
+i.stripe-pf-american-express {
+    
+    &:before {
+        background-image: url(../images/american-express.jpeg);
+        width: 25px;
+    }
+}
+
+i.stripe-pf-visa {
+
+   &:before {
+        background-image: url(../images/visa.png);
+    }
+}
