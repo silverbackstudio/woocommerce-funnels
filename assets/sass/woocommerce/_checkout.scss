@@ -20,30 +20,6 @@ body.woocommerce-checkout {
         }
     }
     
-    /* Coupon form */
-    .checkout_coupon {
-        background: #eaeaea;
-        text-align: center;
-        padding: 15px;
-        
-        p {
-            margin: 0;
-        }
-        
-        button {
-            margin: 20px auto 10px;
-        }
-        
-        @media screen and (min-width: 64em) {
-            text-align: left;
-            padding: 30px 25px;
-            
-            button {
-                margin: 0;
-            }
-        }
-    }
-    
     .woocommerce-checkout-payment {
         padding: 20px 15px;
         background: #f3f3f3;

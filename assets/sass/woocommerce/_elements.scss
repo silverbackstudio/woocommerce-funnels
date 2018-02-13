@@ -103,6 +103,7 @@
     }
     
     tbody {
+        background: #fff;
         
         tr:nth-of-type(even) {
             background: #fbfbfb;
@@ -154,7 +155,6 @@
                         font-weight: 700;
                         float: left;
                         width: 50%;
-                        width: 50%;
                         text-align: left;
                         background: #f5f5f5;
                         position: absolute;
@@ -166,9 +166,10 @@
                 }
             }
             
-            .button {
+            .woocommerce-button {
                 background: none;
                 box-shadow: none;
+                border-radius: 0;
                 color: #f05a24;
                 text-transform: none;
                 padding: 0;
@@ -244,7 +245,6 @@
     }
     
     .price {
-        font-size: 2.2em;
         display: block;
         margin: 10px auto;
     }
@@ -315,9 +315,55 @@
 
     .entry-header {
         padding: 0;
+        
+        h2 {
+            text-align: left;
+        }
     }
     
     .entry-title {
         font-size: 1.4rem;
+    }
+}
+
+/*--------- Coupon form ---------*/
+
+.woocommerce .checkout_coupon,
+.woocommerce .coupon {
+    background: #f7f7f7;
+    text-align: center;
+    padding: 15px;
+    
+    p {
+        margin: 0;
+    }
+    
+    label {
+        margin-bottom: 5px;
+    }
+    
+    .button {
+        margin: 20px auto 10px;
+        font-size: 1rem;
+        padding: .5rem 1rem;
+    }
+    
+    @media screen and (min-width: 64em) {
+        text-align: left;
+        padding: 30px 25px;
+        
+        input[type="text"] {
+            width: 400px;
+        }
+        
+        .form-row-first,
+        .form-row-last {
+            width: auto;
+            float: left;
+        }
+        
+        .button {
+            margin: 0 0 0 10px;
+        }
     }
 }
