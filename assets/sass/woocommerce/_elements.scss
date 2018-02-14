@@ -125,6 +125,24 @@
     }
 }
 
+/*---------- Related products ---------*/
+
+.woocommerce .related.products {
+    background: #f9f9f9;
+    padding: 20px 25px;
+    
+    .product {
+        
+        img {
+            height: 200px;
+        }
+    }
+    
+    .button {
+        padding: .6em 1em;
+    }
+}
+
 /*---------- Tables ---------*/
 
 .woocommerce table {
@@ -275,6 +293,7 @@
 .woocommerce .products .product,
 .product-page-list .post-thumb {
     box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    background: #fff;
     width: 100%;
     padding: 20px 15px 30px;
     margin: 20px 0;
