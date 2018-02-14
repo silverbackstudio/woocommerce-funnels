@@ -27,8 +27,9 @@
 
 .woocommerce-breadcrumb {
     background: #f5f5f5;
-    padding: 20px 15px;
+    padding: 10px 15px;
     margin: 20px 0;
+    font-size: .9em;
 }
 
 /*---------- Notices ---------*/
@@ -36,10 +37,13 @@
 .woocommerce-NoticeGroup {
     
     .woocommerce-error {
-        border: 1px solid;
+        background: #B53535;
+        color: #fff;
+        box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
         padding: 15px;
     
          li {
+             line-height: normal;
             
             &:before {
                 font-family: "icons-set";
@@ -47,6 +51,8 @@
                 display: inline-block;
                 margin-right: 10px;
                 vertical-align: middle;
+                font-size: 1.2em;
+                color: #fff;
             }
          }
     }
@@ -75,6 +81,47 @@
         .form-row-last {
             float: right;
         }
+    }
+}
+
+/*---------- Tabs ---------*/
+
+.woocommerce-tabs {
+    clear: both;
+    padding: 20px 0;
+    
+    ul.tabs {
+        border-bottom: 1px solid #f0f0f0;
+            
+        li {
+            display: inline-block;
+            margin: 0 2px;
+            position: relative;
+            bottom: -1px;
+            
+            a {
+                text-decoration: none;
+                padding: 10px 15px;
+                background: #aaa;
+                color: #fff;
+                display: block;
+            }
+          
+            &:before {
+              display: none;
+            }
+            
+            &.active {
+                box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.1);
+                margin: 0;
+                border-bottom: 1px solid #fff;
+                
+                a {
+                    background: #fff;
+                    color: #aaa;
+                }
+            }
+        }  
     }
 }
 

@@ -70,7 +70,9 @@
     }
     
     #user-avatar,
-    #edit-address {
+    #edit-address,
+    #payment-methods {
+        margin: 0 auto;
         
         h2 {
             font-weight: 400;
@@ -87,6 +89,7 @@
             box-shadow: none;
             text-decoration: underline;
             padding: 0;
+            color: inherit;
         }
         
         #wpua-upload-messages-existing {
@@ -114,18 +117,14 @@
             &:before {
                 font-family: "icons-set";
                 content: "\e909";
-                border: 1px solid;
                 display: inline-block;
-                width: 23px;
-                height: 23px;
-                border-radius: 23px;
-                line-height: 22px;
                 margin-right: 5px;
             }
         }
     }
     
     #edit-address {
+        border-bottom: 1px solid #eee;
         
         .woocommerce-Address {
             
@@ -133,6 +132,10 @@
                 font-style: normal;
             }
         }
+    }
+    
+    #payment-methods {
+        margin-bottom: 30px;
     }
     
     @media screen and (min-width: 48em) {

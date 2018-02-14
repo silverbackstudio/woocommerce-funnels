@@ -1,0 +1,17 @@
+.post-type-archive-product {
+    
+    .site-content {
+        padding: 0 15px;
+        
+        .products {
+            margin-top: 50px;
+        }
+    }
+    
+    @media screen and (min-width: 48em) {
+        
+        .site-content {
+            padding: 0 25px;
+        }
+    }
+}
