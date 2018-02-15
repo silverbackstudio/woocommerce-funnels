@@ -1,0 +1,208 @@
+.success-message {
+	border: 2px solid;
+	margin: 80px 15px 0;
+	position: relative;
+	padding: 50px 15px 10px;
+	
+	header {
+	    text-align: center;
+	
+    	h1 {
+    		margin: 0;
+    		line-height: 1.2em;
+            margin-bottom: .2em;
+    	}
+    	
+    	.subtitle {
+    	    font-weight: bold;
+    	    text-decoration: underline;
+    	}
+	}
+	
+	h3 {
+	    text-transform: uppercase;
+	    text-align: center;
+	    font-size: 1.3em;
+	    margin: 30px 0 0;
+	    font-weight: bold;
+	}
+	
+	p {
+	    margin-top: 0;
+	}
+	
+	.button {
+	    margin-top: 20px;
+	}
+	
+	&:before {
+	    font-family: "icons-set";
+		content: "\e902";
+		position: absolute;
+		font-size: 42px;
+		line-height: 70px;
+		background: #fff;
+		border: 6px solid;
+		height: 80px;
+		width: 80px;
+		text-align: center;
+		border-radius: 80px;
+		top: -40px;
+		left: 50%;
+		transform: translateX(-50%);
+		box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+	}
+	
+	@media screen and (min-width: 48em) {
+	    margin: 80px 70px 0;
+	    padding: 50px 70px 10px;
+	}
+}
+
+section.fb {
+	margin-bottom: 0;
+	margin: 50px 15px;
+	
+	.first-part {
+	    margin-bottom: 20px;
+		
+		h2, p {
+			margin: 0;
+		}
+		
+		h2 {
+			margin-bottom: 20px;
+			font-size: 2.1em;
+			padding-left: 60px;
+			position: relative;
+			text-align: left;
+			font-weight: 400;
+			line-height: 1.2em;
+			
+        	&:before {
+        	    background: url(media/fb_pulsante.png) center no-repeat;
+        	    background-size: contain;
+        	    content: "";
+        	    width: 50px;
+        	    height: 50px;
+        	    color: #3b5998;
+        	    position: absolute;
+        	    left: 0;
+        	    top: 0;
+        	}
+		}
+	}
+	
+	.second-part {
+		padding: 0;
+		text-align: center;
+	}
+	
+	.fb-page {
+		display: block;
+		
+		span {
+		    width: 100%;
+		}
+	}
+	
+	@media screen and (min-width: 48em) {
+		display: table;
+		vertical-align: middle;
+		margin: 50px 70px;
+		
+		&:before {
+		    top: 20px;
+	        left: 0;
+	        line-height: normal;
+		}
+		
+		.first-part,
+		.second-part {
+			display: table-cell;
+			width: 50%;
+			vertical-align: middle;
+		}
+	}
+	
+	@media screen and (min-width: 64em) {
+	
+	    .first-part {
+	        padding-left: 0;
+	    }
+	}
+}
+
+.woocommerce-order {
+    margin: 0 15px;
+    background: #fcfcfc;
+    padding: 15px 15px 0;
+    border: 1px solid #eee;
+    color: #555;
+    
+    .woocommerce-notice--success {
+        display: none;
+    }
+    
+    h2 {
+        font-size: 1.8em;
+        line-height: normal;
+        margin-bottom: 10px;
+    }
+    
+    table {
+        text-align: left;
+        
+        th, td {
+            padding: 10px;
+        }
+        
+        tbody {
+            border-bottom: 1px solid #f3f3f3;
+            border-top: 1px solid #f3f3f3;
+        }
+        
+        tfoot {
+            background: none;
+            
+            tr:last-of-type {
+                border-top: 1px solid #f3f3f3;
+            }
+        }
+    }
+    
+    .woocommerce-customer-details {
+        
+        address {
+            font-style: normal;
+        }
+    }
+    
+    @media screen and (min-width: 48em) {
+        overflow: hidden;
+        padding: 30px 25px;
+        
+        > ul,
+        > section {
+            width: 49%;
+            float: left;
+            margin: 0 0 20px;
+            
+            h2 {
+                margin-top: 0;
+            }
+        }
+        
+        .woocommerce-order-details {
+            clear: right;
+        }
+        
+        .woocommerce-order-overview {
+            margin-right: 2%;
+        }
+    }
+    
+    @media screen and (min-width: 64em) {
+       margin: 30px 70px; 
+    }
+}
