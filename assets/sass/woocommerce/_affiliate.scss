@@ -36,9 +36,17 @@
             &:first-of-type:before {
                 display: none;
             }
+            
+            &.active a {
+                color: #1d1d1b;
+            }
         }
     }
     
+    table td {
+        padding: 12px;
+    }
+
     ol {
         
         li {
@@ -131,6 +139,17 @@
             label {
                 display: inline-block;
             }
+        }
+    }
+    
+    #affwp-graphs-filter {
+        
+        input[type="submit"] {
+            left: 0;
+            transform: none;
+            box-shadow: none;
+            padding: .3em 1em;
+            font-size: .9em;
         }
     }
 }

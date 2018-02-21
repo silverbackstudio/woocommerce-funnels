@@ -55,8 +55,8 @@
         fieldset {
             background: #f9f9f9;
             border: none;
-            margin-top: 20px;
-            padding: 20px 10px;
+            padding: 20px 15px;
+            margin: 20px 0 0 0;
             
             legend {
                 display: none;
@@ -66,6 +66,10 @@
         label {
             line-height: normal;
             margin-bottom: 5px;
+            
+            .required {
+                color: #B53535;
+            }
         }
     }
     
