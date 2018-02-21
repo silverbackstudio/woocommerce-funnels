@@ -36,14 +36,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<div class="login-form" id="woocommerce-login">
 
-			<h2><?php _e( 'Login to Private Area', 'giordanoguerrieri' ); ?></h2>
+			<h2><?php _e( 'Login to Private Area', 'woocommerce-funnels' ); ?></h2>
 	
 			<p class="intro">
-				<span>Per accedere inserisci qui le credenziali che hai scelto durante l’acquisto e che ti sono state confermate via mail:</span>
+				<span><?php _e('Per accedere inserisci qui le credenziali che hai scelto durante l’acquisto e che ti sono state confermate via mail:', 'woocommerce-funnels'); ?></span>
 				
 				<ul>
-					<li>il nome utente corrisponde alla mail che hai fornito al momento dell’acquisto</li>
-					<li>la password ti è arrivata via mail se non la trovi nella casella di posta, controlla anche nella cartella di spam.</li>
+					<li><?php _e('il nome utente corrisponde alla mail che hai fornito al momento dell’acquisto', 'woocommerce-funnels'); ?></li>
+					<li><?php _e('la password ti è arrivata via mail se non la trovi nella casella di posta, controlla anche nella cartella di spam.', 'woocommerce-funnels'); ?></li>
 				</ul>
 			</p>
 

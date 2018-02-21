@@ -10,7 +10,7 @@
 Plugin Name: WooCommerce - Funnels
 Description: Changes the WooCommerce Purchase Flow to allow Funnels
 Author: Silverback Studio
-Version: 1.0
+Version: 1.1.0
 Author URI: http://www.silverbackstudio.it/
 Text Domain: woocommerce-funnels
 */
@@ -31,6 +31,7 @@ function init() {
 
 	if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) {
 		include_once 'includes/class-wc-integration-funnels.php';
+		include_once 'includes/class-sensei-funnels.php';		
 	}
 
 	add_filter( 'woocommerce_integrations', __NAMESPACE__ . '\\add_integration' );

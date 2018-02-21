@@ -18,8 +18,9 @@
     "require": {
         "php": ">=5.6",
         "psr/log": "^1.0",        
-        "silverbackstudio/wp-themehelper": "^2.4.0",
+        "silverbackstudio/wp-themehelper": "^2.5.0",
         "wpackagist-plugin/woocommerce" : "~3.3.0",
+        "woothemes/sensei": "~0.7.3",
         "wpackagist-plugin/wp-user-avatar": "2.0.9"
     },
     "require-dev": {
@@ -28,7 +29,8 @@
     },
     "autoload": {
         "psr-0": {
-            "Svbk\\WP\\Plugins\\WooCommerce\\FattureInCloud\\WC_Integration_Funnels": "include/class-wc-integration-funnels.php"
+            "Svbk\\WP\\Plugins\\WooCommerce\\Funnels\\WC_Integration_Funnels": "include/class-wc-integration-funnels.php"
+            "Svbk\\WP\\Plugins\\WooCommerce\\Funnels\\Sensei_Funnels": "include/class-sensei-funnels.php"
         }
     } 
 }

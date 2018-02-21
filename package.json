@@ -17,12 +17,11 @@
   },
   "homepage": "https://github.com/silverbackstudio/woocommerce-funnels#readme",
   "devDependencies": {
-    "browser-sync": "^2.16.0",
-    "gulp": "^3.9.1",
-    "gulp-postcss": "^6.2.0",
-    "gulp-ruby-sass": "^2.1.0",
+    "autoprefixer": "^8.0.0",
+    "gulp": "^4.0.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^1.6.0",
-    "postcss-object-fit-images": "^1.1.2",
-    "autoprefixer": "^6.7.0"
+    "postcss-object-fit-images": "^1.1.2"
   }  
 }

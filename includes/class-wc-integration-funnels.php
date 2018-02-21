@@ -9,7 +9,7 @@ use Wp_Query;
 
 
 /**
- * Funnels Integration.
+ * WooCommerce Funnels Integration.
  *
  * @package  WC_Integration_Funnels
  * @category Integration
@@ -30,6 +30,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		public $orders_menu_label;
 		public $account_product_categories;
 		public $dashboard_content_page;
+		public $checkout_warranty_text;
 
 		public $disable_woocommerce_styles;
 		public $disable_sensei_styles;
@@ -62,6 +63,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			$this->dashboard_content_page	  = $this->get_option( 'dashboard_content_page' );
 			$this->disable_woocommerce_styles  = $this->get_option( 'disable_woocommerce_styles' );
 			$this->disable_sensei_styles  = $this->get_option( 'disable_sensei_styles' );
+			$this->checkout_warranty_text  = $this->get_option( 'checkout_warranty_text' );
 
 			add_action( 'init', array( $this, 'init_form_fields' ), 30 );
 			add_action( 'init', array( $this, 'init' ), 50 );
@@ -89,7 +91,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			$this->woocommerce_hooks();
 
 			if ( $this->sensei ) {
-				$this->sensei_hooks();
+				new Sensei_Funnels($this);
 			}
 			
 			$mb = new Helpers\Post\MetaBox(
@@ -125,7 +127,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 				'dashboard_content_page' => array(
 					'title'       => __( 'Dashboard Content Page', 'woocommerce-funnels' ),
 					'type'        => 'select',
-					'description' => __( 'Select thte page with the content to be shown in MyAcoount Dasboard page', 'woocommerce-funnels' ),
+					'description' => __( 'Select the page with the content to be shown in MyAccount Dashboard page', 'woocommerce-funnels' ),
 					'desc_tip'    => true,
 					'default'     => '',
 					'options'     => wp_list_pluck( get_pages(), 'post_title', 'ID' ),
@@ -164,17 +166,17 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 						)
 					),
 				),
+				'checkout_warranty_text' => array(
+					'title'       => __( 'Checkout Warranty Text', 'woocommerce-funnels' ),
+					'type'        => 'textarea',
+					'description' => __( 'The content for the checkout warranty box', 'woocommerce-funnels' ),
+					'desc_tip'    => true,
+					'default'     => '',
+				),				
 				'disable_woocommerce_styles' => array(
 					'title'       => __( 'Disable WooCommerce Styles', 'woocommerce-funnels' ),
 					'type'        => 'checkbox',
 					'description' => __( 'Disable WooCommerce CSS styles', 'woocommerce-funnels' ),
-					'desc_tip'    => true,
-					'default'     => false,
-				),				
-				'disable_sensei_styles' => array(
-					'title'       => __( 'Disable Sensei Styles', 'woocommerce-funnels' ),
-					'type'        => 'checkbox',
-					'description' => __( 'Disable Sensei CSS styles', 'woocommerce-funnels' ),
 					'desc_tip'    => true,
 					'default'     => false,
 				),				
@@ -311,6 +313,10 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 				add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 			}
 
+			add_filter('woocommerce_before_checkout_form', array($this, 'checkout_safe_payments_banner' ) );
+			add_filter('woocommerce_after_checkout_form', array($this, 'checkout_warranty' ) );
+			add_filter('woocommerce_checkout_order_review', array($this, 'choose_payment_method' ), 15 );
+
 			$this->disable_checkout_notifications();
 
 		}
@@ -400,19 +406,11 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		}
 		
 		public function plugin_template($located, $template_name, $args, $template_path, $default_path) {
-		
-			$plugin_located = wc_locate_template($template_name, '', plugin_dir() . '/templates/woocommerce/' );
 
-			$force_override = array(
-				'myaccount/dashboard.php'
-			);
+			$override_located = wc_locate_template($template_name, $template_path, plugin_dir() . 'templates/woocommerce/' );
 
-			if( ! $plugin_located || ! file_exists( $plugin_located ) ) {
-				return $located;
-			}
-			
-			if ( !$located || in_array( $template_name, $force_override ) )  {
-				$located = $plugin_located;
+			if( ! WC_TEMPLATE_DEBUG_MODE && $override_located && file_exists( $override_located ) ) {
+				return $override_located;
 			}
 		
 			return $located;
@@ -479,26 +477,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			return false;
 		}
 
-		public function sensei_hooks() {
-
-			add_action( 'init', array( $this, 'sensei_endpoints' ), 99 );
-
-			// Hack to edit the shortcode tabs url.
-			add_action( 'sensei_loop_course_before', array( $this, 'sensei_replace_mycourses_url_activate' ), 9 );
-			add_action( 'woocommerce_account_mycourses_endpoint', array( $this, 'myaccount_user_courses_page_content' ) );
-			add_filter( 'woocommerce_account_menu_items', array( $this, 'sensei_menu_items' ), 90 );
-
-			if ( ! Sensei()->settings->get( 'messages_disable' ) ) {
-				add_action( 'woocommerce_account_messages_endpoint', array( $this, 'sensei_messages_page_content' ) );
-			}
-
-			add_filter( 'post_type_archive_link', array( $this, 'sensei_post_types_archive_link' ), 10, 2 );
-			
-			if( $this->disable_sensei_styles ) {
-				add_filter( 'sensei_disable_styles', '__return_true' );
-			}
-
-		}
 
 		public function woocommerce_myaccount_sidebar_profile_before() {
 		?>
@@ -570,50 +548,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			$items = Utils::keyInsert( $items, $new_items, 'dashboard' );
 
 			return $items;
-		}
-
-
-		public function sensei_endpoints() {
-
-			add_rewrite_endpoint( 'mycourses', EP_PAGES );
-
-			if ( ! Sensei()->settings->get( 'messages_disable' ) ) {
-				add_rewrite_endpoint( 'messages', EP_PAGES );
-			}
-
-		}
-
-		public function sensei_replace_mycourses_url_activate( $url ) {
-			add_filter( 'page_link', array($this, 'sensei_replace_mycourses_url_apply') );
-		}
-
-		public function sensei_replace_mycourses_url_apply( $url ) {
-			remove_filter( 'page_link', array($this, 'sensei_replace_mycourses_url_apply') );
-			return wc_get_endpoint_url( 'mycourses' );
-		}
-
-		/**
-		 * Messages page in WC Account content
-		 */
-		public function sensei_messages_page_content() {
-		?>
-		<div class="content-wrapper">
-			<h2><?php esc_html_e( 'Messages', 'woocommerce-funnels' ); ?></h2>
-			<?php echo do_shortcode( '[sensei_user_messages]' ); ?>
-		</div>
-		<?php
-		}
-
-		/**
-		 * Courses page in WC Account content
-		 */
-		public function myaccount_user_courses_page_content() {
-		?>
-		<section id="dashboard-courses">
-			<h2><?php esc_html_e( 'Courses', 'woocommerce-funnels' ); ?></h2>
-			<?php echo do_shortcode( '[sensei_user_courses]' ); ?>
-		</section>    
-		<?php
 		}
 
 		/**
@@ -797,7 +731,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 
 			?>
 			<section id="user-avatar">
-				<h2><?php esc_html_e( 'Profile Image', 'giordanoguerrieri' ); ?></h2>
+				<h2><?php esc_html_e( 'Profile Image', 'woocommerce-funnels' ); ?></h2>
 				<?php echo do_shortcode( '[avatar_upload]' ); ?>
 			</section>
 			<?php
@@ -807,7 +741,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			?>
 
 			<section id="edit-address">
-				<h2><?php esc_html_e( 'Edit Adresses', 'giordanoguerrieri' ); ?></h2>
+				<h2><?php esc_html_e( 'Edit Adresses', 'woocommerce-funnels' ); ?></h2>
 				<?php woocommerce_account_edit_address( '' ); ?>    
 			</section>
 
@@ -823,7 +757,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			if ( $support_payment_methods ) {
 			?>
 			<section id="payment-methods">
-				<h2><?php esc_html_e( 'Payment Methods', 'giordanoguerrieri' ); ?></h2>
+				<h2><?php esc_html_e( 'Payment Methods', 'woocommerce-funnels' ); ?></h2>
 				<?php woocommerce_account_payment_methods(); ?>
 			</section>        
 			<?php } ?>
@@ -1050,6 +984,20 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			}
 		}
 
+		public function checkout_safe_payments_banner(){ ?>
+			<h2 id="checkout_heading" ><?php  _e('Safe Payments', 'woocommerce-funnels'); ?></h2>
+		<?php }
+
+		public function choose_payment_method(){ ?>
+			<h3 id="checkout_payment_heading" ><?php  _e('Choose payment method', 'woocommerce-funnels'); ?></h3>
+		<?php }
+
+		public function checkout_warranty(){ 
+			if ( $this->checkout_warranty_text ) : ?>
+			<div class="checkout-warranty"><?php  echo $this->checkout_warranty_text ?></div>
+		<?php
+			endif;
+		}
 
 
 	}
