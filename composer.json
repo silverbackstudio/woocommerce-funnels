@@ -29,7 +29,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Svbk\\WP\\Plugins\\WooCommerce\\Funnels\\WC_Integration_Funnels": "include/class-wc-integration-funnels.php"
+            "Svbk\\WP\\Plugins\\WooCommerce\\Funnels\\WC_Integration_Funnels": "include/class-wc-integration-funnels.php",
             "Svbk\\WP\\Plugins\\WooCommerce\\Funnels\\Sensei_Funnels": "include/class-sensei-funnels.php"
         }
     } 
