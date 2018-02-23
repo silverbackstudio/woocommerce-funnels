@@ -26,11 +26,8 @@ do_action( 'woocommerce_before_account_dashboard' );
 
 ?>
 
-<div class="content-wrapper">
-	<header class="entry-header">
-		<h1><?php _e('Dashboard', 'woocommerce-funnels'); ?></h1>
-	</header><!-- .entry-header -->
-	
+<div id="myAccount-dashboard">
+
 	<?php
 	$integrations =  WC()->integrations->get_integrations();
 	
@@ -44,8 +41,13 @@ do_action( 'woocommerce_before_account_dashboard' );
 		);
 		
 		while( $dashboard_query->have_posts() ) : $dashboard_query->the_post(); ?>
+		<header class="privatearea-header">
 			<?php the_post_thumbnail( 'content-full' ); ?>
-			<div class="entry-content"><?php the_content(); ?></div>
+			<h1><?php _e('Dashboard', 'woocommerce-funnels'); ?></h1>
+		</header><!-- .privatearea-header -->			
+
+		<div class="entry-content"><?php the_content(); ?></div>
+
 		<?php
 		endwhile;
 		

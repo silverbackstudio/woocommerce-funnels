@@ -62,7 +62,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			$this->account_product_categories = $this->get_option( 'account_product_categories' );
 			$this->dashboard_content_page	  = $this->get_option( 'dashboard_content_page' );
 			$this->disable_woocommerce_styles  = $this->get_option( 'disable_woocommerce_styles' );
-			$this->disable_sensei_styles  = $this->get_option( 'disable_sensei_styles' );
 			$this->checkout_warranty_text  = $this->get_option( 'checkout_warranty_text' );
 
 			add_action( 'init', array( $this, 'init_form_fields' ), 30 );
@@ -108,7 +107,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 					'purchased_product_readmore_label' => array(
 						'label' => __('Select the label for readmore button in account product category view', 'woocommerce-funnels'),
 						'type' => 'text',
-					),					
+					),
 				),
 				array(
 					'post_type' => 'page',
@@ -304,8 +303,10 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			add_filter( 'affwp_affiliate_area_page_url', array( $this, 'affiliate_area_page_url' ), 10, 3 );
 			
 			add_filter( 'wc_get_template_part', array( $this, 'plugin_template_part' ), 10, 3 );
-			add_filter( 'wc_get_template', array( $this, 'plugin_template' ), 10, 5 );
+			add_filter( 'wc_get_template_part', array( $this, 'single_product_custom_content_template' ), 11, 4 );
 			
+			add_filter( 'wc_get_template', array( $this, 'plugin_template' ), 10, 4 );
+		
 			add_filter( 'theme_page_templates', array( $this, 'add_page_template' ), 10, 4 );
 			add_filter( 'template_include', array( $this, 'include_page_template') );	
 			
@@ -318,7 +319,16 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			add_filter('woocommerce_checkout_order_review', array($this, 'choose_payment_method' ), 15 );
 
 			$this->disable_checkout_notifications();
-
+			
+			add_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_link_close', 15 );
+			add_action( 'woocommerce_after_shop_loop_item_title', 'the_excerpt', 8 );
+			
+			remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close' );
+			
+			add_filter( 'woocommerce_my_account_my_address_description', array( $this, 'my_account_address_description' ) );
+			
+			add_action( 'woocommerce_save_account_details', array( $this, 'save_account_details_redirect' ) );
+			
 		}
 
 		public function woocommerce_product_remove_default_contents() {
@@ -394,22 +404,31 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		
 		public function plugin_template_part($template, $slug, $name) {
 		
-			if( !$template && $name && file_exists( plugin_dir() . "templates/woocommerce/{$slug}-{$name}.php" ) ) {
-				$template = plugin_dir() . "templates/woocommerce/{$slug}-{$name}.php";
+			// Found template in theme? Skip plugin template.
+			if( $template && ( strpos($template, WC()->template_path()) === 0 ) ) {
+				return $template;
+			}
+		
+			if( $name && file_exists( plugin_dir() . "templates/woocommerce/{$slug}-{$name}.php" ) ) {
+				return plugin_dir() . "templates/woocommerce/{$slug}-{$name}.php";
 			}
 			
-			if( !$template && file_exists( plugin_dir() . "templates/woocommerce/{$slug}.php" ) ) {
-				$template = plugin_dir() . "templates/woocommerce/{$slug}.php";
+			if( file_exists( plugin_dir() . "templates/woocommerce/{$slug}.php" ) ) {
+				return plugin_dir() . "templates/woocommerce/{$slug}.php";
 			}			
 		
 			return $template;
 		}
 		
-		public function plugin_template($located, $template_name, $args, $template_path, $default_path) {
+		public function plugin_template($located, $template_name, $args = array(), $template_path = '' ) {
+
+			if( WC_TEMPLATE_DEBUG_MODE ) {
+				return $located;
+			}
 
 			$override_located = wc_locate_template($template_name, $template_path, plugin_dir() . 'templates/woocommerce/' );
 
-			if( ! WC_TEMPLATE_DEBUG_MODE && $override_located && file_exists( $override_located ) ) {
+			if( $override_located && file_exists( $override_located ) ) {
 				return $override_located;
 			}
 		
@@ -459,10 +478,10 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		public function woocommerce_sold_individually_quantity( $individual_quantity, $quantity, $product_id, $variation_id, $cart_item_data ) {
 
 			// Generate a ID based on product ID, variation ID, variation data, and other cart item data.
-			$cart_id = $this->generate_cart_id( $product_id, $variation_id, array(), $cart_item_data );
+			$cart_id = WC()->cart->generate_cart_id( $product_id, $variation_id, array(), $cart_item_data );
 
 			// Find the cart item key in the existing cart.
-			$cart_item_key = $this->find_product_in_cart( $cart_id );
+			$cart_item_key = WC()->cart->find_product_in_cart( $cart_id );
 
 			$in_cart_quantity = WC()->cart->get_cart_contents();
 
@@ -521,6 +540,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			$items['orders'] = $this->orders_menu_label;
 
 			unset( $items['edit-address'] );
+			unset( $items['payment-methods'] );
 
 			return $items;
 		}
@@ -555,7 +575,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		 */
 		public function account_product_categories_page_content( $term ) {
 		?>
-		<div class="content-wrapper">
+		<div class="product-page-content">
 			<header class="privatearea-header"> 
 				<h2><?php echo esc_html( apply_filters( 'single_term_title', $term->name ) ); ?></h2>
 				<?php 
@@ -595,7 +615,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			$pages_query = new WP_Query( $args );
 
 			if( !empty( $bought_product_ids ) && $pages_query->have_posts() ) { ?>
-			<div class="product-page-list">
+			<div class="section-content post-list product-page-list ">
 			<?php 
 				while ( $pages_query->have_posts() ) : $pages_query->the_post();
 						wc_get_template_part( 'myaccount/productpage/thumb', $term->slug );
@@ -877,7 +897,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			$data = filter_input_array(
 				INPUT_POST,
 				array(
-					'_funnels_add_to_cart_text'         => FILTER_SANITIZE_ENCODED,
+					'_funnels_add_to_cart_text'         => FILTER_SANITIZE_STRING,
 					'_funnels_disable_product_template' => FILTER_VALIDATE_BOOLEAN,
 					'_funnels_disable_cart'             => FILTER_VALIDATE_BOOLEAN,
 					'_funnels_direct_upsell_product'    => array(
@@ -998,7 +1018,32 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		<?php
 			endif;
 		}
+		
+		public function single_product_custom_content_template( $template, $slug, $name ){
+			global $product;
+			
+			
+			if( ( 'content' !== $slug ) || ( 'single-product' !== $name ) || ! $product) {
+				return $template;
+			} 			
+			
+			$disable_wc_template = get_post_meta( $product->get_id(), '_funnels_disable_product_template', true );
 
+			if( $disable_wc_template ) {
+				$template = $this->plugin_template_part( '', $slug, $name . '-custom' );
+			}
 
+			return $template;
+		}
+		
+		public function my_account_address_description(){
+			return __('The <b>billing address</b> is used to compose the invoices. The <b>shipping address</b> will be used to send you phisical products that you may purchase. You will be able to change both addresses durig the checkout process.', 'woocommerce-funnels');
+		}
+		
+		public function save_account_details_redirect(){
+			wp_safe_redirect( wc_get_endpoint_url( 'edit-account' ) );
+			exit;
+		}
+		
 	}
 endif;

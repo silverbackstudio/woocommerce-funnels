@@ -8,3 +8,17 @@
 @import "single-product";
 @import "thank-you";
 @import "login";
+
+.woocommerce-error {
+    
+    li {
+        background: #B53535;
+        color: #fff;
+        padding: 15px;
+        line-height: normal;
+        
+        &:before {
+            display: none;
+        }
+    }
+}

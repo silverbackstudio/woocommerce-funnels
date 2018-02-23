@@ -333,6 +333,7 @@
 }
 
 .woocommerce .products .product {
+    position: relative;
     
     &:before {
         display: none;    
@@ -343,6 +344,10 @@
         text-decoration: none;
         font-size: 1.4rem;
         font-weight: bold;
+    }
+    
+    p {
+        margin: 0;
     }
 
     @media screen and (min-width: 64em) {
@@ -363,16 +368,21 @@
     }
 }
 
-.woocommerce-MyAccount-content .products .product {
+.woocommerce-MyAccount-content .products  {
+    margin-top: 50px;
+    
+    .product {
 
-    @media screen and (min-width: 64em) {
-        width: 49%;
-        float: left;
-        margin: 0 0 20px;
-        
-        &:nth-of-type(2n + 2) {
-            margin-left: 2%;
-            clear: right;
+        @media screen and (min-width: 64em) {
+            width: 49%;
+            float: left;
+            margin: 0 0 20px;
+            
+            &:nth-of-type(2n + 2) {
+                margin-left: 2%;
+                margin-right: 0;
+                clear: right;
+            }
         }
     }
 }
