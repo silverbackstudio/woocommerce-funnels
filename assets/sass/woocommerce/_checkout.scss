@@ -71,14 +71,25 @@ body.woocommerce-checkout {
                 width: 49%;
                 float: left;
             }
-            
-            #order_review_heading,
+
             #order_review {
                 width: 49%;
                 float: right;
                 clear: right;
             }
         }
+    }
+}
+
+#checkout_heading {
+    text-align: center;
+    font-weight: bold;
+    
+    &:before {
+        font-family: "icons-set";
+        content: "\e90f";
+        font-size: .8em;
+        margin-right: 10px;
     }
 }
 
