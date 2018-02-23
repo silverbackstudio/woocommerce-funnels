@@ -31,7 +31,8 @@ function init() {
 
 	if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) {
 		include_once 'includes/class-wc-integration-funnels.php';
-		include_once 'includes/class-sensei-funnels.php';		
+		include_once 'includes/class-sensei.php';		
+		include_once 'includes/class-affiliatewp.php';		
 	}
 
 	add_filter( 'woocommerce_integrations', __NAMESPACE__ . '\\add_integration' );

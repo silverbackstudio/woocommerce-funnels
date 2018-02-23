@@ -26,7 +26,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 
 		public $show_avatar = true;
 		public $mycourses_menu_label;
-		public $affiliate_menu_label;
 		public $orders_menu_label;
 		public $account_product_categories;
 		public $dashboard_content_page;
@@ -57,7 +56,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 
 			// Define user set variables.
 			$this->mycourses_menu_label       = $this->get_option( 'mycourses_menu_label' );
-			$this->affiliate_menu_label       = $this->get_option( 'affiliate_menu_label' );
 			$this->orders_menu_label          = $this->get_option( 'orders_menu_label' );
 			$this->account_product_categories = $this->get_option( 'account_product_categories' );
 			$this->dashboard_content_page	  = $this->get_option( 'dashboard_content_page' );
@@ -90,10 +88,14 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			$this->woocommerce_hooks();
 
 			if ( $this->sensei ) {
-				new Sensei_Funnels($this);
+				new Sensei($this);
 			}
 			
-			$mb = new Helpers\Post\MetaBox(
+			if ( $this->affiliate_wp ) {
+				new AffiliateWP($this);
+			}
+			
+			$mb = new Helpers\Post\MetaBox (
 				'funnels-restrict-to-product',
 				array(
 					'restrict_to_purchased_product_id' => array(
@@ -137,13 +139,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 					'description' => __( 'The label for Courses in account menu', 'woocommerce-funnels' ),
 					'desc_tip'    => true,
 					'default'     => __( 'My Courses', 'woocommerce-funnels' ),
-				),
-				'affiliate_menu_label'       => array(
-					'title'       => __( 'Affiliate Menu Label', 'woocommerce-funnels' ),
-					'type'        => 'text',
-					'description' => __( 'The label for Courses in account menu', 'woocommerce-funnels' ),
-					'desc_tip'    => true,
-					'default'     => __( 'Affiliate', 'woocommerce-funnels' ),
 				),
 				'orders_menu_label'          => array(
 					'title'       => __( 'Orders Menu Label', 'woocommerce-funnels' ),
@@ -253,8 +248,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 
 			add_action( 'init', array( $this, 'woocommerce_endpoints' ), 99 );
 			
-			add_action( 'woocommerce_account_affiliate_endpoint', array( $this, 'affiliate_page_content' ) );
-
 			foreach ( $this->woocommerce_account_product_categories() as $term ) {
 				add_action(
 					'woocommerce_account_' . $term->slug . '_endpoint', function ( $value ) use ( $term ) {
@@ -300,8 +293,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			add_action( 'wp', array( $this, 'woocommerce_product_remove_default_contents' ) );
 			add_action( 'template_redirect', array( $this, 'woocommerce_product_page_restrict' ) );
 
-			add_filter( 'affwp_affiliate_area_page_url', array( $this, 'affiliate_area_page_url' ), 10, 3 );
-			
 			add_filter( 'wc_get_template_part', array( $this, 'plugin_template_part' ), 10, 3 );
 			add_filter( 'wc_get_template_part', array( $this, 'single_product_custom_content_template' ), 11, 4 );
 			
@@ -531,10 +522,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 				$new_items[ $term->slug ] = $term->name;
 			}
 
-			if ( $this->affiliate_wp ) {
-				$new_items['affiliate'] = __( 'Affiliate', 'woocommerce-funnels' );
-			}
-
 			$items = Utils::keyInsert( $items, $new_items, 'dashboard' );
 
 			$items['orders'] = $this->orders_menu_label;
@@ -546,8 +533,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		}
 
 		public function woocommerce_endpoints() {
-
-			add_rewrite_endpoint( 'affiliate', EP_PAGES );
 
 			foreach ( $this->woocommerce_account_product_categories() as $term ) {
 				add_rewrite_endpoint( $term->slug, EP_PAGES );
@@ -633,17 +618,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		<?php
 		}
 
-		/**
-		 * Affiliate page in WC Account content
-		 */
-		public function affiliate_page_content() {
-		?>
-		<div class="content-wrapper">    
-			<h2><?php esc_html_e( 'Affiliate', 'woocommerce-funnels' ); ?></h2>
-			<?php echo do_shortcode( '[affiliate_area]' ); ?>
-		</div>
-		<?php
-		}
 
 		/**
 		 * Change the courses archive to WC endpoint
@@ -655,20 +629,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			}
 
 			return $link;
-		}
-
-		/**
-		 * Change url of affiliate area to the WC Endopoint
-		 */
-		public function affiliate_area_page_url( $affiliate_area_page_url, $affiliate_area_page_id, $tab ) {
-
-			$affiliate_area_page_url = wc_get_endpoint_url( 'affiliate' );
-
-			if ( ! empty( $tab ) && array_key_exists( $tab, affwp_get_affiliate_area_tabs() ) ) {
-				$affiliate_area_page_url = add_query_arg( array( 'tab' => $tab ), $affiliate_area_page_url );
-			}
-
-			return $affiliate_area_page_url;
 		}
 
 		/**

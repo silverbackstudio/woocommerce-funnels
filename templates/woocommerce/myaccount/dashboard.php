@@ -40,10 +40,22 @@ do_action( 'woocommerce_before_account_dashboard' );
 			)
 		);
 		
+		$orders_url =  wc_get_endpoint_url( 'orders' );
+		$edit_address =  wc_get_endpoint_url( 'edit-address' ) . '#edit-address';
+		$edit_account =  wc_get_endpoint_url( 'edit-account' );
+		
 		while( $dashboard_query->have_posts() ) : $dashboard_query->the_post(); ?>
 		<header class="privatearea-header">
 			<?php the_post_thumbnail( 'content-full' ); ?>
-			<h1><?php _e('Dashboard', 'woocommerce-funnels'); ?></h1>
+			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			<p><?php
+				printf(
+					__( 'From your account dashboard you can view your <a href="%1$s">recent orders</a>, manage your <a href="%2$s">shipping and billing addresses</a> and <a href="%3$s">edit your password and account details</a>.', 'woocommerce' ),
+					esc_url( $orders_url ),
+					esc_url( $edit_address ),
+					esc_url( $edit_account )
+				);
+			?></p>
 		</header><!-- .privatearea-header -->			
 
 		<div class="entry-content"><?php the_content(); ?></div>
