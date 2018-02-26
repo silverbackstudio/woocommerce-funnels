@@ -11,7 +11,8 @@
 
 .woocommerce-error li,
 .woocommerce-info,
-.woocommerce-message {
+.woocommerce-message,
+div.woocommerce-error {
     background: #888;
     padding: 15px;
     color: #fff;
