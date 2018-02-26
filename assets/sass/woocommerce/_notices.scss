@@ -20,6 +20,12 @@ div.woocommerce-error {
     background: #B53535;
     
     &:before {
-        display: none;
+        font-family: "icons-set";
+        content: "\e90c";
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: middle;
+        font-size: 1.2em;
+        color: #fff;
     }
 }

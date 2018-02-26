@@ -1,40 +1,8 @@
-.success-message {
-	border: 2px solid;
+.thankyou-success {
 	margin: 80px 15px 0;
 	position: relative;
 	padding: 50px 15px 10px;
-	
-	header {
-	    text-align: center;
-	
-    	h1 {
-    		margin: 0;
-    		line-height: 1.2em;
-            margin-bottom: .2em;
-    	}
-    	
-    	.subtitle {
-    	    font-weight: bold;
-    	    text-decoration: underline;
-    	}
-	}
-	
-	h3 {
-	    text-transform: uppercase;
-	    text-align: center;
-	    font-size: 1.3em;
-	    margin: 30px 0 0;
-	    font-weight: bold;
-	}
-	
-	p {
-	    margin-top: 0;
-	}
-	
-	.button {
-	    margin-top: 20px;
-	}
-	
+
 	&:before {
 	    font-family: "icons-set";
 		content: "\e902";
@@ -53,9 +21,126 @@
 		box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 	}
 	
-	@media screen and (min-width: 48em) {
-	    margin: 80px 70px 0;
-	    padding: 50px 70px 10px;
+	.subtitle {
+	    font-weight: bold;
+	    text-decoration: underline;
+	    text-align: center;
+	}
+	
+	 @media screen and (min-width: 48em) {
+		margin: 80px 40px 0;
+		padding: 50px 40px 10px;
+	 }
+}
+
+#order-thankyou {
+	
+	h2 {
+		text-align: center;
+		margin: 0;
+		line-height: 1.2em;
+        margin-bottom: .2em;
+	}
+	
+	.woocommerce-bacs-bank-details {
+		margin: 10px 0;
+		padding: 20px 0;
+		border-top: 1px solid #eee;
+		border-bottom: 1px solid #eee;
+		
+		ul {
+			margin-bottom: 0;
+			
+			li {
+			    text-indent: -.6em;
+			    padding-left: .6em;
+			}
+		}
+		
+		.wc-bacs-bank-details-heading {
+			display: none;
+		}
+		
+		.wc-bacs-bank-details-account-name {
+			margin-top: 0;
+		}
+	}
+	
+	.order-more-info {
+		margin-bottom: 15px;
+	}
+		
+	.order-details-toggle  {
+		background: none;
+		box-shadow: none;
+		color: #111;
+		text-decoration: underline;
+		text-transform: none;
+		font-size: 1em;
+		padding: 0;
+		
+		&:after {
+			font-family: "icons-set";
+			content: "\e900";
+			margin-left: 8px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+	
+	.woocommerce-order {
+		background: #f9f9f9;
+		padding: 15px;
+		font-size: .9em;
+		
+		.woocommerce-notice--success {
+			display: none;
+		}
+		
+		h2 {
+			text-align: left;
+			font-weight: bold;
+			font-size: 1.5em;
+		}
+		
+		section {
+			margin: 0;
+		}
+		
+	    table {
+	        text-align: left;
+	        
+	        th, td {
+	            padding: 10px;
+	        }
+	        
+	        tbody {
+	            border-bottom: 1px solid #cfcfcf;
+	            border-top: 1px solid #cfcfcf;
+	        }
+	        
+	        tfoot {
+	            background: none;
+	            
+	            tr:last-of-type {
+	                border-top: 1px solid #f3f3f3;
+	            }
+	        }
+	    }
+	    
+	    @media screen and (min-width: 48em) {
+	    	
+	    	&:after {
+	    		@include clearfix();
+	    		@include clearfix-after();
+	    	}
+	    	
+	    	.woocommerce-order-overview,
+	    	.woocommerce-order-details {
+				width: 49%;
+				float: left;
+	    	}
+	    }
 	}
 }
 
@@ -131,78 +216,4 @@ section.fb {
 	        padding-left: 0;
 	    }
 	}
-}
-
-.woocommerce-order {
-    margin: 0 15px;
-    background: #fcfcfc;
-    padding: 15px 15px 0;
-    border: 1px solid #eee;
-    color: #555;
-    
-    .woocommerce-notice--success {
-        display: none;
-    }
-    
-    h2 {
-        font-size: 1.8em;
-        line-height: normal;
-        margin-bottom: 10px;
-    }
-    
-    table {
-        text-align: left;
-        
-        th, td {
-            padding: 10px;
-        }
-        
-        tbody {
-            border-bottom: 1px solid #f3f3f3;
-            border-top: 1px solid #f3f3f3;
-        }
-        
-        tfoot {
-            background: none;
-            
-            tr:last-of-type {
-                border-top: 1px solid #f3f3f3;
-            }
-        }
-    }
-    
-    .woocommerce-customer-details {
-        
-        address {
-            font-style: normal;
-        }
-    }
-    
-    @media screen and (min-width: 48em) {
-        overflow: hidden;
-        padding: 30px 25px;
-        
-        > ul,
-        > section {
-            width: 49%;
-            float: left;
-            margin: 0 0 20px;
-            
-            h2 {
-                margin-top: 0;
-            }
-        }
-        
-        .woocommerce-order-details {
-            clear: right;
-        }
-        
-        .woocommerce-order-overview {
-            margin-right: 2%;
-        }
-    }
-    
-    @media screen and (min-width: 64em) {
-       margin: 30px 70px; 
-    }
 }
