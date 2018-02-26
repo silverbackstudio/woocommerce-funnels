@@ -55,6 +55,7 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\frontend_scripts' );
  */
 function frontend_scripts() {
 	wp_enqueue_style( 'woocommerce-funnels', plugins_url( '/assets/css/frontend.css', __FILE__ ) );
+	wp_enqueue_script( 'woocommerce-funnels', plugins_url( '/assets/js/frontend.js', __FILE__ ), array('jquery'), '1.1.0', true );
 }
 
 add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\admin_scripts' );
