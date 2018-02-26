@@ -15,16 +15,11 @@ div.woocommerce-error {
     }
 }
 
-.woocommerce-error {
+.woocommerce-error li,
+div.woocommerce-error {
+    background: #B53535;
     
-    li {
-        background: #B53535;
-        color: #fff;
-        padding: 15px;
-        line-height: normal;
-        
-        &:before {
-            display: none;
-        }
+    &:before {
+        display: none;
     }
 }
