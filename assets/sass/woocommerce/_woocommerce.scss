@@ -8,34 +8,5 @@
 @import "single-product";
 @import "thank-you";
 @import "login";
+@import "notices";
 
-.woocommerce-error li,
-.woocommerce-info,
-.woocommerce-message,
-div.woocommerce-error {
-    background: #888;
-    padding: 15px;
-    color: #fff;
-    
-    &:before {
-        font-family: "icons-set";
-        content: "\e90b";
-        margin-right: 8px;
-        font-size: 1.2em;
-        vertical-align: middle;
-    }
-}
-
-.woocommerce-error {
-    
-    li {
-        background: #B53535;
-        color: #fff;
-        padding: 15px;
-        line-height: normal;
-        
-        &:before {
-            display: none;
-        }
-    }
-}

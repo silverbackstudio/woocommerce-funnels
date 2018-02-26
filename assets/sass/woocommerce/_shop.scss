@@ -15,3 +15,40 @@
         }
     }
 }
+
+.downloads.download-button {
+    margin: 0;
+    
+    li {
+        
+
+        &:before {
+            display: none;
+        }
+        
+        a {
+            margin: 20px 0 0;
+            background: #8bc53f;
+            box-shadow: 0 4px 0 #769b35;
+            display: block;
+            padding: .6em 1em;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            line-height: 1.2rem;
+            border-radius: .9em;
+            text-align: center;
+            transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            color: #fff;
+            text-decoration: none;
+            
+            &:hover {
+                background: #84bc3a;
+            }
+            
+            &:focus {
+                background: #769b35;
+            }
+        }
+    }
+}
