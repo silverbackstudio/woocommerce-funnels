@@ -66,6 +66,10 @@
 		}
 	}
 	
+	.woocommerce-order-details__title {
+		@include screen-reader-text();
+	}
+	
 	.order-more-info {
 		margin-bottom: 15px;
 	}
@@ -107,11 +111,20 @@
 			margin: 0;
 		}
 		
+		.woocommerce-order-details {
+			margin-top: 20px;
+			border-top: 1px solid #eee;
+			border-bottom: 1px solid #eee;
+			padding: 20px 0;
+		}
+		
 	    table {
 	        text-align: left;
+	        padding: 10px;
+	        border: 1px solid #cfcfcf;
 	        
 	        th, td {
-	            padding: 10px;
+	            padding: 3px 10px;
 	        }
 	        
 	        tbody {
@@ -128,7 +141,7 @@
 	        }
 	    }
 	    
-	    @media screen and (min-width: 48em) {
+	    @media screen and (min-width: 64em) {
 	    	
 	    	&:after {
 	    		@include clearfix();
@@ -137,8 +150,14 @@
 	    	
 	    	.woocommerce-order-overview,
 	    	.woocommerce-order-details {
-				width: 49%;
+				width: 32%;
 				float: left;
+	    	}
+	    	
+	    	.woocommerce-order-details {
+	    		border: none;
+	    		padding: 0;
+	    		margin: 0;
 	    	}
 	    }
 	}

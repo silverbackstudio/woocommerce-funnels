@@ -1,5 +1,23 @@
 .single-product {
     
+    .product.post {
+        position: relative;
+    }
+    
+    .related.products {
+        clear: both;
+        margin-top: 30px;
+        
+        h2 {
+            font-size: 1.3em;
+            border-bottom: 1px solid #cfcfcf;
+        }
+        
+        .product h2 {
+            border-bottom: none;
+        }
+    }
+    
     .woocommerce-product-gallery {
         
         .woocommerce-product-gallery__wrapper {
