@@ -29,43 +29,47 @@ do_action( 'woocommerce_before_account_dashboard' );
 <div id="myAccount-dashboard">
 
 	<?php
-	$integrations =  WC()->integrations->get_integrations();
-	
-	if( isset( $integrations['silverback-funnels'] ) && $integrations['silverback-funnels']->dashboard_content_page )  {
-		
+	$integrations = WC()->integrations->get_integrations();
+
+	if ( isset( $integrations['silverback-funnels'] ) && $integrations['silverback-funnels']->dashboard_content_page ) {
+
 		$dashboard_query = new WP_Query(
 			array(
 				'post_type' => 'page',
-				'p' => $integrations['silverback-funnels']->dashboard_content_page
+				'p' => $integrations['silverback-funnels']->dashboard_content_page,
 			)
 		);
-		
-		$orders_url =  wc_get_endpoint_url( 'orders' );
-		$edit_address =  wc_get_endpoint_url( 'edit-address' ) . '#edit-address';
-		$edit_account =  wc_get_endpoint_url( 'edit-account' );
-		
-		while( $dashboard_query->have_posts() ) : $dashboard_query->the_post(); ?>
+
+		$orders_url = wc_get_endpoint_url( 'orders' );
+		$edit_address = wc_get_endpoint_url( 'edit-address' ) . '#edit-address';
+		$edit_account = wc_get_endpoint_url( 'edit-account' );
+
+		while ( $dashboard_query->have_posts() ) :
+			$dashboard_query->the_post();
+		?>
 		<header class="privatearea-header">
 			<?php the_post_thumbnail( 'content-full' ); ?>
 			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-			<p><?php
+			<p>
+			<?php
 				printf(
 					__( 'From your account dashboard you can view your <a href="%1$s">recent orders</a>, manage your <a href="%2$s">shipping and billing addresses</a> and <a href="%3$s">edit your password and account details</a>.', 'woocommerce' ),
 					esc_url( $orders_url ),
 					esc_url( $edit_address ),
 					esc_url( $edit_account )
 				);
-			?></p>
+			?>
+			</p>
 		</header><!-- .privatearea-header -->			
 
 		<div class="entry-content"><?php the_content(); ?></div>
 
 		<?php
 		endwhile;
-		
+
 		wp_reset_postdata();
 	}
-	
+
 	?>
 	
 	
@@ -76,21 +80,21 @@ do_action( 'woocommerce_before_account_dashboard' );
 		 * @since 2.6.0
 		 */
 		do_action( 'woocommerce_account_dashboard' );
-	
+
 		/**
 		 * Deprecated woocommerce_before_my_account action.
 		 *
 		 * @deprecated 2.6.0
 		 */
 		do_action( 'woocommerce_before_my_account' );
-	
+
 		/**
 		 * Deprecated woocommerce_after_my_account action.
 		 *
 		 * @deprecated 2.6.0
 		 */
 		do_action( 'woocommerce_after_my_account' );
-	
+
 	/* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
 	?>
 </div>

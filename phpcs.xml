@@ -12,6 +12,8 @@
 
 	<exclude-pattern type="relative">^/tests/*</exclude-pattern>
 	<exclude-pattern type="relative">^/vendor/*</exclude-pattern>
+	<exclude-pattern >*/node_modules/*</exclude-pattern>
+	<exclude-pattern >*/assets/icons/*</exclude-pattern>
 
 	<!-- Only check the PHP files. JS files are checked separately with JSCS and JSHint. -->
 	<arg name="extensions" value="php,js"/>
@@ -41,7 +43,4 @@
 		</properties>
 	</rule>
 
-	<!-- Include sniffs for PHP cross-version compatibility. -->
-	<config name="testVersion" value="5.6-99.0"/>
-	<rule ref="PHPCompatibility"/>
 </ruleset>

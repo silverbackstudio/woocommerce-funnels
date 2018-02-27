@@ -67,6 +67,19 @@ body.woocommerce-checkout {
                 @include clearfix-after();
             }
             
+            #customer_details,
+            #order_review {
+                
+                h3 {
+                    margin-top: 0;
+                    
+                    &#checkout_payment_heading {
+                        margin-top: 1em;
+                    }
+                }
+            }
+            
+            
             #customer_details {
                 width: 49%;
                 float: left;

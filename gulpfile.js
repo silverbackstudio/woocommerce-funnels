@@ -15,7 +15,7 @@ gulp.task(
 		  .pipe( sourcemaps.init() )
 		  .pipe( sass().on( 'error', sass.logError ) )
 		  .pipe( postcss( [ objectFitImages, autoprefixer() ] ) )
-		  .pipe( sourcemaps.write() )
+		  .pipe( sourcemaps.write( './maps' ) )
 		  .pipe( gulp.dest( './assets/css' ) );
 	}
 );

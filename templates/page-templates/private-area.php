@@ -10,7 +10,7 @@
  *
  * @package woocommerce-funnels
  */
- 
+
 
 get_header(); ?>
 
@@ -24,14 +24,17 @@ get_header(); ?>
 				wc_print_notices();
 				/**
 				 * My Account navigation.
+				 *
 				 * @since 2.6.0
 				 */
-				do_action( 'woocommerce_account_navigation' ); ?>
+				do_action( 'woocommerce_account_navigation' );
+				?>
 				
 				<div class="woocommerce-MyAccount-content content-wrapper">
 					<?php
 						/**
 						 * My Account content.
+						 *
 						 * @since 2.6.0
 						 */
 						get_template_part( 'template-parts/content', 'page' );

@@ -39,11 +39,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<h2><?php _e( 'Login to Private Area', 'woocommerce-funnels' ); ?></h2>
 	
 			<p class="intro">
-				<span><?php _e('To log in here enter the credentials you chose during the purchase and that have been confirmed by email:', 'woocommerce-funnels'); ?></span>
+				<span><?php _e( 'To log in here enter the credentials you chose during the purchase and that have been confirmed by email:', 'woocommerce-funnels' ); ?></span>
 				
 				<ul>
-					<li><?php _e('the username matches the email you provided at the time of purchase', 'woocommerce-funnels'); ?></li>
-					<li><?php _e('The password has arrived via email if you do not find it in the mailbox, check also in the spam folder.', 'woocommerce-funnels'); ?></li>
+					<li><?php _e( 'the username matches the email you provided at the time of purchase', 'woocommerce-funnels' ); ?></li>
+					<li><?php _e( 'The password has arrived via email if you do not find it in the mailbox, check also in the spam folder.', 'woocommerce-funnels' ); ?></li>
 				</ul>
 			</p>
 

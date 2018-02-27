@@ -18,16 +18,16 @@ use Wp_Query;
 class AffiliateWP {
 
 	public $integration;
-	
+
 	public $affiliate_menu_label;
 
 	/**
 	 * Init and hook in the integration.
 	 */
 	public function __construct( $integration ) {
-		
+
 		$this->integration = $integration;
-		
+
 		$integration->form_fields['affiliate_menu_label'] = array(
 			'title'       => __( 'Affiliate Menu Label', 'woocommerce-funnels' ),
 			'type'        => 'text',
@@ -35,35 +35,35 @@ class AffiliateWP {
 			'desc_tip'    => true,
 			'default'     => __( 'Affiliate', 'woocommerce-funnels' ),
 		);
-		
+
 		$this->affiliate_menu_label = $this->integration->get_option( 'affiliate_menu_label' );
 
 		$this->hooks();
 	}
 
 	public function hooks() {
-		
+
 		add_action( 'init', array( $this, 'endpoints' ), 99 );
 		add_action( 'woocommerce_account_affiliate_endpoint', array( $this, 'affiliate_page_content' ) );
 		add_filter( 'affwp_affiliate_area_page_url', array( $this, 'affiliate_area_page_url' ), 10, 3 );
 		add_filter( 'woocommerce_account_menu_items', array( $this, 'menu_items' ), 90 );
 	}
-	
+
 	public function menu_items( $items ) {
 
 		$new_items = array();
 
 		$new_items['affiliate'] = $this->affiliate_menu_label ?: __( 'Affiliate', 'woocommerce-funnels' );
-		
+
 		$items = Helpers\Lists\Utils::keyInsert( $items, $new_items, 'orders', 'before' );
-		
+
 		return $items;
 	}
-	
+
 	public function endpoints() {
 		add_rewrite_endpoint( 'affiliate', EP_PAGES );
-	}	
-	
+	}
+
 	/**
 	 * Affiliate page in WC Account content
 	 */
@@ -75,7 +75,7 @@ class AffiliateWP {
 	</div>
 	<?php
 	}
-	
+
 	/**
 	 * Change url of affiliate area to the WC Endopoint
 	 */
@@ -88,8 +88,8 @@ class AffiliateWP {
 		}
 
 		return $affiliate_area_page_url;
-	}	
-	
-	
+	}
+
+
 }
 
