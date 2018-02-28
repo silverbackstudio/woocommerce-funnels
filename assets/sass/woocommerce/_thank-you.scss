@@ -21,10 +21,22 @@
 		box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 	}
 	
+	.title,
+	.subtitle {
+		text-align: center;
+	}
+	
+	.title {
+		font-size: 1.5em;
+		margin-bottom: 10px;
+		line-height: normal;
+	}
+	
 	.subtitle {
 	    font-weight: bold;
 	    text-decoration: underline;
-	    text-align: center;
+	    font-size: 1.2em;
+	    margin-top: 0 !important;
 	}
 	
 	 @media screen and (min-width: 48em) {
@@ -234,5 +246,24 @@ section.fb {
 	    .first-part {
 	        padding-left: 0;
 	    }
+	}
+}
+
+.thankyou-faq {
+	background: #f9f9f9;
+	padding: 20px 15px;
+	margin: 20px 0;
+	
+	h2 {
+		font-size: 1.5em;
+		margin-bottom: 0;
+		
+		+ p {
+			margin-top: 0;
+		}
+	}
+	
+	@media screen and (min-width: 48em) {
+		padding: 15px 70px;
 	}
 }
