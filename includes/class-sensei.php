@@ -20,7 +20,6 @@ class Sensei {
 
 	public $integration;
 
-	public $disable_sensei_styles = false;
 	public $show_user_courses_page = true;
 	public $user_courses_page_description;
 
@@ -31,14 +30,6 @@ class Sensei {
 	public function __construct( $integration ) {
 
 		$this->integration = $integration;
-
-		$integration->form_fields['disable_sensei_styles'] = array(
-			'title'       => __( 'Disable Sensei Styles', 'woocommerce-funnels' ),
-			'type'        => 'checkbox',
-			'description' => __( 'Disable Sensei CSS styles', 'woocommerce-funnels' ),
-			'desc_tip'    => true,
-			'default'     => false,
-		);
 
 		$integration->form_fields['show_user_courses_page'] = array(
 			'title'       => __( 'Show user courses page', 'woocommerce-funnels' ),
@@ -56,7 +47,6 @@ class Sensei {
 			'default'     => '',
 		);
 
-		$this->disable_sensei_styles  = $this->integration->get_option( 'disable_sensei_styles' );
 		$this->show_user_courses_page  = $this->integration->get_option( 'show_user_courses_page' );
 		$this->user_courses_page_description  = $this->integration->get_option( 'user_courses_page_description' );
 
@@ -82,10 +72,6 @@ class Sensei {
 		}
 
 		add_filter( 'post_type_archive_link', array( $this, 'sensei_post_types_archive_link' ), 10, 2 );
-
-		if ( $this->integration->disable_sensei_styles ) {
-			add_filter( 'sensei_disable_styles', '__return_true' );
-		}
 
 		add_action( 'sensei_before_main_content', array( $this, 'sensei_before_main_content' ) );
 		add_action( 'sensei_after_main_content', array( $this, 'sensei_after_main_content' ) );
