@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _s 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2018-02-26 15:07+0000\n"
+"POT-Creation-Date: 2018-02-28 14:10+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -64,7 +64,7 @@ msgid "The label for Courses in account menu"
 msgstr ""
 
 #: includes/class-wc-integration-funnels.php:141
-#: includes/class-wc-integration-funnels.php:549 includes/class-sensei.php:155
+#: includes/class-wc-integration-funnels.php:548 includes/class-sensei.php:140
 msgid "My Courses"
 msgstr ""
 
@@ -117,170 +117,159 @@ msgstr ""
 msgid "Log events such as API requests"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:394
+#: includes/class-wc-integration-funnels.php:393
 msgid ""
 "You are not allowed to access this page, please purchase the linked product"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:495
+#: includes/class-wc-integration-funnels.php:494
 msgid "Toggle Account Menu"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:552 includes/class-sensei.php:158
-#: includes/class-sensei.php:195
+#: includes/class-wc-integration-funnels.php:551 includes/class-sensei.php:143
+#: includes/class-sensei.php:180
 msgid "Messages"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:716
+#: includes/class-wc-integration-funnels.php:720
 msgid "Profile Image"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:726
+#: includes/class-wc-integration-funnels.php:730
 msgid "Edit Adresses"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:742
+#: includes/class-wc-integration-funnels.php:746
 msgid "Payment Methods"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:783
+#: includes/class-wc-integration-funnels.php:787
 msgid "Disable Default Template"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:784
+#: includes/class-wc-integration-funnels.php:788
 msgid ""
 "Disable WooCommerce product template, you must create the page content "
 "manually"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:796
+#: includes/class-wc-integration-funnels.php:800
 msgid "Add to Cart Text"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:797
+#: includes/class-wc-integration-funnels.php:801
 msgid "The text displayed in Add to cart button"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:809
+#: includes/class-wc-integration-funnels.php:813
 msgid "Skip Cart"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:810
+#: includes/class-wc-integration-funnels.php:814
 msgid "This will skip the cart and redirect the user directly to checkout page"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:819
+#: includes/class-wc-integration-funnels.php:823
 msgid "Direct Upsell Product"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:832
+#: includes/class-wc-integration-funnels.php:836
 msgid "This lets you choose which product will be redirected to after checkout"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:886
+#: includes/class-wc-integration-funnels.php:891
 msgid "Safe Payments"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:890
+#: includes/class-wc-integration-funnels.php:897
 msgid "Choose payment method"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:918
+#: includes/class-wc-integration-funnels.php:926
 msgid ""
 "The <b>billing address</b> is used to compose the invoices. The <b>shipping "
 "address</b> will be used to send you phisical products that you may purchase."
 " You will be able to change both addresses durig the checkout process."
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:1032
-#: templates/woocommerce/checkout/thankyou-shortcode.php:26
+#: includes/class-wc-integration-funnels.php:1041
 msgid "Thank you for your purchase!"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:1048
-#: includes/class-wc-integration-funnels.php:1050
-#: templates/woocommerce/checkout/thankyou-shortcode.php:44
-#: templates/woocommerce/checkout/thankyou-shortcode.php:49
+#: includes/class-wc-integration-funnels.php:1058
+#: includes/class-wc-integration-funnels.php:1060
 msgid "Show details"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:1054
+#: includes/class-wc-integration-funnels.php:1064
 #, php-format
 msgid "Find all the info %s"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:1074
+#: includes/class-wc-integration-funnels.php:1084
 msgid "Causal"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:1075
+#: includes/class-wc-integration-funnels.php:1085
 msgid "Payment for order number: "
 msgstr ""
 
-#: includes/class-sensei.php:36
-msgid "Disable Sensei Styles"
-msgstr ""
-
-#: includes/class-sensei.php:38
-msgid "Disable Sensei CSS styles"
-msgstr ""
-
-#: includes/class-sensei.php:44
+#: includes/class-sensei.php:35
 msgid "Show user courses page"
 msgstr ""
 
-#: includes/class-sensei.php:46
+#: includes/class-sensei.php:37
 msgid "Show user courses page in user Account"
 msgstr ""
 
-#: includes/class-sensei.php:52
+#: includes/class-sensei.php:43
 msgid "User courses page description"
 msgstr ""
 
-#: includes/class-sensei.php:54
+#: includes/class-sensei.php:45
 msgid "The description shown after the title in courses page"
 msgstr ""
 
-#: includes/class-sensei.php:218
+#: includes/class-sensei.php:207
 msgid "View Course"
 msgstr ""
 
-#: includes/class-sensei.php:240
+#: includes/class-sensei.php:229
 msgid "Courses"
 msgstr ""
 
-#: includes/class-sensei.php:295
+#: includes/class-sensei.php:286
 msgid "Completed"
 msgstr ""
 
-#: includes/class-sensei.php:297
+#: includes/class-sensei.php:288
 msgid "Lesson Locked"
 msgstr ""
 
-#: includes/class-sensei.php:299
+#: includes/class-sensei.php:290
 msgid "Go to Lesson"
 msgstr ""
 
-#: includes/class-sensei.php:334
+#: includes/class-sensei.php:327
 msgid "Teacher"
 msgstr ""
 
-#: includes/class-sensei.php:363
+#: includes/class-sensei.php:357
 msgid "Take the quiz to complete the lesson"
 msgstr ""
 
-#: includes/class-sensei.php:364
+#: includes/class-sensei.php:358
 msgid ""
 "To check the skills you have acquired and complete the lesson, click on the "
 "button and immediately access the quiz."
 msgstr ""
 
-#: includes/class-sensei.php:381
+#: includes/class-sensei.php:375
 msgctxt "lesson comment submit label"
 msgid "Leave a comment"
 msgstr ""
 
-#: includes/class-sensei.php:385
+#: includes/class-sensei.php:379
 msgctxt "course comment submit label"
 msgid "Leave a comment"
 msgstr ""
@@ -314,13 +303,21 @@ msgid ""
 "check also in the spam folder."
 msgstr ""
 
-#: templates/sensei/globals/pagination-lesson.php:48
-#: templates/sensei/globals/pagination-quiz.php:47
-msgid "Excellent, keep it up!"
+#: templates/woocommerce/myaccount/dashboard.php:56
+#, php-format
+msgid ""
+"From your account dashboard you can view your <a href=\"%1$s\">recent "
+"orders</a>, manage your <a href=\"%2$s\">shipping and billing addresses</a> "
+"and <a href=\"%3$s\">edit your password and account details</a>."
 msgstr ""
 
 #: templates/sensei/globals/pagination-lesson.php:50
 #: templates/sensei/globals/pagination-quiz.php:49
+msgid "Excellent, keep it up!"
+msgstr ""
+
+#: templates/sensei/globals/pagination-lesson.php:52
+#: templates/sensei/globals/pagination-quiz.php:51
 msgid "View next lesson"
 msgstr ""
 

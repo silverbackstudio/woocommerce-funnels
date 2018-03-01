@@ -43,6 +43,8 @@ do_action( 'woocommerce_before_account_dashboard' );
 		$orders_url = wc_get_endpoint_url( 'orders' );
 		$edit_address = wc_get_endpoint_url( 'edit-address' ) . '#edit-address';
 		$edit_account = wc_get_endpoint_url( 'edit-account' );
+		$affiliate = wc_get_endpoint_url( 'affiliate' );
+		$mycourses = wc_get_endpoint_url( 'mycourses' );
 
 		while ( $dashboard_query->have_posts() ) :
 			$dashboard_query->the_post();
@@ -53,10 +55,12 @@ do_action( 'woocommerce_before_account_dashboard' );
 			<p>
 			<?php
 				printf(
-					__( 'From your account dashboard you can view your <a href="%1$s">recent orders</a>, manage your <a href="%2$s">shipping and billing addresses</a> and <a href="%3$s">edit your password and account details</a>.', 'woocommerce' ),
+					__( 'From your account dashboard you can view your <a href="%1$s">recent orders</a>, manage your <a href="%2$s">shipping and billing addresses</a> and <a href="%3$s">edit your password and account details</a>.', 'woocommerce-funnels' ),
 					esc_url( $orders_url ),
 					esc_url( $edit_address ),
-					esc_url( $edit_account )
+					esc_url( $edit_account ),
+					esc_url( $affiliate ),
+					esc_url( $mycourses )
 				);
 			?>
 			</p>
