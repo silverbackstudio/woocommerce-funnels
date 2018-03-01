@@ -148,3 +148,98 @@ i.stripe-pf-visa {
         background-image: url(../images/visa.png);
     }
 }
+
+.wc-payment-form {
+    padding: 0;
+    
+    .form-row {
+        margin-top: 10px;
+        position: relative;
+    }
+}
+
+/*-------- Fiscal code calculator ---------*/
+
+.find-your-cvc-show {
+    display: block;
+    text-indent: -9999px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 15px;
+    cursor: pointer;
+    
+    &:before {
+        font-family: "icons-set";
+        content: "\e912";
+        position: absolute;
+        right: 0;
+        text-indent: 0;
+        z-index: 1;
+    }
+}
+
+#find-your-cvc {
+    display: none;
+    font-size: .8em;
+    background: #fff;
+    margin-top: 10px;
+    padding: 5px 15px 15px;
+    font-weight: normal;
+    box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.1);
+    
+    p {
+        margin-top: 5px;
+    }
+    
+    &.tooltip-show {
+        display: block;
+    }
+    
+    .close {
+        display: block;
+        text-indent: -9999px;
+        position: relative;
+        top: 0;
+        right: 0;
+        padding: 0 15px;
+        cursor: pointer;
+        
+        &:before {
+            font-family: "icons-set";
+            content: "\e908";
+            position: absolute;
+            right: 0;
+            text-indent: 0;
+            z-index: 1;
+            font-size: 1.2em;
+            color: #ccc;
+            font-weight: normal;
+        }
+    }
+    
+    img {
+        max-width: 250px;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    @media screen and (min-width: 32em) {
+        position: absolute;
+        width: 300px;
+        margin-top: 0;
+        right: 0;
+        bottom: 7em;
+        border-radius: 5px;
+        
+        &:after {
+            content: "";
+            border-top: 10px solid #fff;
+            border-right: 10px solid transparent;
+            border-left: 10px solid transparent;
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+        }
+    }
+}
