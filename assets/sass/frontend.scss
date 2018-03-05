@@ -1,11 +1,4 @@
 @import "mixins/mixins-master";
 @import "layout/private-area";
 @import "woocommerce/woocommerce";
-
-@font-face {
-    font-family: "icons-set";
-    src: url(../icons/fonts/icons-set.eot);
-    src: url(../icons/fonts/icons-set.svg);
-    src: url(../icons/fonts/icons-set.ttf);
-    src: url(../icons/fonts/icons-set.woff);
-}
+@import "../icons/style.css";
