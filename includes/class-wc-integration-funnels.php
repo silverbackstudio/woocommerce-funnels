@@ -222,19 +222,19 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 
 				if ( empty( $this->account_product_categories ) ) {
 					$result = array();
-				}
-
-				$terms = get_terms(
-					array(
-						'taxonomy'   => 'product_cat',
-						'include'    => $this->account_product_categories,
-						'hide_empty' => 1,
-					)
-				);
-
-				if ( ! is_wp_error( $terms ) ) {
-					$result = $terms;
-					wp_cache_set( $key, $result );
+				} else {
+					$terms = get_terms(
+						array(
+							'taxonomy'   => 'product_cat',
+							'include'    => $this->account_product_categories,
+							'hide_empty' => 1,
+						)
+					);
+	
+					if ( ! is_wp_error( $terms ) ) {
+						$result = $terms;
+						wp_cache_set( $key, $result );
+					}
 				}
 			}
 
@@ -248,12 +248,16 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 
 			add_action( 'init', array( $this, 'woocommerce_endpoints' ), 99 );
 
-			foreach ( $this->woocommerce_account_product_categories() as $term ) {
-				add_action(
-					'woocommerce_account_' . $term->slug . '_endpoint', function ( $value ) use ( $term ) {
-						$this->account_product_categories_page_content( $term );
-					}
-				);
+			$account_product_categories = $this->woocommerce_account_product_categories();
+			
+			if( $account_product_categories ) {
+				foreach ($account_product_categories  as $term ) {
+					add_action(
+						'woocommerce_account_' . $term->slug . '_endpoint', function ( $value ) use ( $term ) {
+							$this->account_product_categories_page_content( $term );
+						}
+					);
+				}
 			}
 
 			if ( $this->show_avatar ) {
@@ -519,8 +523,12 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 
 			$new_items = array();
 
-			foreach ( $this->woocommerce_account_product_categories() as $term ) {
-				$new_items[ $term->slug ] = $term->name;
+			$account_product_categories = $this->woocommerce_account_product_categories();
+			
+			if( $account_product_categories ) {
+				foreach ( $account_product_categories as $term ) {
+					$new_items[ $term->slug ] = $term->name;
+				}
 			}
 
 			$items = Utils::keyInsert( $items, $new_items, 'dashboard' );
@@ -534,9 +542,12 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		}
 
 		public function woocommerce_endpoints() {
-
-			foreach ( $this->woocommerce_account_product_categories() as $term ) {
-				add_rewrite_endpoint( $term->slug, EP_PAGES );
+			$account_product_categories = $this->woocommerce_account_product_categories();
+			
+			if( $account_product_categories ) {
+				foreach ( $account_product_categories as $term ) {
+					add_rewrite_endpoint( $term->slug, EP_PAGES );
+				}
 			}
 
 		}
