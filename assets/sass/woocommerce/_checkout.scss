@@ -149,8 +149,16 @@ i.stripe-pf-visa {
     }
 }
 
-/*-------- CVC tooltip ---------*/
+.wc-payment-form {
+    padding: 0;
+    
+    .form-row {
+        margin-top: 10px;
+        position: relative;
+    }
+}
 
+/*-------- CVC tooltip ---------*/
 .find-your-cvc-show {
     display: block;
     text-indent: -9999px;

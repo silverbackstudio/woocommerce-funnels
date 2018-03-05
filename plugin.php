@@ -64,6 +64,21 @@ function frontend_scripts() {
 	}
 
 	wp_enqueue_script( 'woocommerce-funnels', plugins_url( '/assets/js/frontend.js', __FILE__ ), $js_deps, '1.1.0', true );
+    wp_localize_script( 'woocommerce-funnels', 'woocommerceFunnels',
+        array( 
+            'cvcInstructions' => array(
+            	'buttonText' => __('Where?', 'woocommerce-funnels'),
+            	'text' => __('If you use Mastercard, Visa and Diners, 
+            	the security code is shown on the back of your credit card near 
+            	the space reserved for your signature, and consists of 3 digits. 
+            	If you use American Express, the secure code is placed on the 
+            	front of your card and consists of 4 digits.', 
+            	'woocommerce-funnels'),
+            	'imageUrl' => plugin_url( 'assets/media/cvc-instructions.png' ),
+            	'closeText' => __('Close', 'woocommerce-funnels'),
+            ),
+        )
+    );	
 }
 
 add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\admin_scripts' );
@@ -77,4 +92,9 @@ function admin_scripts() {
 
 function plugin_dir() {
 	return plugin_dir_path( __FILE__ );
+}
+
+
+function plugin_url( $path ) {
+	return plugins_url( $path, __FILE__ );
 }

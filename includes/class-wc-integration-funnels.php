@@ -34,8 +34,8 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		public $disable_woocommerce_styles;
 		public $disable_sensei_styles;
 
-		public $sensei       = true;
-		public $affiliate_wp = true;
+		public $sensei;
+		public $affiliate_wp;
 
 		public $page_templates = array();
 
@@ -78,22 +78,14 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		public function init() {
 
 			if ( function_exists( 'Sensei' ) ) {
-				$this->sensei = true;
+				$this->sensei = new Sensei( $this );
 			}
 
 			if ( function_exists( 'affiliate_wp' ) ) {
-				$this->affiliate_wp = true;
+				$this->affiliate_wp = new AffiliateWP( $this );
 			}
 
 			$this->woocommerce_hooks();
-
-			if ( $this->sensei ) {
-				new Sensei( $this );
-			}
-
-			if ( $this->affiliate_wp ) {
-				new AffiliateWP( $this );
-			}
 
 			$mb = new Helpers\Post\MetaBox(
 				'funnels-restrict-to-product',
@@ -325,11 +317,40 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			add_action( 'woocommerce_before_main_content', array( $this, 'upsell_order_thankyou' ), 10 );
 
 			add_filter( 'woocommerce_bacs_account_fields', array( $this, 'specify_bacs_reason' ), 10, 2 );
-
+			
+			add_filter( 'woocommerce_product_description_heading', '__return_empty_string' );
+			
+			add_action( 'add_chained_products_actions_filters', array( $this, 'chained_products_template_enable' ) );
+			add_action( 'remove_chained_products_actions_filters', array( $this, 'chained_products_template_disable' ) );
+			
 		}
+
+		public function chained_products_template_enable(){
+			remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
+			add_action( 'woocommerce_after_shop_loop_item', array( $this, 'chained_products_free_label') );
+			add_filter( 'woocommerce_get_price_html_from_text', array( $this, 'chained_products_price_text') );
+		}
+		
+		public function chained_products_template_disable(){
+			add_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 20 );
+			remove_action( 'woocommerce_after_shop_loop_item', array( $this, 'chained_products_free_label') );
+			remove_filter( 'woocommerce_get_price_html_from_text', array( $this, 'chained_products_price_text') );
+		}		
+
+		public function chained_products_free_label(){
+			echo apply_filters('woocommerce_funnels_chained_free_label', '<div class="free-label">' . __('Free', 'woocommerce-funnels') . '</div>');
+		}
+		
+		public function chained_products_price_text( $from ){
+			return '<span class="from">' . _x( 'Value', 'original value', 'woocommerce-funnels' ) . ' </span>';
+		}		
 
 		public function woocommerce_product_remove_default_contents() {
 
+			remove_filter( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+			remove_filter( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+			add_filter( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );
+			
 			if ( is_product() && get_post_meta( get_the_ID(), '_funnels_disable_product_template', true ) ) {
 
 				remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );

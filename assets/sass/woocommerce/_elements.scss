@@ -27,8 +27,36 @@
     }
 }
 
-/*---------- Breadcrumbs ---------*/
+.price {
+    font-size: 1.5em;
+    font-weight: bold;
+    
+    del {
+        position: relative;
+        padding: 0 10px;
+        text-decoration: none;
+        
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: #B53535;
+            -webkit-transform: rotate(-17deg) translateX(-50%);
+            transform: rotate(-17deg) translateX(-50%);
+            top: 0;
+            left: 50%;
+        }
+    }
+    
+    ins {
+        color: #8bc53f;
+        background: none;
+    }
+}
 
+/*---------- Breadcrumbs ---------*/
 .woocommerce-breadcrumb {
     background: #f5f5f5;
     padding: 10px 15px;
@@ -37,7 +65,6 @@
 }
 
 /*---------- Forms ---------*/
-
 .woocommerce form {
     
     .form-row-first,
@@ -67,7 +94,6 @@
 }
 
 /*---------- Tabs ---------*/
-
 .woocommerce-tabs {
     clear: both;
     padding: 20px 0;
@@ -107,26 +133,7 @@
     }
 }
 
-/*---------- Related products ---------*/
-
-.woocommerce .related.products {
-    background: #f9f9f9;
-    padding: 20px 25px;
-    
-    .product {
-        
-        img {
-            height: 200px;
-        }
-    }
-    
-    .button {
-        padding: .6em 1em;
-    }
-}
-
 /*---------- Tables ---------*/
-
 .woocommerce table {
     border-radius: 0;
     border: 1px solid #f5f5f5;
@@ -261,7 +268,6 @@
 }
 
 /*---------- Product cards ---------*/
-
 .woocommerce ul.products,
 .product-page-list {
     padding: 0 15px;
@@ -385,7 +391,6 @@
 }
 
 /*--------- Coupon form ---------*/
-
 .woocommerce .checkout_coupon,
 .woocommerce .coupon {
     background: #f7f7f7;
