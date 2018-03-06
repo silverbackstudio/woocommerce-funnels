@@ -216,7 +216,7 @@ i.stripe-pf-visa:before {
     margin-top: 10px;
     position: relative; }
 
-/*-------- Fiscal code calculator ---------*/
+/*-------- CVC tooltip ---------*/
 .find-your-cvc-show {
   display: block;
   text-indent: -9999px;
@@ -676,35 +676,6 @@ i.stripe-pf-visa:before {
       .woocommerce .checkout_coupon .button,
       .woocommerce .coupon .button {
         margin: 0 0 0 10px; } }
-
-/*--------- Login form ---------*/
-.woocommerce .woocommerce-form-login {
-  background: #f7f7f7;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
-  padding: 15px; }
-  .woocommerce .woocommerce-form-login > .form-row,
-  .woocommerce .woocommerce-form-login > p {
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto; }
-  .woocommerce .woocommerce-form-login .form-row {
-    margin-bottom: 5px; }
-  .woocommerce .woocommerce-form-login .lost_password a,
-  .woocommerce .woocommerce-form-login .form-row label {
-    font-size: .9; }
-  .woocommerce .woocommerce-form-login button {
-    display: block;
-    font-size: 1em;
-    padding: .5em 1.2em;
-    margin: 0 0 20px;
-    width: 100%; }
-  .woocommerce .woocommerce-form-login .lost_password {
-    text-align: center; }
-  @media screen and (min-width: 64em) {
-    .woocommerce .woocommerce-form-login .form-row-first,
-    .woocommerce .woocommerce-form-login .form-row-last {
-      width: 100%;
-      float: none; } }
 
 /*----- Bonuses -----*/
 .woocommerce .chained_items_container {
@@ -1344,24 +1315,66 @@ section.fb {
     border-radius: 5px;
     position: relative;
     bottom: .2em; }
-  #woocommerce-login .woocommerce-form-login {
-    margin: 0;
-    border: none;
-    border-radius: 0;
-    padding: 0; }
-    #woocommerce-login .woocommerce-form-login button[type="submit"] {
-      display: block;
-      margin: 30px auto 20px;
-      width: 100%; }
   #woocommerce-login .lost_password {
     text-align: center;
     position: absolute;
     bottom: -60px;
     left: 0;
+    right: 0;
     width: 100%; }
   @media screen and (min-width: 48em) {
     #woocommerce-login {
       margin: 20px auto 40px; } }
+
+/* Login form */
+.woocommerce .woocommerce-form-login {
+  padding: 15px; }
+  .woocommerce .woocommerce-form-login > .form-row,
+  .woocommerce .woocommerce-form-login > p {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto; }
+  .woocommerce .woocommerce-form-login .form-row {
+    margin-bottom: 5px; }
+  .woocommerce .woocommerce-form-login .lost_password a,
+  .woocommerce .woocommerce-form-login .form-row label {
+    font-size: .9; }
+  .woocommerce .woocommerce-form-login button[type="submit"] {
+    display: block;
+    margin: 30px auto 20px;
+    width: 100%;
+    padding: .5em 1.2em; }
+  @media screen and (min-width: 64em) {
+    .woocommerce .woocommerce-form-login .form-row-first,
+    .woocommerce .woocommerce-form-login .form-row-last {
+      width: 100%;
+      float: none; } }
+
+.woocommerce-checkout .woocommerce-form-login {
+  background: #f7f7f7;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1); }
+
+.woocommerce .lost_reset_password {
+  background: #fff;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 55px auto 0;
+  padding: 30px 15px; }
+  .woocommerce .lost_reset_password .woocommerce-form-row {
+    margin: 0 auto;
+    float: none;
+    text-align: center; }
+    .woocommerce .lost_reset_password .woocommerce-form-row label {
+      text-align: left; }
+  .woocommerce .lost_reset_password button[type="submit"] {
+    -webkit-transform: none;
+            transform: none;
+    left: 0;
+    margin: 20px auto;
+    font-size: 1em; }
+  @media screen and (min-width: 48em) {
+    .woocommerce .lost_reset_password {
+      margin: 0 auto; } }
 
 .woocommerce-error li,
 .woocommerce-info,
