@@ -1300,7 +1300,7 @@ section.fb {
 
 #woocommerce-login {
   max-width: 600px;
-  margin: 40px auto 60px;
+  margin: 20px auto 60px;
   padding: 25px 25px 10px;
   position: relative;
   font-size: .9em; }
@@ -1321,9 +1321,6 @@ section.fb {
     left: 0;
     right: 0;
     width: 100%; }
-  @media screen and (min-width: 48em) {
-    #woocommerce-login {
-      margin: 20px auto 40px; } }
 
 form.register {
   max-width: 600px;
