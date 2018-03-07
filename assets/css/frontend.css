@@ -677,35 +677,6 @@ i.stripe-pf-visa:before {
       .woocommerce .coupon .button {
         margin: 0 0 0 10px; } }
 
-/*--------- Login form ---------*/
-.woocommerce .woocommerce-form-login {
-  background: #f7f7f7;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
-  padding: 15px; }
-  .woocommerce .woocommerce-form-login > .form-row,
-  .woocommerce .woocommerce-form-login > p {
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto; }
-  .woocommerce .woocommerce-form-login .form-row {
-    margin-bottom: 5px; }
-  .woocommerce .woocommerce-form-login .lost_password a,
-  .woocommerce .woocommerce-form-login .form-row label {
-    font-size: .9; }
-  .woocommerce .woocommerce-form-login button {
-    display: block;
-    font-size: 1em;
-    padding: .5em 1.2em;
-    margin: 0 0 20px;
-    width: 100%; }
-  .woocommerce .woocommerce-form-login .lost_password {
-    text-align: center; }
-  @media screen and (min-width: 64em) {
-    .woocommerce .woocommerce-form-login .form-row-first,
-    .woocommerce .woocommerce-form-login .form-row-last {
-      width: 100%;
-      float: none; } }
-
 /*----- Bonuses -----*/
 .woocommerce .chained_items_container {
   padding: 0 15px;
@@ -1100,7 +1071,6 @@ i.stripe-pf-visa:before {
   margin: 30px 0; }
 
 .single-product .products .product {
-  box-shadow: 0;
   background: #f9f9f9; }
   .single-product .products .product img {
     height: 200px; }

@@ -431,50 +431,6 @@
     }
 }
 
-/*--------- Login form ---------*/
-.woocommerce .woocommerce-form-login {
-    background: #f7f7f7;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    
-    > .form-row,
-    > p {
-        max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .form-row {
-        margin-bottom: 5px;
-    }
-    
-    .lost_password a,
-    .form-row label {
-        font-size: .9;
-    }
-    
-    button {
-        display: block;
-        font-size: 1em;
-        padding: .5em 1.2em;
-        margin: 0 0 20px;
-        width: 100%;
-    }
-    
-    .lost_password {
-        text-align: center;
-    }
-    
-    @media screen and (min-width: 64em) {
-        
-        .form-row-first,
-        .form-row-last {
-            width: 100%;
-            float: none;
-        }
-    }
-}
-
 /*----- Bonuses -----*/
 
 .woocommerce .chained_items_container {
