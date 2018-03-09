@@ -1374,7 +1374,7 @@ section.fb {
     font-size: 1em; }
   @media screen and (min-width: 48em) {
     .woocommerce .lost_reset_password {
-      margin: 0 auto; } }
+      margin: 55px auto 0; } }
 
 .woocommerce-error li,
 .woocommerce-info,
