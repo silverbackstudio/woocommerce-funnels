@@ -55,7 +55,7 @@ class Sensei {
 
 
 	public function hooks() {
-
+		
 		add_action( 'init', array( $this, 'sensei_endpoints' ), 99 );
 
 		// Hack to edit the shortcode tabs url.
@@ -227,9 +227,7 @@ class Sensei {
 	<section id="dashboard-courses" >
 		<header class="privatearea-header"> 
 			<h2><?php esc_html_e( 'Courses', 'woocommerce-funnels' ); ?></h2>
-			<?php
-			if ( ! empty( $this->user_courses_page_description ) ) :
-			?>
+			<?php if ( ! empty( $this->user_courses_page_description ) ) :	?>
 			<p class="subtitle"><?php echo $this->user_courses_page_description; ?></p>
 			<?php endif; ?>
 		</header>		
