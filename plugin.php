@@ -98,3 +98,7 @@ function plugin_dir() {
 function plugin_url( $path ) {
 	return plugins_url( $path, __FILE__ );
 }
+
+function is_private_area(){
+	return is_account_page() || is_sensei();
+}
