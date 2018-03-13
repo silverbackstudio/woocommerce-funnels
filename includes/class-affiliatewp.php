@@ -20,6 +20,8 @@ class AffiliateWP {
 	public $integration;
 
 	public $affiliate_menu_label;
+	public $affiliate_url_instructions;
+	public $affiliate_url_generator_instructions;
 
 	/**
 	 * Init and hook in the integration.
@@ -35,8 +37,24 @@ class AffiliateWP {
 			'desc_tip'    => true,
 			'default'     => __( 'Affiliate', 'woocommerce-funnels' ),
 		);
+		
+		$integration->form_fields['affiliate_url_instructions'] = array(
+			'title'       => __( 'Affiliate URL Instructions', 'woocommerce-funnels' ),
+			'type'        => 'textarea',
+			'description' => __( 'Instructions to print before affiliate URL', 'woocommerce-funnels' ),
+			'desc_tip'    => true
+		);	
+		
+		$integration->form_fields['affiliate_url_generator_instructions'] = array(
+			'title'       => __( 'Affiliate URL Generetor Instructions', 'woocommerce-funnels' ),
+			'type'        => 'textarea',
+			'description' => __( 'Instructions printed before the url generator', 'woocommerce-funnels' ),
+			'desc_tip'    => true
+		);			
 
 		$this->affiliate_menu_label = $this->integration->get_option( 'affiliate_menu_label' );
+		$this->affiliate_url_instructions = $this->integration->get_option( 'affiliate_url_instructions' );
+		$this->affiliate_url_generator_instructions = $this->integration->get_option( 'affiliate_url_generator_instructions' );
 
 		$this->hooks();
 	}
@@ -47,6 +65,8 @@ class AffiliateWP {
 		add_action( 'woocommerce_account_affiliate_endpoint', array( $this, 'affiliate_page_content' ) );
 		add_filter( 'affwp_affiliate_area_page_url', array( $this, 'affiliate_area_page_url' ), 10, 3 );
 		add_filter( 'woocommerce_account_menu_items', array( $this, 'menu_items' ), 90 );
+		add_action( 'affwp_affiliate_dashboard_urls_top', array( $this, 'print_affiliate_url_instructions' ) );
+		add_action( 'affwp_affiliate_dashboard_urls_before_generator', array( $this, 'print_affiliate_url_generator_instructions' ) );
 	}
 
 	public function menu_items( $items ) {
@@ -89,6 +109,28 @@ class AffiliateWP {
 
 		return $affiliate_area_page_url;
 	}
+	
+	public function print_affiliate_url_instructions(){
+		
+		if( ! $this->affiliate_url_instructions ) {
+			return;
+		}		
+		
+		echo '<div id="url-instructions" class="affiliate-instructions">';
+		echo wpautop( $this->affiliate_url_instructions );
+		echo '</div>';
+	}
+	
+	public function print_affiliate_url_generator_instructions(){
+		
+		if( ! $this->affiliate_url_generator_instructions ) {
+			return;
+		}
+		
+		echo '<div id="generator-instructions" class="affiliate-instructions">';
+		echo wpautop( $this->affiliate_url_generator_instructions );
+		echo '</div>';
+	}	
 
 
 }
