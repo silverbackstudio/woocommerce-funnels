@@ -23,7 +23,6 @@ class Sensei {
 	public $show_user_courses_page = true;
 	public $user_courses_page_description;
 
-
 	/**
 	 * Init and hook in the integration.
 	 */
@@ -37,6 +36,14 @@ class Sensei {
 			'description' => __( 'Show user courses page in user Account', 'woocommerce-funnels' ),
 			'desc_tip'    => true,
 			'default'     => true,
+		);
+
+		$integration->form_fields['mycourses_menu_label'] = array(
+			'title'       => __( 'Courses Menu Label', 'woocommerce-funnels' ),
+			'type'        => 'text',
+			'description' => __( 'The label for Courses in account menu', 'woocommerce-funnels' ),
+			'desc_tip'    => true,
+			'default'     => __( 'My Courses', 'woocommerce-funnels' ),
 		);
 
 		$integration->form_fields['user_courses_page_description'] = array(

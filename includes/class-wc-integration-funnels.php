@@ -125,13 +125,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 					'default'     => '',
 					'options'     => wp_list_pluck( get_pages(), 'post_title', 'ID' ),
 				),
-				'mycourses_menu_label'       => array(
-					'title'       => __( 'Courses Menu Label', 'woocommerce-funnels' ),
-					'type'        => 'text',
-					'description' => __( 'The label for Courses in account menu', 'woocommerce-funnels' ),
-					'desc_tip'    => true,
-					'default'     => __( 'My Courses', 'woocommerce-funnels' ),
-				),
 				'orders_menu_label'          => array(
 					'title'       => __( 'Orders Menu Label', 'woocommerce-funnels' ),
 					'type'        => 'text',
