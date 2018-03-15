@@ -716,8 +716,7 @@ i.stripe-pf-visa:before {
       line-height: 1em;
       text-align: center; }
     .woocommerce .chained_items_container .product p {
-      margin-top: 5px;
-      text-align: justify; }
+      margin-top: 5px; }
     .woocommerce .chained_items_container .product .price {
       font-weight: bold;
       text-transform: uppercase;
