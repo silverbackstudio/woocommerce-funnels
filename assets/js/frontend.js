@@ -1,6 +1,7 @@
 (function($){
 	$( '.order-details-toggle' ).on(
 		'click', function(){
+			$(this).toggleClass('open');
 			$( '#order-details' ).slideToggle();
 		}
 	);
