@@ -1385,12 +1385,16 @@ form.register {
   background: #fff;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin: 55px auto 0;
-  padding: 30px 15px; }
+  margin: 30px auto;
+  max-width: 600px;
+  padding: 25px; }
+  .woocommerce .lost_reset_password p {
+    text-align: left; }
   .woocommerce .lost_reset_password .woocommerce-form-row {
     margin: 0 auto;
     float: none;
-    text-align: center; }
+    text-align: center;
+    width: 100%; }
     .woocommerce .lost_reset_password .woocommerce-form-row label {
       text-align: left; }
   .woocommerce .lost_reset_password button[type="submit"] {
@@ -1398,10 +1402,11 @@ form.register {
             transform: none;
     left: 0;
     margin: 20px auto;
-    font-size: 1em; }
+    font-size: 1em;
+    width: 100%; }
   @media screen and (min-width: 48em) {
     .woocommerce .lost_reset_password {
-      margin: 55px auto 0; } }
+      padding: 25px 50px; } }
 
 .woocommerce-error li,
 .woocommerce-info,

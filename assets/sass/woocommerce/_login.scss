@@ -123,13 +123,19 @@ form.register {
     background: #fff;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    margin: 55px auto 0;
-    padding: 30px 15px;
+    margin: 30px auto;
+    max-width: 600px;
+    padding: 25px;
+    
+    p {
+        text-align: left;
+    }
     
     .woocommerce-form-row {
         margin: 0 auto;
         float: none;
         text-align: center;
+        width: 100%;
         
         label {
             text-align: left;
@@ -141,9 +147,10 @@ form.register {
         left: 0;
         margin: 20px auto;
         font-size: 1em;
+        width: 100%;
     }
     
     @media screen and (min-width: 48em) {
-        margin: 55px auto 0;
+        padding: 25px 50px;
     }
 }
