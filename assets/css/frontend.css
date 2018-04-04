@@ -1379,7 +1379,12 @@ form.register {
 
 .woocommerce-checkout .woocommerce-form-login {
   background: #f7f7f7;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1); }
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px; }
+  .woocommerce-checkout .woocommerce-form-login p {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto; }
 
 .woocommerce .lost_reset_password {
   background: #fff;
