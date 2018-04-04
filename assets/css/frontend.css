@@ -158,23 +158,9 @@ body.woocommerce-checkout {
       float: left; }
     body.woocommerce-checkout article.page #order_review {
       width: 49%;
-      float: right;
+      margin-left: 2%;
+      float: left;
       clear: right; } }
-
-.logged-in.woocommerce-checkout article.page {
-  padding: 20px 0; }
-  .logged-in.woocommerce-checkout article.page table, .logged-in.woocommerce-checkout article.page #payment {
-    width: 100%; }
-  .logged-in.woocommerce-checkout article.page table {
-    margin: 20px auto; }
-  @media screen and (min-width: 48em) {
-    .logged-in.woocommerce-checkout article.page #order_review {
-      width: 100%; }
-    .logged-in.woocommerce-checkout article.page table, .logged-in.woocommerce-checkout article.page #payment {
-      width: 600px;
-      max-width: 100%;
-      margin-left: auto;
-      margin-right: auto; } }
 
 #order_review #payment {
   padding: 20px 15px;
