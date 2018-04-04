@@ -62,13 +62,10 @@ body.woocommerce-checkout {
 }
 
 .logged-in.woocommerce-checkout article.page {
-    padding: 20px;
+    padding: 20px 0;
     
     table, #payment {
-        width: 600px;
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
+        width: 100%;
     }
     
     table {
@@ -79,6 +76,13 @@ body.woocommerce-checkout {
         
         #order_review {
             width: 100%;
+        }
+        
+        table, #payment {
+            width: 600px;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 }
