@@ -20,38 +20,6 @@ body.woocommerce-checkout {
         }
     }
     
-    .woocommerce-checkout-payment {
-        padding: 20px 15px;
-        background: #f3f3f3;
-        
-        ul {
-            
-            li {
-                margin-bottom: 10px;
-                
-                &:before {
-                    display: none;
-                }
-            }
-        }
-        
-        .payment_method_ppec_paypal {
-            
-            img {
-                vertical-align: middle;
-            }
-        }
-        
-        fieldset {
-            border: none;
-        }
-        
-        button {
-            display: block;
-            width: 100%;
-        }
-    }
-    
     h3 {
         font-size: 1.5em;
         font-weight: 400;
@@ -79,7 +47,6 @@ body.woocommerce-checkout {
                 }
             }
             
-            
             #customer_details {
                 width: 49%;
                 float: left;
@@ -91,6 +58,64 @@ body.woocommerce-checkout {
                 clear: right;
             }
         }
+    }
+}
+
+.logged-in.woocommerce-checkout article.page {
+    padding: 20px;
+    
+    table, #payment {
+        width: 600px;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    table {
+        margin: 20px auto;
+    }
+
+    @media screen and (min-width: 48em) {
+        
+        #order_review {
+            width: 100%;
+        }
+    }
+}
+
+#order_review #payment {
+    padding: 20px 15px;
+    background: #f3f3f3;
+    
+    ul {
+        
+        li {
+            margin-bottom: 10px;
+            
+            &:before {
+                display: none;
+            }
+        }
+    }
+    
+    #payment_method_stripe {
+        margin: 0;
+    }
+    
+    .payment_method_ppec_paypal {
+        
+        img {
+            vertical-align: middle;
+        }
+    }
+    
+    fieldset {
+        border: none;
+    }
+    
+    button {
+        display: block;
+        width: 100%;
     }
 }
 
