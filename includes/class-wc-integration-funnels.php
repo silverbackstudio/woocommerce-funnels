@@ -275,8 +275,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			add_action( 'woocommerce_product_data_panels', array( $this, 'woocommerce_product_data_panels' ) );
 			add_action( 'woocommerce_process_product_meta', array( $this, 'woocommerce_product_data_save' ), 10, 2 );
 
-			add_filter( 'woocommerce_checkout_no_payment_needed_redirect', array( $this, 'after_successful_checkout_page' ), 999, 2 );
-			add_filter( 'woocommerce_payment_successful_result', array( $this, 'after_successful_checkout_page' ), 999, 2 );
+			add_filter( 'woocommerce_get_checkout_order_received_url', array( $this, 'order_received_url' ), 10, 2 );
 
 			add_action( 'wp', array( $this, 'woocommerce_product_remove_default_contents' ) );
 			add_action( 'template_redirect', array( $this, 'woocommerce_product_page_restrict' ) );
@@ -868,7 +867,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			<div class="options_group">
 				<?php
 				$args = array(
-					'show_option_none' => __( '-- Default order summary --', 'woocommerce' ),
+					'show_option_none' => __( '-- Default order summary --', 'woocommerce-funnels' ),
 					'name'             => '_funnels_thankyou_page',
 					'id'               => 'funnels_thankyou_page',
 					'selected'         => get_post_meta( $post->ID, '_funnels_thankyou_page', true ),
@@ -990,7 +989,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 
 		}
 
-		public function after_successful_checkout_page( $url, $order ) {
+		public function order_received_url( $url, $order ) {
 
 			if ( is_numeric( $order ) ) {
 				$order = wc_get_order( $order );
@@ -1000,33 +999,30 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 				return $url;
 			}
 
-			$new_url = null;
+			$redirect_to = null;
 
 			if ( $upsell_product = $this->order_upsell_product( $order ) ) {
-				$new_url = get_permalink( $upsell_product );
+				$redirect_to = get_permalink( $upsell_product );
 			} elseif ( $thankyou_page_id = $this->get_order_thankyou_page( $order ) ) {
-				$new_url = get_permalink( $thankyou_page_id );
+				$redirect_to = get_permalink( $thankyou_page_id );
 			}
 
-			if ( ! empty( $new_url ) ) {
+			if ( ! empty( $redirect_to ) ) {
 
-				$new_url = add_query_arg(
+				$redirect_to = add_query_arg(
 					array(
 						'order' => $order->get_id(),
 						'key'   => $order->get_order_key(),
 					),
-					$new_url
+					$redirect_to
 				);
 
 				if ( 'yes' === get_option( 'woocommerce_force_ssl_checkout' ) || is_ssl() ) {
-					$new_url = str_replace( 'http:', 'https:', $new_url );
+					$redirect_to = str_replace( 'http:', 'https:', $redirect_to );
 				}
 
-				if ( is_array( $url ) && ! empty( $url['redirect'] ) ) {
-					$url['redirect'] = $new_url;
-				} else {
-					$url = $new_url;
-				}
+				$url = $redirect_to;
+
 			}
 
 			return $url;
