@@ -46,7 +46,7 @@ class AffiliateWP {
 		);	
 		
 		$integration->form_fields['affiliate_url_generator_instructions'] = array(
-			'title'       => __( 'Affiliate URL Generetor Instructions', 'woocommerce-funnels' ),
+			'title'       => __( 'Affiliate URL Generator Instructions', 'woocommerce-funnels' ),
 			'type'        => 'textarea',
 			'description' => __( 'Instructions printed before the url generator', 'woocommerce-funnels' ),
 			'desc_tip'    => true

@@ -2,35 +2,59 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _s 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2018-02-28 14:10+0000\n"
+"POT-Creation-Date: 2018-05-15 09:50+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-02-28 14:17+0000\n"
+"PO-Revision-Date: 2018-05-15 12:30+0000\n"
 "Last-Translator: SilverbackStudio <test-email-vdt@silverbackstudio.it>\n"
-"Language-Team: Italian\n"
+"Language-Team: Italiano\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: includes/class-wc-integration-funnels.php:51
+#: plugin.php:70
+msgid "Where?"
+msgstr "Dove?"
+
+#: plugin.php:71
+msgid ""
+"If you use Mastercard, Visa and Diners, \n"
+"            \tthe security code is shown on the back of your credit card "
+"near \n"
+"            \tthe space reserved for your signature, and consists of 3 "
+"digits. \n"
+"            \tIf you use American Express, the secure code is placed on the "
+"\n"
+"            \tfront of your card and consists of 4 digits."
+msgstr ""
+"Se utilizzi Mastercard, Visa o DIners il codice di sicurezza è situato sul "
+"retro della tua carta di credito vicino allo spazio dedicato alla tua firma "
+"ed è composto da 3 caratteri. Se utilizzi una American Express, il codice di "
+"sicurezza è situato sul davanti della tua carta ed è composto da 4 caratteri."
+
+#: plugin.php:78
+msgid "Close"
+msgstr "Chiudi"
+
+#: includes/class-wc-integration-funnels.php:52
 msgid "Funnels"
 msgstr "Funnels"
 
 #. Description of the plugin
-#: includes/class-wc-integration-funnels.php:52
+#: includes/class-wc-integration-funnels.php:53
 msgid "Changes the WooCommerce Purchase Flow to allow Funnels"
 msgstr "Modifica le caratteristiche di WooCommerce per generare Funnel"
 
-#: includes/class-wc-integration-funnels.php:69
+#: includes/class-wc-integration-funnels.php:71
 msgid "Private area"
 msgstr "Area Riservata"
 
-#: includes/class-wc-integration-funnels.php:102
+#: includes/class-wc-integration-funnels.php:96
 msgid "Select the product that has to be purchased"
 msgstr "Seleziona il prodotto che deve essere acquistato"
 
-#: includes/class-wc-integration-funnels.php:106
+#: includes/class-wc-integration-funnels.php:100
 msgid ""
 "Select the page to where we redirect the user if the product has not been "
 "purchased"
@@ -38,124 +62,151 @@ msgstr ""
 "Seleziona la pagina a cui reindirizzare l'utente se il prodotto non e' stato "
 "acquistato"
 
-#: includes/class-wc-integration-funnels.php:110
+#: includes/class-wc-integration-funnels.php:104
 msgid "Select the label for readmore button in account product category view"
 msgstr ""
 "Seleziona l'etichetta per il bottone \"Leggi di più\" nella vista categoria "
 "prodotto dell'account."
 
-#: includes/class-wc-integration-funnels.php:116
+#: includes/class-wc-integration-funnels.php:110
 msgid "Product Restrict"
 msgstr "Limita a prodotto"
 
-#: includes/class-wc-integration-funnels.php:129
+#: includes/class-wc-integration-funnels.php:123
 msgid "Dashboard Content Page"
 msgstr "Contenuto pagina dashboard"
 
-#: includes/class-wc-integration-funnels.php:131
+#: includes/class-wc-integration-funnels.php:125
 msgid ""
 "Select the page with the content to be shown in MyAccount Dashboard page"
 msgstr ""
 "Seleziona la pagina con il contenuto da mostrare nella bacheca dell'account"
 
-#: includes/class-wc-integration-funnels.php:137
-msgid "Courses Menu Label"
-msgstr "Etichetta Menu Corsi"
+#: includes/class-wc-integration-funnels.php:131
+msgid "Dashboard Intro Text"
+msgstr "Testo introduttivo bacheca area riservata"
 
-#: includes/class-wc-integration-funnels.php:139
-#: includes/class-affiliatewp.php:34
-msgid "The label for Courses in account menu"
-msgstr "L'etichetta nel menu account per i corsi"
+#: includes/class-wc-integration-funnels.php:133
+msgid ""
+"Set the template for the dashboard intro text. Available printf placeholders "
+"are: orders_url, edit_address, edit_account, affiliate_url, mycourses_url"
+msgstr ""
+"Imposta il template per il testo introduttivo della bacheca. Sono "
+"disponibili le sostituzioni printf nel seguente ordine: orders_url, "
+"edit_address, edit_account, affiliate_url, mycourses_url"
 
-#: includes/class-wc-integration-funnels.php:141
-#: includes/class-wc-integration-funnels.php:548 includes/class-sensei.php:140
-msgid "My Courses"
-msgstr "I miei corsi"
+#: includes/class-wc-integration-funnels.php:135
+#, php-format
+msgid ""
+"From your account dashboard you can view your <a href=\"%1$s\">recent "
+"orders</a>, manage your <a href=\"%2$s\">shipping and billing addresses</a> "
+"and <a href=\"%3$s\">edit your password and account details</a>."
+msgstr ""
+"Ti ringrazio per aver scelto Io Merito Credito e ti do il benvenuto nella "
+"tua area riservata. Qui potrai trovare e modificare le <a href=\"%3$s\">"
+"informazioni associate al tuo profilo</a>, i <a href=\"%5$s\">video e i "
+"corsi</a> che hai acquistato, le ricevute di pagamento, gli <a href=\"%2$s\">"
+"indirizzi di spedizione e fatturazione</a> e il link di <a href=\"%4$s\">"
+"affiliazione</a> per iniziare a guadagnare subito."
 
-#: includes/class-wc-integration-funnels.php:144
+#: includes/class-wc-integration-funnels.php:138
 msgid "Orders Menu Label"
 msgstr "Etichetta Menu Ordini"
 
-#: includes/class-wc-integration-funnels.php:146
+#: includes/class-wc-integration-funnels.php:140
 msgid "The label for orders in account menu"
 msgstr "L'etichetta nel menu account per gli ordini"
 
-#: includes/class-wc-integration-funnels.php:148
+#: includes/class-wc-integration-funnels.php:142
 msgid "Orders / Invoices"
 msgstr "Ordini / Fatture"
 
-#: includes/class-wc-integration-funnels.php:151
+#: includes/class-wc-integration-funnels.php:145
 msgid "Account Product Categories"
 msgstr "Categorie Prodotto nel menu Account"
 
-#: includes/class-wc-integration-funnels.php:153
+#: includes/class-wc-integration-funnels.php:147
 msgid ""
 "Select the product categories that you want to be shown in My Account Menu"
 msgstr ""
 "Seleziona le categorie di prodotto che vuoi che vengano mostrate nel menu "
 "dell'account utente (solo prodotti acquistati)"
 
-#: includes/class-wc-integration-funnels.php:164
+#: includes/class-wc-integration-funnels.php:158
 msgid "Checkout Warranty Text"
 msgstr "Testo Garanzia Acquisti"
 
-#: includes/class-wc-integration-funnels.php:166
+#: includes/class-wc-integration-funnels.php:160
 msgid "The content for the checkout warranty box"
 msgstr "Il contenuto per il box con la garanzia acquisti "
 
-#: includes/class-wc-integration-funnels.php:171
+#: includes/class-wc-integration-funnels.php:165
 msgid "Disable WooCommerce Styles"
 msgstr "Elimina lo stile di WooCommerce"
 
-#: includes/class-wc-integration-funnels.php:173
+#: includes/class-wc-integration-funnels.php:167
 msgid "Disable WooCommerce CSS styles"
 msgstr "Elimina gli stili CSS di WooCommerce"
 
-#: includes/class-wc-integration-funnels.php:178
+#: includes/class-wc-integration-funnels.php:172
 msgid "Debug Log"
 msgstr "Monitoraggio errori"
 
-#: includes/class-wc-integration-funnels.php:180
+#: includes/class-wc-integration-funnels.php:174
 msgid "Enable logging"
 msgstr "Attiva Moniotoraggio"
 
-#: includes/class-wc-integration-funnels.php:182
+#: includes/class-wc-integration-funnels.php:176
 msgid "Log events such as API requests"
 msgstr "Registra eventi come richieste API"
 
-#: includes/class-wc-integration-funnels.php:393
+#: includes/class-wc-integration-funnels.php:342
+msgid "Free"
+msgstr "Gratis"
+
+#: includes/class-wc-integration-funnels.php:346
+msgctxt "original value"
+msgid "Value"
+msgstr "Valore"
+
+#: includes/class-wc-integration-funnels.php:422
 msgid ""
 "You are not allowed to access this page, please purchase the linked product"
 msgstr ""
 "Per ottenere l'accesso a questa pagina e' necessario acquistare il prodotto "
 "associato."
 
-#: includes/class-wc-integration-funnels.php:494
+#: includes/class-wc-integration-funnels.php:523
 msgid "Toggle Account Menu"
 msgstr "Mostra/Nascondi il menu Account"
 
-#: includes/class-wc-integration-funnels.php:551 includes/class-sensei.php:143
-#: includes/class-sensei.php:180
+#: includes/class-wc-integration-funnels.php:584 includes/class-sensei.php:46
+#: includes/class-sensei.php:147
+msgid "My Courses"
+msgstr "I miei corsi"
+
+#: includes/class-wc-integration-funnels.php:587 includes/class-sensei.php:150
+#: includes/class-sensei.php:187
 msgid "Messages"
 msgstr "Messaggi"
 
-#: includes/class-wc-integration-funnels.php:720
+#: includes/class-wc-integration-funnels.php:756
 msgid "Profile Image"
 msgstr "Immagine di profilo"
 
-#: includes/class-wc-integration-funnels.php:730
+#: includes/class-wc-integration-funnels.php:766
 msgid "Edit Adresses"
 msgstr "Modifica indirizzi"
 
-#: includes/class-wc-integration-funnels.php:746
+#: includes/class-wc-integration-funnels.php:782
 msgid "Payment Methods"
 msgstr "Metodi di pagamento"
 
-#: includes/class-wc-integration-funnels.php:787
+#: includes/class-wc-integration-funnels.php:823
 msgid "Disable Default Template"
 msgstr "Disattiva Template Prodotto"
 
-#: includes/class-wc-integration-funnels.php:788
+#: includes/class-wc-integration-funnels.php:824
 msgid ""
 "Disable WooCommerce product template, you must create the page content "
 "manually"
@@ -163,42 +214,46 @@ msgstr ""
 "Disattiva il template di base del prodotto, dovrai creare il contenuto della "
 "pagina manualmente"
 
-#: includes/class-wc-integration-funnels.php:800
+#: includes/class-wc-integration-funnels.php:836
 msgid "Add to Cart Text"
 msgstr "Testo pulsante aggiunta al carrello"
 
-#: includes/class-wc-integration-funnels.php:801
+#: includes/class-wc-integration-funnels.php:837
 msgid "The text displayed in Add to cart button"
 msgstr "Testo mostrato nel pulsante di aggiunta al carrello/acquisto"
 
-#: includes/class-wc-integration-funnels.php:813
+#: includes/class-wc-integration-funnels.php:849
 msgid "Skip Cart"
 msgstr "Salta carrello"
 
-#: includes/class-wc-integration-funnels.php:814
+#: includes/class-wc-integration-funnels.php:850
 msgid "This will skip the cart and redirect the user directly to checkout page"
 msgstr ""
 "Salta la pagina del carrello e invia l'utente direttamente al pagamento"
 
-#: includes/class-wc-integration-funnels.php:823
+#: includes/class-wc-integration-funnels.php:859
 msgid "Direct Upsell Product"
 msgstr "Prodotto in Upsell Diretto"
 
-#: includes/class-wc-integration-funnels.php:836
+#: includes/class-wc-integration-funnels.php:872
 msgid "This lets you choose which product will be redirected to after checkout"
 msgstr ""
 "Scegli verso quale prodotto vorresti che l'utente venga reindirizzato dopo "
 "il pagamento"
 
-#: includes/class-wc-integration-funnels.php:891
+#: includes/class-wc-integration-funnels.php:879
+msgid "-- Default order summary --"
+msgstr "-- Riepilogo ordine predefinito --"
+
+#: includes/class-wc-integration-funnels.php:927
 msgid "Safe Payments"
 msgstr "Pagamenti sicuri"
 
-#: includes/class-wc-integration-funnels.php:897
+#: includes/class-wc-integration-funnels.php:933
 msgid "Choose payment method"
 msgstr "Scegli il metodo di pagamento"
 
-#: includes/class-wc-integration-funnels.php:926
+#: includes/class-wc-integration-funnels.php:962
 msgid ""
 "The <b>billing address</b> is used to compose the invoices. The <b>shipping "
 "address</b> will be used to send you phisical products that you may purchase."
@@ -210,73 +265,81 @@ msgstr ""
 "modificare questi indirizzi durante la fase di pagamento se effettuerai "
 "altri acquisti."
 
-#: includes/class-wc-integration-funnels.php:1041
+#: includes/class-wc-integration-funnels.php:1074
 msgid "Thank you for your purchase!"
 msgstr "Grazie per il tuo acquisto!"
 
-#: includes/class-wc-integration-funnels.php:1058
-#: includes/class-wc-integration-funnels.php:1060
+#: includes/class-wc-integration-funnels.php:1091
+#: includes/class-wc-integration-funnels.php:1093
 msgid "Show details"
 msgstr "qui"
 
-#: includes/class-wc-integration-funnels.php:1064
+#: includes/class-wc-integration-funnels.php:1097
 #, php-format
 msgid "Find all the info %s"
 msgstr "Trovi le informazioni sul tuo ordine:  %s"
 
-#: includes/class-wc-integration-funnels.php:1084
+#: includes/class-wc-integration-funnels.php:1117
 msgid "Causal"
 msgstr "Causale"
 
-#: includes/class-wc-integration-funnels.php:1085
+#: includes/class-wc-integration-funnels.php:1118
 msgid "Payment for order number: "
 msgstr "Pagamento per  l'ordine numero: "
 
-#: includes/class-sensei.php:35
+#: includes/class-sensei.php:34
 msgid "Show user courses page"
 msgstr "Mostra pagina \"I miei corsi\""
 
-#: includes/class-sensei.php:37
+#: includes/class-sensei.php:36
 msgid "Show user courses page in user Account"
 msgstr "Mostra la pagina \"I miei corsi\" nell'area riservata"
 
-#: includes/class-sensei.php:43
+#: includes/class-sensei.php:42
+msgid "Courses Menu Label"
+msgstr "Etichetta Menu Corsi"
+
+#: includes/class-sensei.php:44 includes/class-affiliatewp.php:36
+msgid "The label for Courses in account menu"
+msgstr "L'etichetta nel menu account per i corsi"
+
+#: includes/class-sensei.php:50
 msgid "User courses page description"
 msgstr "Introduzione pagina \"I miei corsi\""
 
-#: includes/class-sensei.php:45
+#: includes/class-sensei.php:52
 msgid "The description shown after the title in courses page"
 msgstr "L' introduzione mostrata dopo il titolo nella pagina \"I miei corsi\""
 
-#: includes/class-sensei.php:207
+#: includes/class-sensei.php:214
 msgid "View Course"
 msgstr "Visualizza Corso"
 
-#: includes/class-sensei.php:229
+#: includes/class-sensei.php:236
 msgid "Courses"
 msgstr "Corsi"
 
-#: includes/class-sensei.php:286
+#: includes/class-sensei.php:291
 msgid "Completed"
 msgstr "Completato"
 
-#: includes/class-sensei.php:288
+#: includes/class-sensei.php:293
 msgid "Lesson Locked"
 msgstr "Lezione Bloccata"
 
-#: includes/class-sensei.php:290
+#: includes/class-sensei.php:295
 msgid "Go to Lesson"
 msgstr "Vai alla lezione"
 
-#: includes/class-sensei.php:327
+#: includes/class-sensei.php:332
 msgid "Teacher"
 msgstr "Docente"
 
-#: includes/class-sensei.php:357
+#: includes/class-sensei.php:362
 msgid "Take the quiz to complete the lesson"
 msgstr "Fai il Quiz per completare la lezione"
 
-#: includes/class-sensei.php:358
+#: includes/class-sensei.php:363
 msgid ""
 "To check the skills you have acquired and complete the lesson, click on the "
 "button and immediately access the quiz."
@@ -284,24 +347,41 @@ msgstr ""
 "Per verificare le competenze che hai acquisito e completare la lezione, "
 "clicca sul pulsante e accedi subito al quiz."
 
-#: includes/class-sensei.php:375
+#: includes/class-sensei.php:380
 msgctxt "lesson comment submit label"
 msgid "Leave a comment"
 msgstr "Pubblica un commento"
 
-#: includes/class-sensei.php:379
+#: includes/class-sensei.php:384
 msgctxt "course comment submit label"
 msgid "Leave a comment"
 msgstr "Pubblica un commento"
 
-#: includes/class-affiliatewp.php:32
+#: includes/class-affiliatewp.php:34
 msgid "Affiliate Menu Label"
 msgstr "Etichetta Menu Affiliazione"
 
-#: includes/class-affiliatewp.php:36 includes/class-affiliatewp.php:56
-#: includes/class-affiliatewp.php:73
+#: includes/class-affiliatewp.php:38 includes/class-affiliatewp.php:76
+#: includes/class-affiliatewp.php:93
 msgid "Affiliate"
 msgstr "Affiliazione"
+
+#: includes/class-affiliatewp.php:42
+msgid "Affiliate URL Instructions"
+msgstr "Istruzioni URL affiliazione"
+
+#: includes/class-affiliatewp.php:44
+msgid "Instructions to print before affiliate URL"
+msgstr "Istruzioni da mostrare prima della URL di afifliazione"
+
+#: includes/class-affiliatewp.php:49
+msgid "Affiliate URL Generetor Instructions"
+msgstr "Istruzioni generatore URL affiliazione"
+
+#: includes/class-affiliatewp.php:51
+msgid "Instructions printed before the url generator"
+msgstr ""
+"Istruzioni mostrate prima del generatore URL nella pagina di affiliazione"
 
 #: templates/woocommerce/myaccount/form-login.php:39
 msgid "Login to Private Area"
@@ -327,20 +407,6 @@ msgid ""
 msgstr ""
 "la password ti è arrivata via mail se non la trovi nella casella di posta, "
 "controlla anche nella cartella di spam."
-
-#: templates/woocommerce/myaccount/dashboard.php:56
-#, php-format
-msgid ""
-"From your account dashboard you can view your <a href=\"%1$s\">recent "
-"orders</a>, manage your <a href=\"%2$s\">shipping and billing addresses</a> "
-"and <a href=\"%3$s\">edit your password and account details</a>."
-msgstr ""
-"Ti ringrazio per aver scelto Io Merito Credito e ti do il benvenuto nella "
-"tua area riservata. Qui potrai trovare e modificare le <a href=\"%3$s\">"
-"informazioni associate al tuo profilo</a>, i <a href=\"%5$s\">video e i "
-"corsi</a> che hai acquistato, le ricevute di pagamento, gli <a href=\"%2$s\">"
-"indirizzi di spedizione e fatturazione</a> e il link di <a href=\"%4$s\">"
-"affiliazione</a> per iniziare a guadagnare subito."
 
 #: templates/sensei/globals/pagination-lesson.php:50
 #: templates/sensei/globals/pagination-quiz.php:49
