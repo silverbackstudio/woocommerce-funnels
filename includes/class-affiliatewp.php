@@ -117,7 +117,7 @@ class AffiliateWP {
 		}		
 		
 		echo '<div id="url-instructions" class="affiliate-instructions">';
-		echo wpautop( $this->affiliate_url_instructions );
+		echo wpautop( do_shortcode($this->affiliate_url_instructions) );
 		echo '</div>';
 	}
 	
@@ -128,7 +128,7 @@ class AffiliateWP {
 		}
 		
 		echo '<div id="generator-instructions" class="affiliate-instructions">';
-		echo wpautop( $this->affiliate_url_generator_instructions );
+		echo wpautop( do_shortcode( $this->affiliate_url_generator_instructions ) );
 		echo '</div>';
 	}	
 

@@ -324,6 +324,8 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			add_action( 'add_chained_products_actions_filters', array( $this, 'chained_products_template_enable' ) );
 			add_action( 'remove_chained_products_actions_filters', array( $this, 'chained_products_template_disable' ) );
 			
+			add_filter( 'woocommerce_account_dashboard_introtext', 'do_shortcode', 100 );
+			add_filter( 'woocommerce_account_dashboard_introtext', 'wpautop', 110 );
 		}
 
 		public function chained_products_template_enable(){
