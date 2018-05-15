@@ -54,7 +54,6 @@ do_action( 'woocommerce_before_account_dashboard' );
 			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 			<p>
 			<?php
-			
 				$introtext_args = 	array(
 					esc_url( $orders_url ),
 					esc_url( $edit_address ),
@@ -64,8 +63,8 @@ do_action( 'woocommerce_before_account_dashboard' );
 				);
 		
 				$template = isset( $integrations['silverback-funnels'] ) ? $integrations['silverback-funnels']->dashboard_intro_text : '' ;
-		
-				echo apply_filters_ref_array( 'woocommerce_account_dashboard_introtext', array_merge( array( vprintf( $template, $introtext_args ) ), $introtext_args ) );
+
+				echo apply_filters_ref_array( 'woocommerce_account_dashboard_introtext', array_merge( array( vsprintf( $template, $introtext_args ) ), $introtext_args ) );
 			?>
 			</p>
 		</header><!-- .privatearea-header -->			
