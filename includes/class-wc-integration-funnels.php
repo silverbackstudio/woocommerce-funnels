@@ -29,6 +29,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		public $orders_menu_label;
 		public $account_product_categories;
 		public $dashboard_content_page;
+		public $dashboard_intro_text;
 		public $checkout_warranty_text;
 
 		public $disable_woocommerce_styles;
@@ -59,6 +60,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			$this->orders_menu_label          = $this->get_option( 'orders_menu_label' );
 			$this->account_product_categories = $this->get_option( 'account_product_categories' );
 			$this->dashboard_content_page     = $this->get_option( 'dashboard_content_page' );
+			$this->dashboard_intro_text     = $this->get_option( 'dashboard_intro_text' );
 			$this->disable_woocommerce_styles  = $this->get_option( 'disable_woocommerce_styles' );
 			$this->checkout_warranty_text  = $this->get_option( 'checkout_warranty_text' );
 
@@ -125,6 +127,13 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 					'default'     => '',
 					'options'     => wp_list_pluck( get_pages(), 'post_title', 'ID' ),
 				),
+				'dashboard_intro_text' => array(
+					'title'       => __( 'Dashboard Intro Text', 'woocommerce-funnels' ),
+					'type'        => 'textarea',
+					'description' => __( 'Set the template for the dashboard intro text. Available printf placeholders are: orders_url, edit_address, edit_account, affiliate_url, mycourses_url', 'woocommerce-funnels' ),
+					'desc_tip'    => true,
+					'default'     => __( 'From your account dashboard you can view your <a href="%1$s">recent orders</a>, manage your <a href="%2$s">shipping and billing addresses</a> and <a href="%3$s">edit your password and account details</a>.', 'woocommerce-funnels' ),
+				),				
 				'orders_menu_label'          => array(
 					'title'       => __( 'Orders Menu Label', 'woocommerce-funnels' ),
 					'type'        => 'text',

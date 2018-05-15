@@ -54,30 +54,23 @@ do_action( 'woocommerce_before_account_dashboard' );
 			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 			<p>
 			<?php
-				printf(
-					__( 'From your account dashboard you can view your <a href="%1$s">recent orders</a>, manage your <a href="%2$s">shipping and billing addresses</a> and <a href="%3$s">edit your password and account details</a>.', 'woocommerce-funnels' ),
+			
+				$introtext_args = 	array(
 					esc_url( $orders_url ),
 					esc_url( $edit_address ),
 					esc_url( $edit_account ),
 					esc_url( $affiliate ),
 					esc_url( $mycourses )
 				);
+		
+				$template = isset( $integrations['silverback-funnels'] ) ? $integrations['silverback-funnels']->dashboard_intro_text : '' ;
+		
+				echo apply_filters_ref_array( 'woocommerce_account_dashboard_introtext', array_merge( array( vprintf( $template, $introtext_args ) ), $introtext_args ) );
 			?>
 			</p>
 		</header><!-- .privatearea-header -->			
 
-		<div class="entry-content"><?php the_content(); ?></div>
-
 		<?php
-		endwhile;
-
-		wp_reset_postdata();
-	}
-
-	?>
-	
-	
-	<?php
 		/**
 		 * My Account dashboard.
 		 *
@@ -91,7 +84,20 @@ do_action( 'woocommerce_before_account_dashboard' );
 		 * @deprecated 2.6.0
 		 */
 		do_action( 'woocommerce_before_my_account' );
+		?>
 
+		<div class="entry-content"><?php the_content(); ?></div>
+
+		<?php
+		endwhile;
+
+		wp_reset_postdata();
+	}
+
+	?>
+	
+	
+	<?php
 		/**
 		 * Deprecated woocommerce_after_my_account action.
 		 *
