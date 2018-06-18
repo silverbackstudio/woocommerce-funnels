@@ -18,10 +18,10 @@
     "require": {
         "php": ">=5.6",
         "psr/log": "^1.0",        
-        "silverbackstudio/wp-themehelper": "^3.0.0",
+        "silverbackstudio/wp-themehelper": ">=3.0.0",
         "wpackagist-plugin/woocommerce" : "~3.3.0",
         "woothemes/woothemes-sensei": "~1.9.20",
-        "wpackagist-plugin/wp-user-avatar": "2.0.9"
+        "wpackagist-plugin/wp-user-avatar": "^2.1.0"
     },
     "require-dev": {
         "wimg/php-compatibility": "^7.1",
