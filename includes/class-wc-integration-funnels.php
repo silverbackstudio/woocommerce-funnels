@@ -118,6 +118,9 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		 */
 		public function init_form_fields() {
 
+			$dashboard_pages = wp_list_pluck( get_pages(), 'post_title', 'ID' );
+			$dashboard_pages[] = '--' . __('Not set', 'woocommerce-funnels') . '--';
+
 			$this->form_fields = array(
 				'dashboard_content_page' => array(
 					'title'       => __( 'Dashboard Content Page', 'woocommerce-funnels' ),
@@ -125,7 +128,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 					'description' => __( 'Select the page with the content to be shown in MyAccount Dashboard page', 'woocommerce-funnels' ),
 					'desc_tip'    => true,
 					'default'     => '',
-					'options'     => wp_list_pluck( get_pages(), 'post_title', 'ID' ),
+					'options'     => $dashboard_pages,
 				),
 				'dashboard_intro_text' => array(
 					'title'       => __( 'Dashboard Intro Text', 'woocommerce-funnels' ),
