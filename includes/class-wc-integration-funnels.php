@@ -290,6 +290,9 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			add_filter( 'woocommerce_get_checkout_order_received_url', array( $this, 'order_received_url' ), 10, 2 );
 
 			add_action( 'wp', array( $this, 'woocommerce_product_remove_default_contents' ) );
+			
+			add_filter( 'body_class', array( $this, 'body_classes' ) );
+			
 			add_action( 'template_redirect', array( $this, 'woocommerce_product_page_restrict' ) );
 
 			add_filter( 'wc_get_template_part', array( $this, 'plugin_template_part' ), 10, 3 );
@@ -384,6 +387,20 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 				add_filter( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );
 			}
 
+		}
+
+		public function body_classes( $classes = array() ) {
+			
+			if ( is_product() && get_post_meta( get_the_ID(), '_funnels_disable_product_template', true ) ) {
+				$classes[] = 'product-template-custom';
+				
+				if (($key = array_search('product-template-default', $classes)) !== false) {
+    				unset($classes[$key]);
+				}				
+				
+			}
+			
+			return $classes;
 		}
 
 		public function woocommerce_product_page_restrict() {
