@@ -52,7 +52,7 @@ do_action( 'woocommerce_before_account_dashboard' );
 		<header class="privatearea-header">
 			<?php the_post_thumbnail( 'content-full' ); ?>
 			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-			<p>
+			<div class="dashboard__intro-text">
 			<?php
 				$introtext_args = 	array(
 					esc_url( $orders_url ),
@@ -66,7 +66,7 @@ do_action( 'woocommerce_before_account_dashboard' );
 
 				echo apply_filters_ref_array( 'woocommerce_account_dashboard_introtext', array_merge( array( vsprintf( $template, $introtext_args ) ), $introtext_args ) );
 			?>
-			</p>
+			</div>
 		</header><!-- .privatearea-header -->			
 
 		<?php
