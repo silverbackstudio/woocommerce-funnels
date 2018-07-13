@@ -734,7 +734,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		public function checkout_page_url( $url ) {
 			global $product;
 
-			if ( $product && get_post_meta( $product->get_id(), '_funnels_disable_cart', true ) ) {
+			if ( $product instanceof \WC_Product && get_post_meta( $product->get_id(), '_funnels_disable_cart', true ) ) {
 				return wc_get_checkout_url();
 			}
 
@@ -1101,7 +1101,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			$output .= '<p class="shortcode-content">' . $content . '</p>';
 
 			ob_start();
-			// urroiudosi
+			
 			if ( has_action( 'woocommerce_thankyou_' . $order->get_payment_method() ) || has_action( 'woocommerce_thankyou' ) ) {
 				echo '<div class="payment-instructions">';
 				do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() );
