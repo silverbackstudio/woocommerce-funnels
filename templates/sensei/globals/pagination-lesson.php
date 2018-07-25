@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $post;
 
+
 $course_id = Sensei()->lesson->get_course_id( $post->ID );
 $modules_and_lessons = sensei_get_modules_and_lessons( $course_id );
 
@@ -44,7 +45,7 @@ if ( count( $modules_and_lessons > 0 ) ) {
 if ( isset( $next ) ) { ?>
 	<nav id="post-entries" class="post-entries fix">
 		<div class="nav-next fr">
-			<a href="<?php echo esc_url( get_permalink( $next ) ); ?>" rel="prev">
+			<a href="<?php echo esc_url( sensei_get_navigation_url( $course_id, $next ) ); ?>" rel="prev">
 				<?php echo get_the_post_thumbnail( $next, 'thumbnail' ); ?>
 				<?php if ( Sensei_Utils::user_completed_lesson( $post->ID, get_current_user_id() ) ) : ?>
 					<span class="motivation notice"><?php _e( 'Excellent, keep it up!', 'woocommerce-funnels' ); ?></span>
