@@ -31,6 +31,8 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		public $dashboard_content_page;
 		public $dashboard_intro_text;
 		public $checkout_warranty_text;
+		public $order_thankyou_footer;
+		public $disable_order_thankyou_details;
 
 		public $disable_woocommerce_styles;
 		public $disable_sensei_styles;
@@ -59,10 +61,13 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			$this->mycourses_menu_label       = $this->get_option( 'mycourses_menu_label' );
 			$this->orders_menu_label          = $this->get_option( 'orders_menu_label' );
 			$this->account_product_categories = $this->get_option( 'account_product_categories' );
+			$this->show_avatar = $this->get_option( 'show_avatar' );
 			$this->dashboard_content_page     = $this->get_option( 'dashboard_content_page' );
 			$this->dashboard_intro_text     = $this->get_option( 'dashboard_intro_text' );
 			$this->disable_woocommerce_styles  = $this->get_option( 'disable_woocommerce_styles' );
 			$this->checkout_warranty_text  = $this->get_option( 'checkout_warranty_text' );
+			$this->order_thankyou_footer  = $this->get_option( 'order_thankyou_footer' );
+			$this->disable_order_thankyou_details  = $this->get_option( 'disable_order_thankyou_details' );
 
 			add_action( 'init', array( $this, 'init_form_fields' ), 30 );
 			add_action( 'init', array( $this, 'init' ), 50 );
@@ -136,7 +141,14 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 					'description' => __( 'Set the template for the dashboard intro text. Available printf placeholders are: orders_url, edit_address, edit_account, affiliate_url, mycourses_url', 'woocommerce-funnels' ),
 					'desc_tip'    => true,
 					'default'     => __( 'From your account dashboard you can view your <a href="%1$s">recent orders</a>, manage your <a href="%2$s">shipping and billing addresses</a> and <a href="%3$s">edit your password and account details</a>.', 'woocommerce-funnels' ),
-				),				
+				),
+				'show_avatar' => array(
+					'title'       => __( 'Show user avatars', 'woocommerce-funnels' ),
+					'type'        => 'checkbox',
+					'description' => __( 'Show user avatars in accoutn sidebar', 'woocommerce-funnels' ),
+					'desc_tip'    => true,
+					'default'     => true,
+				),					
 				'orders_menu_label'          => array(
 					'title'       => __( 'Orders Menu Label', 'woocommerce-funnels' ),
 					'type'        => 'text',
@@ -164,6 +176,20 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 					'desc_tip'    => true,
 					'default'     => '',
 				),
+				'order_thankyou_footer' => array(
+					'title'       => __( 'Order Thankyou Footer', 'woocommerce-funnels' ),
+					'type'        => 'textarea',
+					'description' => __( 'A text shown after the order details in the order thankyou page', 'woocommerce-funnels' ),
+					'desc_tip'    => true,
+					'default'     => '',
+				),					
+				'disable_order_thankyou_details' => array(
+					'title'       => __( 'Disable Details in Order Thankyou', 'woocommerce-funnels' ),
+					'type'        => 'checkbox',
+					'description' => __( 'Hide the order details table in order thankyou page', 'woocommerce-funnels' ),
+					'desc_tip'    => true,
+					'default'     => true,
+				),				
 				'disable_woocommerce_styles' => array(
 					'title'       => __( 'Disable WooCommerce Styles', 'woocommerce-funnels' ),
 					'type'        => 'checkbox',
@@ -287,8 +313,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			add_action( 'woocommerce_product_data_panels', array( $this, 'woocommerce_product_data_panels' ) );
 			add_action( 'woocommerce_process_product_meta', array( $this, 'woocommerce_product_data_save' ), 10, 2 );
 
-			add_filter( 'woocommerce_get_checkout_order_received_url', array( $this, 'order_received_url' ), 10, 2 );
-
 			add_action( 'wp', array( $this, 'woocommerce_product_remove_default_contents' ) );
 			
 			add_filter( 'body_class', array( $this, 'body_classes' ) );
@@ -319,8 +343,16 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close' );
 			add_filter( 'woocommerce_my_account_my_address_description', array( $this, 'my_account_address_description' ) );
 			add_action( 'woocommerce_save_account_details', array( $this, 'save_account_details_redirect' ) );
-
-			add_shortcode( 'woocommerce_order_thankyou', array( $this, 'order_thankyou_shortcode' ) );
+			
+			//add_filter( 'woocommerce_get_checkout_order_received_url', array( $this, 'order_received_url' ), 10, 2 );
+			add_filter( 'woocommerce_thankyou', array( $this, 'order_thankyou_page_text' ), 9 );
+			add_filter( 'woocommerce_thankyou', array( $this, 'order_thankyou_page_footer' ), 11 );
+			remove_action( 'woocommerce_order_details_after_order_table', 'woocommerce_order_again_button' );
+			
+			if ( filter_var( $this->disable_order_thankyou_details, FILTER_VALIDATE_BOOLEAN) ) {
+				remove_action( 'woocommerce_thankyou', 'woocommerce_order_details_table', 10 );
+			}	
+			
 			add_action( 'woocommerce_before_main_content', array( $this, 'upsell_order_thankyou' ), 10 );
 
 			add_filter( 'woocommerce_bacs_account_fields', array( $this, 'specify_bacs_reason' ), 10, 2 );
@@ -552,7 +584,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			?>
 				<div id="profile">
 					<?php echo get_avatar( $member->ID, 'thumbnail' ); ?>
-					<div class="user-name"><?php echo $member->user_firstname . '&nbsp;' . $member->user_lastname; ?></div>    
+					<div class="user-name"><?php echo $member->display_name; ?></div>    
 				<div class="user-email"><?php echo esc_html( $member->user_email ); ?></div>
 			</div>
 			<?php
@@ -1020,118 +1052,70 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 
 		}
 
-		public function order_received_url( $url, $order ) {
+		// public function order_received_url( $url, $order ) {
 
-			if ( is_numeric( $order ) ) {
-				$order = wc_get_order( $order );
-			}
+		// 	if ( is_numeric( $order ) ) {
+		// 		$order = wc_get_order( $order );
+		// 	}
 
-			if ( ! $order || $order->has_status( 'failed' ) ) {
-				return $url;
-			}
+		// 	if ( ! $order || $order->needs_payment() ) {
+		// 		return $url;
+		// 	}
 
-			$redirect_to = null;
+		// 	$redirect_to = null;
 
-			if ( $upsell_product = $this->order_upsell_product( $order ) ) {
-				$redirect_to = get_permalink( $upsell_product );
-			} elseif ( $thankyou_page_id = $this->get_order_thankyou_page( $order ) ) {
-				$redirect_to = get_permalink( $thankyou_page_id );
-			}
+		// 	if ( $upsell_product = $this->order_upsell_product( $order ) ) {
+		// 		$redirect_to = get_permalink( $upsell_product );
+		// 	} elseif ( $thankyou_page_id = $this->get_order_thankyou_page( $order ) ) {
+		// 		$redirect_to = get_permalink( $thankyou_page_id );
+		// 	}
 
-			if ( ! empty( $redirect_to ) ) {
+		// 	if ( ! empty( $redirect_to ) ) {
 
-				$redirect_to = add_query_arg(
-					array(
-						'order' => $order->get_id(),
-						'key'   => $order->get_order_key(),
-					),
-					$redirect_to
-				);
+		// 		$redirect_to = add_query_arg(
+		// 			array(
+		// 				'order' => $order->get_id(),
+		// 				'key'   => $order->get_order_key(),
+		// 			),
+		// 			$redirect_to
+		// 		);
 
-				if ( 'yes' === get_option( 'woocommerce_force_ssl_checkout' ) || is_ssl() ) {
-					$redirect_to = str_replace( 'http:', 'https:', $redirect_to );
-				}
+		// 		if ( 'yes' === get_option( 'woocommerce_force_ssl_checkout' ) || is_ssl() ) {
+		// 			$redirect_to = str_replace( 'http:', 'https:', $redirect_to );
+		// 		}
 
-				$url = $redirect_to;
+		// 		$url = $redirect_to;
 
-			}
+		// 	}
 
-			return $url;
-		}
+		// 	return $url;
+		// }
 
-		public function upsell_order_thankyou() {
-			echo $this->order_thankyou_shortcode();
-		}
-
-		public function order_thankyou_shortcode( $atts = array(), $content = '' ) {
-
-			$order = false;
-
-			$order_id  = apply_filters( 'woocommerce_thankyou_order_id', filter_input( INPUT_GET, 'order', FILTER_VALIDATE_INT ) );
-			$order_key = apply_filters( 'woocommerce_thankyou_order_key', filter_input( INPUT_GET, 'key', FILTER_SANITIZE_ENCODED ) );
-
-			if ( $order_id > 0 ) {
-				$order = wc_get_order( $order_id );
-				if ( ! $order || $order->get_order_key() !== $order_key ) {
-					$order = false;
-				}
-			}
-
-			if ( ! $order || $order->has_status( 'failed' ) ) {
-				return '';
-			}
-
-			$payment_gateway = wc_get_payment_gateway_by_order( $order );
-
-			if ( ! empty( $payment_gateway->instructions ) ) {
-				$payment_gateway->instructions = str_replace( '{ORDER_ID}', $order_id, $payment_gateway->instructions );
-			}
-
-			$output = '<div id="order-thankyou">';
-
-			$attr = shortcode_atts(
-				array(
-					'show_details' => 1,
-					'details_button' => 1,
-					'message' => __( 'Thank you for your purchase!', 'woocommerce-funnels' ),
-				), $atts
-			);
-
-			$output .= '<h2>' . $attr['message'] . '</h2>';
-			$output .= '<p class="shortcode-content">' . $content . '</p>';
-
-			ob_start();
+		public function order_thankyou_page_text( $order_id ) {
 			
-			if ( has_action( 'woocommerce_thankyou_' . $order->get_payment_method() ) || has_action( 'woocommerce_thankyou' ) ) {
-				echo '<div class="payment-instructions">';
-				do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() );
-				remove_all_actions( 'woocommerce_thankyou_' . $order->get_payment_method() );
-				echo '</div>';
+			$order = wc_get_order( $order_id );
+			$thankyou_page_id = $this->get_order_thankyou_page( $order );
+			$thankyou_page = null;
+			
+			if ( $thankyou_page_id ) {
+				$thankyou_page = get_post( $thankyou_page_id, 'OBJECT' );
 			}
-
-			if ( $attr['show_details'] && $attr['details_button'] ) {
-				$button_output = '<button class="button order-details-toggle" >' . __( 'Show details', 'woocommerce-funnels' ) . '</button>';
-			} elseif ( $attr['details_button'] ) {
-				$button_output = '<a class="button" target="_blank" href="' . esc_url( $order->get_checkout_order_received_url() ) . '">' . __( 'Show details', 'woocommerce-funnels' ) . '</a>';
+			
+			if ( ! $thankyou_page instanceof \WP_Post ) {
+				return;
 			}
-
-			if ( ! empty( $button_output ) ) {
-				echo '<div class="order-more-info">' . sprintf( __( 'Find all the info %s', 'woocommerce-funnels' ), $button_output ) . '</div>';
-			}
-
-			if ( $attr['show_details'] ) {
-				echo '<div id="order-details" style="display: none;">';
-				wc_get_template( 'checkout/thankyou.php', array( 'order' => $order ) );
-				echo '</div>';
-			}
-
-			$output .= ob_get_contents();
-			ob_end_clean();
-
-			$output .= '</div>';
-
-			return $output;
+			
+			$thankyou_page = get_post( $thankyou_page_id );
+			
+			echo apply_filters('the_content', $thankyou_page->post_content );
+			
 		}
+		
+		public function order_thankyou_page_footer() {
+			if ( $this->order_thankyou_footer ) {
+				echo $this->order_thankyou_footer;
+			}
+		}	
 
 		public function specify_bacs_reason( $fields, $order_id ) {
 
