@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _s 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2018-07-25 15:07+0000\n"
+"POT-Creation-Date: 2018-07-27 11:52+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-07-25 15:08+0000\n"
+"PO-Revision-Date: 2018-07-27 11:54+0000\n"
 "Last-Translator: Pippo <webmaster@silverbackstudio.it>\n"
 "Language-Team: Italiano\n"
 "Language: it_IT\n"
@@ -54,7 +54,7 @@ msgid "The label for Courses in account menu"
 msgstr "L'etichetta nel menu account per i corsi"
 
 #: includes/class-sensei.php:46 includes/class-sensei.php:147
-#: includes/class-wc-integration-funnels.php:606
+#: includes/class-wc-integration-funnels.php:638
 msgid "My Courses"
 msgstr "I miei corsi"
 
@@ -67,7 +67,7 @@ msgid "The description shown after the title in courses page"
 msgstr "L' introduzione mostrata dopo il titolo nella pagina \"I miei corsi\""
 
 #: includes/class-sensei.php:150 includes/class-sensei.php:187
-#: includes/class-wc-integration-funnels.php:609
+#: includes/class-wc-integration-funnels.php:641
 msgid "Messages"
 msgstr "Messaggi"
 
@@ -143,24 +143,24 @@ msgid "Instructions printed before the url generator"
 msgstr ""
 "Istruzioni mostrate prima del generatore URL nella pagina di affiliazione"
 
-#: includes/class-wc-integration-funnels.php:52
+#: includes/class-wc-integration-funnels.php:54
 msgid "Funnels"
 msgstr "Funnels"
 
 #. Description of the plugin
-#: includes/class-wc-integration-funnels.php:53
+#: includes/class-wc-integration-funnels.php:55
 msgid "Changes the WooCommerce Purchase Flow to allow Funnels"
 msgstr "Modifica le caratteristiche di WooCommerce per generare Funnel"
 
-#: includes/class-wc-integration-funnels.php:71
+#: includes/class-wc-integration-funnels.php:76
 msgid "Private area"
 msgstr "Area Riservata"
 
-#: includes/class-wc-integration-funnels.php:96
+#: includes/class-wc-integration-funnels.php:101
 msgid "Select the product that has to be purchased"
 msgstr "Seleziona il prodotto che deve essere acquistato"
 
-#: includes/class-wc-integration-funnels.php:100
+#: includes/class-wc-integration-funnels.php:105
 msgid ""
 "Select the page to where we redirect the user if the product has not been "
 "purchased"
@@ -168,35 +168,35 @@ msgstr ""
 "Seleziona la pagina a cui reindirizzare l'utente se il prodotto non e' stato "
 "acquistato"
 
-#: includes/class-wc-integration-funnels.php:104
+#: includes/class-wc-integration-funnels.php:109
 msgid "Select the label for readmore button in account product category view"
 msgstr ""
 "Seleziona l'etichetta per il bottone \"Leggi di più\" nella vista categoria "
 "prodotto dell'account."
 
-#: includes/class-wc-integration-funnels.php:110
+#: includes/class-wc-integration-funnels.php:115
 msgid "Product Restrict"
 msgstr "Limita a prodotto"
 
-#: includes/class-wc-integration-funnels.php:122
+#: includes/class-wc-integration-funnels.php:127
 msgid "Not set"
 msgstr "Non impostato"
 
-#: includes/class-wc-integration-funnels.php:126
+#: includes/class-wc-integration-funnels.php:131
 msgid "Dashboard Content Page"
 msgstr "Contenuto pagina dashboard"
 
-#: includes/class-wc-integration-funnels.php:128
+#: includes/class-wc-integration-funnels.php:133
 msgid ""
 "Select the page with the content to be shown in MyAccount Dashboard page"
 msgstr ""
 "Seleziona la pagina con il contenuto da mostrare nella bacheca dell'account"
 
-#: includes/class-wc-integration-funnels.php:134
+#: includes/class-wc-integration-funnels.php:139
 msgid "Dashboard Intro Text"
 msgstr "Testo introduttivo bacheca area riservata"
 
-#: includes/class-wc-integration-funnels.php:136
+#: includes/class-wc-integration-funnels.php:141
 msgid ""
 "Set the template for the dashboard intro text. Available printf placeholders "
 "are: orders_url, edit_address, edit_account, affiliate_url, mycourses_url"
@@ -205,7 +205,7 @@ msgstr ""
 "disponibili le sostituzioni printf nel seguente ordine: orders_url, "
 "edit_address, edit_account, affiliate_url, mycourses_url"
 
-#: includes/class-wc-integration-funnels.php:138
+#: includes/class-wc-integration-funnels.php:143
 #, php-format
 msgid ""
 "From your account dashboard you can view your <a href=\"%1$s\">recent "
@@ -219,94 +219,122 @@ msgstr ""
 "indirizzi di spedizione e fatturazione</a> e il link di <a href=\"%4$s\">"
 "affiliazione</a> per iniziare a guadagnare subito."
 
-#: includes/class-wc-integration-funnels.php:141
+#: includes/class-wc-integration-funnels.php:146
+msgid "Show user avatars"
+msgstr "Mostra Profilo Utente"
+
+#: includes/class-wc-integration-funnels.php:148
+msgid "Show user avatars in accoutn sidebar"
+msgstr "Mostrai il profilo dell'utente nell'area riservata"
+
+#: includes/class-wc-integration-funnels.php:153
 msgid "Orders Menu Label"
 msgstr "Etichetta Menu Ordini"
 
-#: includes/class-wc-integration-funnels.php:143
+#: includes/class-wc-integration-funnels.php:155
 msgid "The label for orders in account menu"
 msgstr "L'etichetta nel menu account per gli ordini"
 
-#: includes/class-wc-integration-funnels.php:145
+#: includes/class-wc-integration-funnels.php:157
 msgid "Orders / Invoices"
 msgstr "Ordini / Fatture"
 
-#: includes/class-wc-integration-funnels.php:148
+#: includes/class-wc-integration-funnels.php:160
 msgid "Account Product Categories"
 msgstr "Categorie Prodotto nel menu Account"
 
-#: includes/class-wc-integration-funnels.php:150
+#: includes/class-wc-integration-funnels.php:162
 msgid ""
 "Select the product categories that you want to be shown in My Account Menu"
 msgstr ""
 "Seleziona le categorie di prodotto che vuoi che vengano mostrate nel menu "
 "dell'account utente (solo prodotti acquistati)"
 
-#: includes/class-wc-integration-funnels.php:161
+#: includes/class-wc-integration-funnels.php:173
 msgid "Checkout Warranty Text"
 msgstr "Testo Garanzia Acquisti"
 
-#: includes/class-wc-integration-funnels.php:163
+#: includes/class-wc-integration-funnels.php:175
 msgid "The content for the checkout warranty box"
 msgstr "Il contenuto per il box con la garanzia acquisti "
 
-#: includes/class-wc-integration-funnels.php:168
+#: includes/class-wc-integration-funnels.php:180
+msgid "Order Thankyou Footer"
+msgstr "Footer pagina di ringraziamento ordine"
+
+#: includes/class-wc-integration-funnels.php:182
+msgid "A text shown after the order details in the order thankyou page"
+msgstr ""
+"Questo testo viene mostrato dopo i dettagli dell'ordine nella pagina di "
+"ringraziamento acquisto"
+
+#: includes/class-wc-integration-funnels.php:187
+msgid "Disable Details in Order Thankyou"
+msgstr "Nascondi i dettagli dell'ordine nella pagina di ringraziamento"
+
+#: includes/class-wc-integration-funnels.php:189
+msgid "Hide the order details table in order thankyou page"
+msgstr ""
+"Nasconde la tabella con i dettagli dell'ordine nella pagina di "
+"ringraziamento acquisto"
+
+#: includes/class-wc-integration-funnels.php:194
 msgid "Disable WooCommerce Styles"
 msgstr "Elimina lo stile di WooCommerce"
 
-#: includes/class-wc-integration-funnels.php:170
+#: includes/class-wc-integration-funnels.php:196
 msgid "Disable WooCommerce CSS styles"
 msgstr "Elimina gli stili CSS di WooCommerce"
 
-#: includes/class-wc-integration-funnels.php:175
+#: includes/class-wc-integration-funnels.php:201
 msgid "Debug Log"
 msgstr "Monitoraggio errori"
 
-#: includes/class-wc-integration-funnels.php:177
+#: includes/class-wc-integration-funnels.php:203
 msgid "Enable logging"
 msgstr "Attiva Moniotoraggio"
 
-#: includes/class-wc-integration-funnels.php:179
+#: includes/class-wc-integration-funnels.php:205
 msgid "Log events such as API requests"
 msgstr "Registra eventi come richieste API"
 
-#: includes/class-wc-integration-funnels.php:350
+#: includes/class-wc-integration-funnels.php:382
 msgid "Free"
 msgstr "Gratis"
 
-#: includes/class-wc-integration-funnels.php:354
+#: includes/class-wc-integration-funnels.php:386
 msgctxt "original value"
 msgid "Value"
 msgstr "Valore"
 
-#: includes/class-wc-integration-funnels.php:444
+#: includes/class-wc-integration-funnels.php:476
 msgid ""
 "You are not allowed to access this page, please purchase the linked product"
 msgstr ""
 "Per ottenere l'accesso a questa pagina e' necessario acquistare il prodotto "
 "associato."
 
-#: includes/class-wc-integration-funnels.php:545
+#: includes/class-wc-integration-funnels.php:577
 msgid "Toggle Account Menu"
 msgstr "Mostra/Nascondi il menu Account"
 
-#: includes/class-wc-integration-funnels.php:778
+#: includes/class-wc-integration-funnels.php:810
 msgid "Profile Image"
 msgstr "Immagine di profilo"
 
-#: includes/class-wc-integration-funnels.php:788
+#: includes/class-wc-integration-funnels.php:820
 msgid "Edit Adresses"
 msgstr "Modifica indirizzi"
 
-#: includes/class-wc-integration-funnels.php:804
+#: includes/class-wc-integration-funnels.php:836
 msgid "Payment Methods"
 msgstr "Metodi di pagamento"
 
-#: includes/class-wc-integration-funnels.php:845
+#: includes/class-wc-integration-funnels.php:877
 msgid "Disable Default Template"
 msgstr "Disattiva Template Prodotto"
 
-#: includes/class-wc-integration-funnels.php:846
+#: includes/class-wc-integration-funnels.php:878
 msgid ""
 "Disable WooCommerce product template, you must create the page content "
 "manually"
@@ -314,46 +342,46 @@ msgstr ""
 "Disattiva il template di base del prodotto, dovrai creare il contenuto della "
 "pagina manualmente"
 
-#: includes/class-wc-integration-funnels.php:858
+#: includes/class-wc-integration-funnels.php:890
 msgid "Add to Cart Text"
 msgstr "Testo pulsante aggiunta al carrello"
 
-#: includes/class-wc-integration-funnels.php:859
+#: includes/class-wc-integration-funnels.php:891
 msgid "The text displayed in Add to cart button"
 msgstr "Testo mostrato nel pulsante di aggiunta al carrello/acquisto"
 
-#: includes/class-wc-integration-funnels.php:871
+#: includes/class-wc-integration-funnels.php:903
 msgid "Skip Cart"
 msgstr "Salta carrello"
 
-#: includes/class-wc-integration-funnels.php:872
+#: includes/class-wc-integration-funnels.php:904
 msgid "This will skip the cart and redirect the user directly to checkout page"
 msgstr ""
 "Salta la pagina del carrello e invia l'utente direttamente al pagamento"
 
-#: includes/class-wc-integration-funnels.php:881
+#: includes/class-wc-integration-funnels.php:913
 msgid "Direct Upsell Product"
 msgstr "Prodotto in Upsell Diretto"
 
-#: includes/class-wc-integration-funnels.php:894
+#: includes/class-wc-integration-funnels.php:928
 msgid "This lets you choose which product will be redirected to after checkout"
 msgstr ""
 "Scegli verso quale prodotto vorresti che l'utente venga reindirizzato dopo "
 "il pagamento"
 
-#: includes/class-wc-integration-funnels.php:901
+#: includes/class-wc-integration-funnels.php:935
 msgid "-- Default order summary --"
 msgstr "-- Riepilogo ordine predefinito --"
 
-#: includes/class-wc-integration-funnels.php:949
+#: includes/class-wc-integration-funnels.php:983
 msgid "Safe Payments"
 msgstr "Pagamenti sicuri"
 
-#: includes/class-wc-integration-funnels.php:955
+#: includes/class-wc-integration-funnels.php:989
 msgid "Choose payment method"
 msgstr "Scegli il metodo di pagamento"
 
-#: includes/class-wc-integration-funnels.php:984
+#: includes/class-wc-integration-funnels.php:1018
 msgid ""
 "The <b>billing address</b> is used to compose the invoices. The <b>shipping "
 "address</b> will be used to send you phisical products that you may purchase."
@@ -365,25 +393,11 @@ msgstr ""
 "modificare questi indirizzi durante la fase di pagamento se effettuerai "
 "altri acquisti."
 
-#: includes/class-wc-integration-funnels.php:1096
-msgid "Thank you for your purchase!"
-msgstr "Grazie per il tuo acquisto!"
-
-#: includes/class-wc-integration-funnels.php:1113
-#: includes/class-wc-integration-funnels.php:1115
-msgid "Show details"
-msgstr "qui"
-
-#: includes/class-wc-integration-funnels.php:1119
-#, php-format
-msgid "Find all the info %s"
-msgstr "Trovi le informazioni sul tuo ordine:  %s"
-
-#: includes/class-wc-integration-funnels.php:1139
+#: includes/class-wc-integration-funnels.php:1125
 msgid "Causal"
 msgstr "Causale"
 
-#: includes/class-wc-integration-funnels.php:1140
+#: includes/class-wc-integration-funnels.php:1126
 msgid "Payment for order number: "
 msgstr "Pagamento per  l'ordine numero: "
 
