@@ -283,7 +283,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 				}
 			}
 
-			if ( $this->show_avatar ) {
+			if ( filter_var( $this->show_avatar, FILTER_VALIDATE_BOOLEAN) ) {
 				add_action( 'woocommerce_before_account_navigation', array( $this, 'woocommerce_myaccount_sidebar_profile_before' ) );
 				add_action( 'woocommerce_after_account_navigation', array( $this, 'woocommerce_myaccount_sidebar_profile_after' ) );
 			}
@@ -327,7 +327,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			add_filter( 'theme_page_templates', array( $this, 'add_page_template' ), 10, 4 );
 			add_filter( 'template_include', array( $this, 'include_page_template' ) );
 
-			if ( $this->disable_woocommerce_styles ) {
+			if ( filter_var( $this->disable_woocommerce_styles, FILTER_VALIDATE_BOOLEAN) ) {
 				add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 			}
 
@@ -1115,7 +1115,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			if ( $this->order_thankyou_footer ) {
 				echo $this->order_thankyou_footer;
 			}
-		}	
+		}
 
 		public function specify_bacs_reason( $fields, $order_id ) {
 
