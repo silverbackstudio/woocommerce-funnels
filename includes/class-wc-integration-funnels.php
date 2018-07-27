@@ -1109,7 +1109,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			
 			$thankyou_page = get_post( $thankyou_page_id );
 			
-			echo apply_filters('the_content', $thankyou_page->post_content );
+			echo apply_filters('the_content', do_shortcode( $thankyou_page->post_content ) );
 			
 		}
 		
