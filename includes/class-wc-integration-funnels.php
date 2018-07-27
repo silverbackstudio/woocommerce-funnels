@@ -915,10 +915,12 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 					<?php
 					$upsell_product_ids = get_post_meta( $post->ID, '_funnels_direct_upsell_product', true );
 
-					foreach ( $upsell_product_ids as $upsell_product_id ) {
-						$upsell_product = wc_get_product( $upsell_product_id );
-						if ( is_object( $upsell_product_ids ) ) {
-							echo '<option value="' . esc_attr( $upsell_product_id ) . '"' . selected( true, true, false ) . '>' . wp_kses_post( $upsell_product->get_formatted_name() ) . '</option>';
+					if ( !empty( $upsell_product_ids ) ) {
+						foreach ( $upsell_product_ids as $upsell_product_id ) {
+							$upsell_product = wc_get_product( $upsell_product_id );
+							if ( is_object( $upsell_product_ids ) ) {
+								echo '<option value="' . esc_attr( $upsell_product_id ) . '"' . selected( true, true, false ) . '>' . wp_kses_post( $upsell_product->get_formatted_name() ) . '</option>';
+							}
 						}
 					}
 					?>
