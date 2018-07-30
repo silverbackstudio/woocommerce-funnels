@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _s 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2018-07-27 11:52+0000\n"
+"POT-Creation-Date: 2018-07-30 08:14+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -51,7 +51,7 @@ msgid "The label for Courses in account menu"
 msgstr ""
 
 #: includes/class-sensei.php:46 includes/class-sensei.php:147
-#: includes/class-wc-integration-funnels.php:638
+#: includes/class-wc-integration-funnels.php:637
 msgid "My Courses"
 msgstr ""
 
@@ -64,7 +64,7 @@ msgid "The description shown after the title in courses page"
 msgstr ""
 
 #: includes/class-sensei.php:150 includes/class-sensei.php:187
-#: includes/class-wc-integration-funnels.php:641
+#: includes/class-wc-integration-funnels.php:640
 msgid "Messages"
 msgstr ""
 
@@ -204,7 +204,7 @@ msgid "Show user avatars"
 msgstr ""
 
 #: includes/class-wc-integration-funnels.php:148
-msgid "Show user avatars in accoutn sidebar"
+msgid "Show user avatars in account sidebar"
 msgstr ""
 
 #: includes/class-wc-integration-funnels.php:153
@@ -272,94 +272,94 @@ msgstr ""
 msgid "Log events such as API requests"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:382
+#: includes/class-wc-integration-funnels.php:381
 msgid "Free"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:386
+#: includes/class-wc-integration-funnels.php:385
 msgctxt "original value"
 msgid "Value"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:476
+#: includes/class-wc-integration-funnels.php:475
 msgid ""
 "You are not allowed to access this page, please purchase the linked product"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:577
+#: includes/class-wc-integration-funnels.php:576
 msgid "Toggle Account Menu"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:810
+#: includes/class-wc-integration-funnels.php:809
 msgid "Profile Image"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:820
+#: includes/class-wc-integration-funnels.php:819
 msgid "Edit Adresses"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:836
+#: includes/class-wc-integration-funnels.php:835
 msgid "Payment Methods"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:877
+#: includes/class-wc-integration-funnels.php:876
 msgid "Disable Default Template"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:878
+#: includes/class-wc-integration-funnels.php:877
 msgid ""
 "Disable WooCommerce product template, you must create the page content "
 "manually"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:890
+#: includes/class-wc-integration-funnels.php:889
 msgid "Add to Cart Text"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:891
+#: includes/class-wc-integration-funnels.php:890
 msgid "The text displayed in Add to cart button"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:903
+#: includes/class-wc-integration-funnels.php:902
 msgid "Skip Cart"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:904
+#: includes/class-wc-integration-funnels.php:903
 msgid "This will skip the cart and redirect the user directly to checkout page"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:913
+#: includes/class-wc-integration-funnels.php:912
 msgid "Direct Upsell Product"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:928
+#: includes/class-wc-integration-funnels.php:927
 msgid "This lets you choose which product will be redirected to after checkout"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:935
+#: includes/class-wc-integration-funnels.php:934
 msgid "-- Default order summary --"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:983
+#: includes/class-wc-integration-funnels.php:982
 msgid "Safe Payments"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:989
+#: includes/class-wc-integration-funnels.php:988
 msgid "Choose payment method"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:1018
+#: includes/class-wc-integration-funnels.php:1017
 msgid ""
 "The <b>billing address</b> is used to compose the invoices. The <b>shipping "
 "address</b> will be used to send you phisical products that you may purchase."
 " You will be able to change both addresses durig the checkout process."
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:1125
+#: includes/class-wc-integration-funnels.php:1124
 msgid "Causal"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:1126
+#: includes/class-wc-integration-funnels.php:1125
 msgid "Payment for order number: "
 msgstr ""
 
