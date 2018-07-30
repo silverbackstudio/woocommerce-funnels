@@ -145,7 +145,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 				'show_avatar' => array(
 					'title'       => __( 'Show user avatars', 'woocommerce-funnels' ),
 					'type'        => 'checkbox',
-					'description' => __( 'Show user avatars in accoutn sidebar', 'woocommerce-funnels' ),
+					'description' => __( 'Show user avatars in account sidebar', 'woocommerce-funnels' ),
 					'desc_tip'    => true,
 					'default'     => true,
 				),					
@@ -283,10 +283,9 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 				}
 			}
 
-			if ( filter_var( $this->show_avatar, FILTER_VALIDATE_BOOLEAN) ) {
-				add_action( 'woocommerce_before_account_navigation', array( $this, 'woocommerce_myaccount_sidebar_profile_before' ) );
-				add_action( 'woocommerce_after_account_navigation', array( $this, 'woocommerce_myaccount_sidebar_profile_after' ) );
-			}
+			add_action( 'woocommerce_before_account_navigation', array( $this, 'woocommerce_myaccount_sidebar_before' ) );
+			add_action( 'woocommerce_after_account_navigation', array( $this, 'woocommerce_myaccount_sidebar_after' ) );
+			
 
 			foreach ( \WC()->query->get_query_vars() as $name => $endpoint ) {
 				add_action( 'woocommerce_account_' . $name . '_endpoint', array( $this, 'woocommerce_content_wrapper_start' ), 9 );
@@ -572,14 +571,14 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		}
 
 
-		public function woocommerce_myaccount_sidebar_profile_before() {
+		public function woocommerce_myaccount_sidebar_before() {
 		?>
 			<button class="toggle-secondary"><span class="screen-reader-text"><?php esc_html_e( 'Toggle Account Menu', 'woocommerce-funnels' ); ?></span></button>
 	
 			<div id="secondary" class="my-account togglable">
 	
 			<?php
-			if ( is_user_logged_in() ) :
+			if ( filter_var( $this->show_avatar, FILTER_VALIDATE_BOOLEAN) && is_user_logged_in() ) :
 				$member = wp_get_current_user();
 			?>
 				<div id="profile">
@@ -591,7 +590,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			endif;
 		}
 
-		public function woocommerce_myaccount_sidebar_profile_after() {
+		public function woocommerce_myaccount_sidebar_after() {
 		?>
 		</div> <!-- #secondary.my-account -->
 		<?php
