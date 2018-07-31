@@ -34,6 +34,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		public $order_thankyou_footer;
 		public $disable_order_thankyou_details;
 		public $show_email_validation;
+		public $phone_field;
 
 		public $disable_woocommerce_styles;
 		public $disable_sensei_styles;
@@ -70,6 +71,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			$this->order_thankyou_footer  = $this->get_option( 'order_thankyou_footer' );
 			$this->disable_order_thankyou_details  = $this->get_option( 'disable_order_thankyou_details' );
 			$this->show_email_validation  = $this->get_option( 'show_email_validation' );
+			$this->phone_field  = $this->get_option( 'phone_field' );
 
 			add_action( 'init', array( $this, 'init_form_fields' ), 30 );
 			add_action( 'init', array( $this, 'init' ), 50 );
@@ -206,6 +208,18 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 					'desc_tip'    => true,
 					'default'     => true,
 				),
+				'phone_field' => array(
+					'title'       => __( 'Phone field', 'woocommerce-funnels' ),
+					'type'        => 'select',
+					'description' => __( 'Choose if you want to show optional or required phone field in checkout', 'woocommerce-funnels' ),
+					'desc_tip'    => true,
+					'default'     => false,
+					'options'     => array(
+						'hide' => __( 'Hide', 'woocommerce-funnels' ),
+						'show' => __( 'Show', 'woocommerce-funnels' ),
+						'require' => __( 'Require', 'woocommerce-funnels' ),
+					)					
+				),				
 				'debug'                      => array(
 					'title'       => __( 'Debug Log', 'woocommerce-funnels' ),
 					'type'        => 'checkbox',
@@ -339,12 +353,14 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 				add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 			}
 
+			/**
+			* Checkout mods
+			*/
 			add_filter( 'woocommerce_before_checkout_form', array( $this, 'checkout_safe_payments_banner' ) );
 			add_filter( 'woocommerce_after_checkout_form', array( $this, 'checkout_warranty' ) );
 			add_filter( 'woocommerce_checkout_order_review', array( $this, 'choose_payment_method' ), 15 );
 
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'checkout_fields' ) );
-
 			add_action('woocommerce_after_checkout_validation',  array( $this, 'checkout_validation' ), 10, 2 );
 
 			$this->disable_checkout_notifications();
@@ -748,8 +764,22 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			$fields['billing_email']['class']    = array( 'form-row-wide' );
 
 			unset( $fields['billing_address_2'] );
-			unset( $fields['billing_phone'] );
-
+			
+			if ( array_key_exists( 'billing_phone', $fields ) ) {
+			
+				switch ( $this->phone_field ) {
+					case 'hide':
+						unset( $fields['billing_phone'] );		
+						break;
+					case 'require':
+						$fields['billing_phone']['required'] = true;
+					default:
+						$fields['billing_phone']['label'] = __('Phone (recommended)', 'woocommerce-funnels' );
+						$fields['billing_phone']['priority'] = 35;
+				}	
+				
+			}
+			
 			return $fields;
 		}
 
@@ -1016,7 +1046,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 				);			
 			
 			}
-			
+		
 			return $fields;
 		}
 
