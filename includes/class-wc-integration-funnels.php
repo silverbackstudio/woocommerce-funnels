@@ -33,6 +33,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		public $checkout_warranty_text;
 		public $order_thankyou_footer;
 		public $disable_order_thankyou_details;
+		public $show_email_validation;
 
 		public $disable_woocommerce_styles;
 		public $disable_sensei_styles;
@@ -68,6 +69,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			$this->checkout_warranty_text  = $this->get_option( 'checkout_warranty_text' );
 			$this->order_thankyou_footer  = $this->get_option( 'order_thankyou_footer' );
 			$this->disable_order_thankyou_details  = $this->get_option( 'disable_order_thankyou_details' );
+			$this->show_email_validation  = $this->get_option( 'show_email_validation' );
 
 			add_action( 'init', array( $this, 'init_form_fields' ), 30 );
 			add_action( 'init', array( $this, 'init' ), 50 );
@@ -196,6 +198,13 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 					'description' => __( 'Disable WooCommerce CSS styles', 'woocommerce-funnels' ),
 					'desc_tip'    => true,
 					'default'     => false,
+				),
+				'show_email_validation' => array(
+					'title'       => __( 'Show checkout e-mail validation field', 'woocommerce-funnels' ),
+					'type'        => 'checkbox',
+					'description' => __( 'Show the repeat email field in checkout form', 'woocommerce-funnels' ),
+					'desc_tip'    => true,
+					'default'     => true,
 				),
 				'debug'                      => array(
 					'title'       => __( 'Debug Log', 'woocommerce-funnels' ),
@@ -334,6 +343,10 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			add_filter( 'woocommerce_after_checkout_form', array( $this, 'checkout_warranty' ) );
 			add_filter( 'woocommerce_checkout_order_review', array( $this, 'choose_payment_method' ), 15 );
 
+			add_filter( 'woocommerce_checkout_fields' , array( $this, 'checkout_fields' ) );
+
+			add_action('woocommerce_after_checkout_validation',  array( $this, 'checkout_validation' ), 10, 2 );
+
 			$this->disable_checkout_notifications();
 
 			add_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_link_close', 15 );
@@ -352,7 +365,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 				remove_action( 'woocommerce_thankyou', 'woocommerce_order_details_table', 10 );
 			}	
 			
-			add_action( 'woocommerce_before_main_content', array( $this, 'upsell_order_thankyou' ), 10 );
+			//add_action( 'woocommerce_before_main_content', array( $this, 'upsell_order_thankyou' ), 10 );
 
 			add_filter( 'woocommerce_bacs_account_fields', array( $this, 'specify_bacs_reason' ), 10, 2 );
 			
@@ -987,6 +1000,35 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		?>
 			<h3 id="checkout_payment_heading" ><?php _e( 'Choose payment method', 'woocommerce-funnels' ); ?></h3>
 		<?php
+		}
+
+		public function checkout_fields( $fields ){
+			
+			if ( filter_var( $this->show_email_validation, FILTER_VALIDATE_BOOLEAN) ) {
+			
+				$fields['billing']['billing_email']['class'] = array('form-row-first');
+				 
+				$fields['billing']['billing_email_verify'] = array(
+				    'label'     => __('Repeat your email address', 'woocommerce-funnels'),
+				    'required'  => true,
+				    'class'     => array('form-row-last'),
+				    'clear'     => true
+				);			
+			
+			}
+			
+			return $fields;
+		}
+
+		public function checkout_validation ( $data, $errors ) { 
+
+			if (
+				filter_var( $this->show_email_validation, FILTER_VALIDATE_BOOLEAN) && 
+				( empty( $data['billing_email_verify'] ) || ( strcasecmp( $data['billing_email'], $data['billing_email_verify'] ) !== 0 ) ) 
+			) {
+				$errors->add( 'billing', __( 'The email addresses you entered are not equal', 'woocommerce-funnels' ) );
+			}			
+			
 		}
 
 		public function checkout_warranty() {
