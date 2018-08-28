@@ -75,6 +75,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 
 			add_action( 'init', array( $this, 'init_form_fields' ), 30 );
 			add_action( 'init', array( $this, 'init' ), 50 );
+			add_action( 'widgets_init', array( $this, 'register_sidebars' ));
 
 			$this->page_templates = array(
 				'page-templates/private-area.php' => __( 'Private area', 'woocommerce-funnels' ),
@@ -306,10 +307,9 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 				}
 			}
 
-			add_action( 'woocommerce_before_account_navigation', array( $this, 'woocommerce_myaccount_sidebar_before' ) );
-			add_action( 'woocommerce_after_account_navigation', array( $this, 'woocommerce_myaccount_sidebar_after' ) );
+			add_action( 'woocommerce_account_navigation', array( $this, 'woocommerce_myaccount_sidebar_before' ), 5 );
+			add_action( 'woocommerce_account_navigation', array( $this, 'woocommerce_myaccount_sidebar_after' ), 100 );
 			
-
 			foreach ( \WC()->query->get_query_vars() as $name => $endpoint ) {
 				add_action( 'woocommerce_account_' . $name . '_endpoint', array( $this, 'woocommerce_content_wrapper_start' ), 9 );
 				add_action( 'woocommerce_account_' . $name . '_endpoint', array( $this, 'woocommerce_content_wrapper_end' ), 11 );
@@ -392,6 +392,21 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			
 			add_filter( 'woocommerce_account_dashboard_introtext', 'do_shortcode', 100 );
 			add_filter( 'woocommerce_account_dashboard_introtext', 'wpautop', 110 );
+		}
+
+		/**
+		 * Add a sidebar.
+		 */
+		public function register_sidebars() {
+			register_sidebar( array(
+		        'name'          => __( 'Woocommerce Account Sidebar', 'woocommerce-funnels' ),
+		        'id'            => 'wc-account-sidebar',
+		        'description'   => __( 'Widgets in this area will be shown in all the WooCommerce accounts pages', 'woocommerce-funnels' ),
+		        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		        'after_widget'  => '</div>',
+		        'before_title'  => '<h2 class="widgettitle">',
+		        'after_title'   => '</h2>',
+		    ) );
 		}
 
 		public function chained_products_template_enable(){
@@ -599,7 +614,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			return false;
 		}
 
-
 		public function woocommerce_myaccount_sidebar_before() {
 		?>
 			<button class="toggle-secondary"><span class="screen-reader-text"><?php esc_html_e( 'Toggle Account Menu', 'woocommerce-funnels' ); ?></span></button>
@@ -613,18 +627,21 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 				<div id="profile">
 					<?php echo get_avatar( $member->ID, 'thumbnail' ); ?>
 					<div class="user-name"><?php echo $member->display_name; ?></div>    
-				<div class="user-email"><?php echo esc_html( $member->user_email ); ?></div>
-			</div>
+					<div class="user-email"><?php echo esc_html( $member->user_email ); ?></div>
+				</div>
 			<?php
 			endif;
 		}
 
 		public function woocommerce_myaccount_sidebar_after() {
-		?>
+			if ( is_active_sidebar( 'wc-account-sidebar' ) ) : ?>
+				<aside id="wc-account-sidebar" class="widget-area" role="complementary">
+				<?php dynamic_sidebar( 'wc-account-sidebar' ); ?>
+				</aside>
+			<?php endif;?>
 		</div> <!-- #secondary.my-account -->
 		<?php
 		}
-
 
 		public function woocommerce_menu_items( $items ) {
 

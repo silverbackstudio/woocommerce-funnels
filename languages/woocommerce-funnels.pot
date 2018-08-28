@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _s 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2018-07-31 14:41+0000\n"
+"POT-Creation-Date: 2018-08-28 09:16+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,6 +34,291 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+#: includes/class-wc-integration-funnels.php:56
+msgid "Funnels"
+msgstr ""
+
+#. Description of the plugin
+#: includes/class-wc-integration-funnels.php:57
+msgid "Changes the WooCommerce Purchase Flow to allow Funnels"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:81
+msgid "Private area"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:106
+msgid "Select the product that has to be purchased"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:110
+msgid ""
+"Select the page to where we redirect the user if the product has not been "
+"purchased"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:114
+msgid "Select the label for readmore button in account product category view"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:120
+msgid "Product Restrict"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:132
+msgid "Not set"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:136
+msgid "Dashboard Content Page"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:138
+msgid ""
+"Select the page with the content to be shown in MyAccount Dashboard page"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:144
+msgid "Dashboard Intro Text"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:146
+msgid ""
+"Set the template for the dashboard intro text. Available printf placeholders "
+"are: orders_url, edit_address, edit_account, affiliate_url, mycourses_url"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:148
+#, php-format
+msgid ""
+"From your account dashboard you can view your <a href=\"%1$s\">recent "
+"orders</a>, manage your <a href=\"%2$s\">shipping and billing addresses</a> "
+"and <a href=\"%3$s\">edit your password and account details</a>."
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:151
+msgid "Show user avatars"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:153
+msgid "Show user avatars in account sidebar"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:158
+msgid "Orders Menu Label"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:160
+msgid "The label for orders in account menu"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:162
+msgid "Orders / Invoices"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:165
+msgid "Account Product Categories"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:167
+msgid ""
+"Select the product categories that you want to be shown in My Account Menu"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:178
+msgid "Checkout Warranty Text"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:180
+msgid "The content for the checkout warranty box"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:185
+msgid "Order Thankyou Footer"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:187
+msgid "A text shown after the order details in the order thankyou page"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:192
+msgid "Disable Details in Order Thankyou"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:194
+msgid "Hide the order details table in order thankyou page"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:199
+msgid "Disable WooCommerce Styles"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:201
+msgid "Disable WooCommerce CSS styles"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:206
+msgid "Show checkout e-mail validation field"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:208
+msgid "Show the repeat email field in checkout form"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:213
+msgid "Phone field"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:215
+msgid "Choose if you want to show optional or required phone field in checkout"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:219
+msgid "Hide"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:220
+msgid "Show"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:221
+msgid "Require"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:225
+msgid "Debug Log"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:227
+msgid "Enable logging"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:229
+msgid "Log events such as API requests"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:402
+msgid "Woocommerce Account Sidebar"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:404
+msgid ""
+"Widgets in this area will be shown in all the WooCommerce accounts pages"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:425
+msgid "Free"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:429
+msgctxt "original value"
+msgid "Value"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:519
+msgid ""
+"You are not allowed to access this page, please purchase the linked product"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:620
+msgid "Toggle Account Menu"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:684 includes/class-sensei.php:46
+#: includes/class-sensei.php:147
+msgid "My Courses"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:687 includes/class-sensei.php:150
+#: includes/class-sensei.php:187
+msgid "Messages"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:795
+msgid "Phone (recommended)"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:870
+msgid "Profile Image"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:880
+msgid "Edit Adresses"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:896
+msgid "Payment Methods"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:937
+msgid "Disable Default Template"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:938
+msgid ""
+"Disable WooCommerce product template, you must create the page content "
+"manually"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:950
+msgid "Add to Cart Text"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:951
+msgid "The text displayed in Add to cart button"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:963
+msgid "Skip Cart"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:964
+msgid "This will skip the cart and redirect the user directly to checkout page"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:973
+msgid "Direct Upsell Product"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:988
+msgid "This lets you choose which product will be redirected to after checkout"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:995
+msgid "-- Default order summary --"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:1043
+msgid "Safe Payments"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:1049
+msgid "Choose payment method"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:1060
+msgid "Repeat your email address"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:1077
+msgid "The email addresses you entered are not equal"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:1107
+msgid ""
+"The <b>billing address</b> is used to compose the invoices. The <b>shipping "
+"address</b> will be used to send you phisical products that you may purchase."
+" You will be able to change both addresses durig the checkout process."
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:1214
+msgid "Causal"
+msgstr ""
+
+#: includes/class-wc-integration-funnels.php:1215
+msgid "Payment for order number: "
+msgstr ""
+
 #: includes/class-sensei.php:34
 msgid "Show user courses page"
 msgstr ""
@@ -50,22 +335,12 @@ msgstr ""
 msgid "The label for Courses in account menu"
 msgstr ""
 
-#: includes/class-sensei.php:46 includes/class-sensei.php:147
-#: includes/class-wc-integration-funnels.php:666
-msgid "My Courses"
-msgstr ""
-
 #: includes/class-sensei.php:50
 msgid "User courses page description"
 msgstr ""
 
 #: includes/class-sensei.php:52
 msgid "The description shown after the title in courses page"
-msgstr ""
-
-#: includes/class-sensei.php:150 includes/class-sensei.php:187
-#: includes/class-wc-integration-funnels.php:669
-msgid "Messages"
 msgstr ""
 
 #: includes/class-sensei.php:214
@@ -137,282 +412,6 @@ msgstr ""
 msgid "Instructions printed before the url generator"
 msgstr ""
 
-#: includes/class-wc-integration-funnels.php:56
-msgid "Funnels"
-msgstr ""
-
-#. Description of the plugin
-#: includes/class-wc-integration-funnels.php:57
-msgid "Changes the WooCommerce Purchase Flow to allow Funnels"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:80
-msgid "Private area"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:105
-msgid "Select the product that has to be purchased"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:109
-msgid ""
-"Select the page to where we redirect the user if the product has not been "
-"purchased"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:113
-msgid "Select the label for readmore button in account product category view"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:119
-msgid "Product Restrict"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:131
-msgid "Not set"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:135
-msgid "Dashboard Content Page"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:137
-msgid ""
-"Select the page with the content to be shown in MyAccount Dashboard page"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:143
-msgid "Dashboard Intro Text"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:145
-msgid ""
-"Set the template for the dashboard intro text. Available printf placeholders "
-"are: orders_url, edit_address, edit_account, affiliate_url, mycourses_url"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:147
-#, php-format
-msgid ""
-"From your account dashboard you can view your <a href=\"%1$s\">recent "
-"orders</a>, manage your <a href=\"%2$s\">shipping and billing addresses</a> "
-"and <a href=\"%3$s\">edit your password and account details</a>."
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:150
-msgid "Show user avatars"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:152
-msgid "Show user avatars in account sidebar"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:157
-msgid "Orders Menu Label"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:159
-msgid "The label for orders in account menu"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:161
-msgid "Orders / Invoices"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:164
-msgid "Account Product Categories"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:166
-msgid ""
-"Select the product categories that you want to be shown in My Account Menu"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:177
-msgid "Checkout Warranty Text"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:179
-msgid "The content for the checkout warranty box"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:184
-msgid "Order Thankyou Footer"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:186
-msgid "A text shown after the order details in the order thankyou page"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:191
-msgid "Disable Details in Order Thankyou"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:193
-msgid "Hide the order details table in order thankyou page"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:198
-msgid "Disable WooCommerce Styles"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:200
-msgid "Disable WooCommerce CSS styles"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:205
-msgid "Show checkout e-mail validation field"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:207
-msgid "Show the repeat email field in checkout form"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:212
-msgid "Phone field"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:214
-msgid "Choose if you want to show optional or required phone field in checkout"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:218
-msgid "Hide"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:219
-msgid "Show"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:220
-msgid "Require"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:224
-msgid "Debug Log"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:226
-msgid "Enable logging"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:228
-msgid "Log events such as API requests"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:410
-msgid "Free"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:414
-msgctxt "original value"
-msgid "Value"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:504
-msgid ""
-"You are not allowed to access this page, please purchase the linked product"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:605
-msgid "Toggle Account Menu"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:777
-msgid "Phone (recommended)"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:852
-msgid "Profile Image"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:862
-msgid "Edit Adresses"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:878
-msgid "Payment Methods"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:919
-msgid "Disable Default Template"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:920
-msgid ""
-"Disable WooCommerce product template, you must create the page content "
-"manually"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:932
-msgid "Add to Cart Text"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:933
-msgid "The text displayed in Add to cart button"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:945
-msgid "Skip Cart"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:946
-msgid "This will skip the cart and redirect the user directly to checkout page"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:955
-msgid "Direct Upsell Product"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:970
-msgid "This lets you choose which product will be redirected to after checkout"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:977
-msgid "-- Default order summary --"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:1025
-msgid "Safe Payments"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:1031
-msgid "Choose payment method"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:1042
-msgid "Repeat your email address"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:1059
-msgid "The email addresses you entered are not equal"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:1089
-msgid ""
-"The <b>billing address</b> is used to compose the invoices. The <b>shipping "
-"address</b> will be used to send you phisical products that you may purchase."
-" You will be able to change both addresses durig the checkout process."
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:1196
-msgid "Causal"
-msgstr ""
-
-#: includes/class-wc-integration-funnels.php:1197
-msgid "Payment for order number: "
-msgstr ""
-
-#: templates/sensei/globals/pagination-lesson.php:59
-#: templates/sensei/globals/pagination-quiz.php:58
-msgid "Next Lesson"
-msgstr ""
-
-#: templates/sensei/globals/pagination-lesson.php:61
-#: templates/sensei/globals/pagination-quiz.php:60
-msgid "View next lesson"
-msgstr ""
-
 #: templates/woocommerce/myaccount/form-login.php:39
 msgid "Login to Private Area"
 msgstr ""
@@ -431,6 +430,16 @@ msgstr ""
 msgid ""
 "The password has arrived via email if you do not find it in the mailbox, "
 "check also in the spam folder."
+msgstr ""
+
+#: templates/sensei/globals/pagination-quiz.php:58
+#: templates/sensei/globals/pagination-lesson.php:59
+msgid "Next Lesson"
+msgstr ""
+
+#: templates/sensei/globals/pagination-quiz.php:60
+#: templates/sensei/globals/pagination-lesson.php:61
+msgid "View next lesson"
 msgstr ""
 
 #: templates/woocommerce/myaccount/productpage/thumb.php:21
