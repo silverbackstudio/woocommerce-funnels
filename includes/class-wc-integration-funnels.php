@@ -180,8 +180,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 
 			add_filter( 'woocommerce_custom_nav_menu_items', array( $this, 'woocommerce_nav_menu_items' ) );
 
-			// add_filter( 'woocommerce_add_to_cart_redirect', array( $this, 'checkout_page_url' ), 15 );
-			add_filter( 'woocommerce_get_cart_url', array( $this, 'checkout_page_url' ), 15 );
+			add_filter( 'woocommerce_add_to_cart_redirect', array( $this, 'maybe_redirect_cart_to_checkout' ), 15 );
 
 			add_filter( 'woocommerce_product_single_add_to_cart_text', array( $this, 'cart_button_text' ), 10, 2 );
 			add_filter( 'woocommerce_product_add_to_cart_text', array( $this, 'cart_button_text' ), 100, 2 );    // 2.1 +
@@ -396,18 +395,18 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		/**
 		 * Redirect cart to checkout
 		 */
-		public function checkout_page_url( $url ) {
-			global $product;
+		public function maybe_redirect_cart_to_checkout( $url ) {
 
-			if ( ! $product instanceof \WC_Product ) {
-				var_dump( $product );
-				return $url;
+			$product_id = false;
+
+			if ( !empty( $_REQUEST['add-to-cart'] ) && is_numeric( $_REQUEST['add-to-cart'] ) ) {
+				$product_id = apply_filters( 'woocommerce_add_to_cart_product_id', absint( $_REQUEST['add-to-cart'] ) );
+			} else if( is_product() ) {
+				$product_id = get_the_ID();	
 			}
-
-			var_dump( get_post_meta( $product->get_id(), '_funnels_disable_cart', true ) );
-
-			if ( $product instanceof \WC_Product && get_post_meta( $product->get_id(), '_funnels_disable_cart', true ) ) {
-				return wc_get_checkout_url();
+			
+			if ( $product_id && get_post_meta( $product_id, '_funnels_disable_cart', true ) ) {
+				$url = wc_get_checkout_url();
 			}
 
 			return $url;
