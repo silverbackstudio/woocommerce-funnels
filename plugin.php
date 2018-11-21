@@ -31,8 +31,6 @@ function init() {
 
 	if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) {
 		include_once 'includes/class-wc-integration-funnels.php';
-		include_once 'includes/class-sensei.php';
-		include_once 'includes/class-affiliatewp.php';
 	}
 
 	add_filter( 'woocommerce_integrations', __NAMESPACE__ . '\\add_integration' );
@@ -48,50 +46,8 @@ function add_integration( $integrations ) {
 	return $integrations;
 }
 
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\frontend_scripts' );
-
-/**
- * Register frontend scripts and styles.
- */
-function frontend_scripts() {
-	wp_enqueue_style( 'woocommerce-funnels', plugins_url( '/assets/css/frontend.css', __FILE__ ) );
-
-	$js_deps = array( 'jquery' );
-
-	if ( function_exists( 'is_checkout' ) && is_checkout() ) {
-		wp_enqueue_script( 'codice-fiscale', 'https://cdn.jsdelivr.net/npm/codice-fiscale-js@1.3.0/dist/codice.fiscale.umd.min.js', array(), '1.3.0', true );
-		$js_deps[] = 'codice-fiscale';
-	}
-
-	wp_enqueue_script( 'woocommerce-funnels', plugins_url( '/assets/js/frontend.js', __FILE__ ), $js_deps, '1.1.0', true );
-    wp_localize_script( 'woocommerce-funnels', 'woocommerceFunnels',
-        array( 
-            'cvcInstructions' => array(
-            	'buttonText' => __('Where?', 'woocommerce-funnels'),
-            	'text' => __('If you use Mastercard, Visa and Diners, 
-            	the security code is shown on the back of your credit card near 
-            	the space reserved for your signature, and consists of 3 digits. 
-            	If you use American Express, the secure code is placed on the 
-            	front of your card and consists of 4 digits.', 
-            	'woocommerce-funnels'),
-            	'imageUrl' => plugin_url( 'assets/images/cvc-instructions.png' ),
-            	'closeText' => __('Close', 'woocommerce-funnels'),
-            ),
-        )
-    );	
-}
-
-add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\admin_scripts' );
-
-/**
- * Register admin scripts and styles.
- */
-function admin_scripts() {
-	wp_enqueue_style( 'woocommerce-funnels-admin', plugins_url( '/assets/css/admin.css', __FILE__ ), false, '1.0.0' );
-}
-
 function plugin_dir() {
-	return plugin_dir_path( __FILE__ );
+	 return plugin_dir_path( __FILE__ );
 }
 
 
@@ -99,6 +55,6 @@ function plugin_url( $path ) {
 	return plugins_url( $path, __FILE__ );
 }
 
-function is_private_area(){
+function is_private_area() {
 	return is_account_page() || is_sensei();
 }
