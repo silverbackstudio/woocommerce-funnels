@@ -10,7 +10,7 @@
 Plugin Name: WooCommerce - Funnels
 Description: Changes the WooCommerce Purchase Flow to allow Funnels
 Author: Silverback Studio
-Version: 1.1.0
+Version: 2.0.1
 Author URI: http://www.silverbackstudio.it/
 Text Domain: woocommerce-funnels
 */

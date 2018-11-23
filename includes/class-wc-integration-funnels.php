@@ -288,7 +288,9 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			return false;
 		}
 
-
+		/**
+		 * Register permalinks for product categories endpoints
+		 */
 		public function woocommerce_endpoints() {
 			$account_product_categories = $this->woocommerce_account_product_categories();
 
@@ -299,6 +301,9 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 			}
 		}
 
+		/**
+		 * Add categories as available item in WP menu editor
+		 */
 		public function woocommerce_nav_menu_items( $endpoints ) {
 
 			$account_product_categories = $this->woocommerce_account_product_categories();
