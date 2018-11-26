@@ -63,10 +63,6 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 						'label' => __( 'Select the page to where we redirect the user if the product has not been purchased', 'woocommerce-funnels' ),
 						'type' => 'number',
 					),
-					'purchased_product_readmore_label' => array(
-						'label' => __( 'Select the label for readmore button in account product category view', 'woocommerce-funnels' ),
-						'type' => 'text',
-					),
 				),
 				array(
 					'post_type' => 'page',
@@ -329,7 +325,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 				$description = get_term_field( 'description', $term, 'product_cat' );
 				if ( ! is_wp_error( $description ) && $description ) :
 					?>
-				<p class="subtitle"><?php echo $description; ?></p>
+				<div class="subtitle"><?php echo $description; ?></div>
 				<?php endif; ?>
 			</header>
 			<?php
