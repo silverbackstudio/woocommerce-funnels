@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _s 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2018-11-21 13:44+0000\n"
+"POT-Creation-Date: 2018-11-27 16:16+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-11-21 13:44+0000\n"
+"PO-Revision-Date: 2018-11-27 16:16+0000\n"
 "Last-Translator: silverbackstudio <webmaster@silverbackstudio.it>\n"
 "Language-Team: Italiano\n"
 "Language: it_IT\n"
@@ -35,81 +35,79 @@ msgstr ""
 "Seleziona la pagina a cui reindirizzare l'utente se il prodotto non e' stato "
 "acquistato"
 
-#: includes/class-wc-integration-funnels.php:67
-msgid "Select the label for readmore button in account product category view"
-msgstr ""
-"Seleziona l'etichetta per il bottone \"Leggi di più\" nella vista categoria "
-"prodotto dell'account."
-
-#: includes/class-wc-integration-funnels.php:73
+#: includes/class-wc-integration-funnels.php:69
 msgid "Product Restrict"
 msgstr "Limita a prodotto"
 
-#: includes/class-wc-integration-funnels.php:85
+#: includes/class-wc-integration-funnels.php:81
 msgid "Account Product Categories"
 msgstr "Categorie Prodotto nel menu Account"
 
-#: includes/class-wc-integration-funnels.php:87
+#: includes/class-wc-integration-funnels.php:83
 msgid ""
 "Select the product categories that you want to be shown in My Account Menu"
 msgstr ""
 "Seleziona le categorie di prodotto che vuoi che vengano mostrate nel menu "
 "dell'account utente (solo prodotti acquistati)"
 
-#: includes/class-wc-integration-funnels.php:99
+#: includes/class-wc-integration-funnels.php:95
 msgid "Debug Log"
 msgstr "Monitoraggio errori"
 
-#: includes/class-wc-integration-funnels.php:101
+#: includes/class-wc-integration-funnels.php:97
 msgid "Enable logging"
 msgstr "Attiva monitoraggio"
 
-#: includes/class-wc-integration-funnels.php:103
+#: includes/class-wc-integration-funnels.php:99
 msgid "Log events such as API requests"
 msgstr "Registra eventi come richieste API"
 
-#: includes/class-wc-integration-funnels.php:217
+#: includes/class-wc-integration-funnels.php:214
 msgid "Free"
 msgstr "Gratis"
 
-#: includes/class-wc-integration-funnels.php:221
+#: includes/class-wc-integration-funnels.php:218
 msgctxt "original value"
 msgid "Value"
 msgstr "Valore"
 
-#: includes/class-wc-integration-funnels.php:262
+#: includes/class-wc-integration-funnels.php:259
 msgid ""
 "You are not allowed to access this page, please purchase the linked product"
 msgstr ""
 "Per ottenere l'accesso a questa pagina e' necessario acquistare il prodotto "
 "associato."
 
-#: includes/class-wc-integration-funnels.php:451
+#: includes/class-wc-integration-funnels.php:453
 msgid "Add to Cart Text"
 msgstr "Testo pulsante aggiunta al carrello"
 
-#: includes/class-wc-integration-funnels.php:452
+#: includes/class-wc-integration-funnels.php:454
 msgid "The text displayed in Add to cart button"
 msgstr "Testo mostrato nel pulsante di aggiunta al carrello/acquisto"
 
-#: includes/class-wc-integration-funnels.php:464
+#: includes/class-wc-integration-funnels.php:466
 msgid "Skip Cart"
 msgstr "Salta carrello"
 
-#: includes/class-wc-integration-funnels.php:465
+#: includes/class-wc-integration-funnels.php:467
 msgid "This will skip the cart and redirect the user directly to checkout page"
 msgstr ""
 "Salta la pagina del carrello e invia l'utente direttamente al pagamento"
 
-#: includes/class-wc-integration-funnels.php:474
+#: includes/class-wc-integration-funnels.php:476
 msgid "Direct Upsell Product"
 msgstr "Prodotto in Upsell Diretto"
 
-#: includes/class-wc-integration-funnels.php:489
+#: includes/class-wc-integration-funnels.php:491
 msgid "This lets you choose which product will be redirected to after checkout"
 msgstr ""
 "Scegli verso quale prodotto vorresti che l'utente venga reindirizzato dopo "
 "il pagamento"
+
+#: includes/class-wc-integration-funnels.php:498
+msgid "-- Default order summary --"
+msgstr "-- Riepilogo ordine predefinito --"
 
 #. Name of the plugin
 msgid "WooCommerce - Funnels"

@@ -192,6 +192,8 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 
 			$this->disable_checkout_notifications();
 
+			add_filter( 'woocommerce_thankyou', array( $this, 'order_thankyou_page_text' ), 9 );
+
 			add_action( 'add_chained_products_actions_filters', array( $this, 'chained_products_template_enable' ) );
 			add_action( 'remove_chained_products_actions_filters', array( $this, 'chained_products_template_disable' ) );
 		}
@@ -489,6 +491,24 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 					</select> <?php echo wc_help_tip( __( 'This lets you choose which product will be redirected to after checkout', 'woocommerce-funnels' ) ); // WPCS: XSS ok. ?>
 				</p>
 			</div>
+			
+			<div class="options_group">
+				<?php
+				$args = array(
+					'show_option_none' => __( '-- Default order summary --', 'woocommerce-funnels' ),
+					'name'             => '_funnels_thankyou_page',
+					'id'               => 'funnels_thankyou_page',
+					'selected'         => get_post_meta( $post->ID, '_funnels_thankyou_page', true ),
+					'class'            => 'select short',
+				);
+				?>
+				<p class="form-field dimensions_field">
+					<label for="funnels_thankyou_page"><?php esc_html_e( 'Thank you page', 'woocommerce' ); ?></label>
+					<?php wp_dropdown_pages( $args ); ?>
+					<?php echo wc_help_tip( __( 'Select this to set the thankyou page after a successful checkout', 'woocommerce-funnnels' ) ); ?>
+				</p>		
+			</div>			
+			
 		</div>
 			<?php
 		}
@@ -505,12 +525,18 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 						'flags'   => FILTER_REQUIRE_SCALAR,
 						'options' => array( 'min_range' => 0 ),
 					),
+					'_funnels_thankyou_page'            => array(
+						'filter'  => FILTER_VALIDATE_INT,
+						'flags'   => FILTER_REQUIRE_SCALAR,
+						'options' => array( 'min_range' => 0 ),
+					),					
 				)
 			);
 
 			update_post_meta( $product_id, '_funnels_add_to_cart_text', wc_clean( $data['_funnels_add_to_cart_text'] ) ?: null );
 			update_post_meta( $product_id, '_funnels_disable_cart', $data['_funnels_disable_cart'] );
 			update_post_meta( $product_id, '_funnels_direct_upsell_product', $data['_funnels_direct_upsell_product'] );
+			update_post_meta( $product_id, '_funnels_thankyou_page', $data['_funnels_thankyou_page'] );
 		}
 
 		public function order_upsell_product( $order ) {
@@ -527,5 +553,41 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 
 			return false;
 		}
+		
+		public function get_order_thankyou_page( $order ) {
+
+			$items = $order->get_items();
+
+			foreach ( $items as $item ) {
+				$thankyou_page_id = get_post_meta( $item->get_product_id(), '_funnels_thankyou_page', true );
+
+				if ( $thankyou_page_id ) {
+					return $thankyou_page_id;
+				}
+			}
+
+			return false;
+		}
+
+		public function order_thankyou_page_text( $order_id ) {
+
+			$order            = wc_get_order( $order_id );
+			$thankyou_page_id = $this->get_order_thankyou_page( $order );
+			$thankyou_page    = null;
+
+			if ( $thankyou_page_id ) {
+				$thankyou_page = get_post( $thankyou_page_id, 'OBJECT' );
+			}
+
+			if ( ! $thankyou_page instanceof \WP_Post ) {
+				return;
+			}
+
+			$thankyou_page = get_post( $thankyou_page_id );
+
+			echo apply_filters( 'the_content', do_shortcode( $thankyou_page->post_content ) );
+
+		}		
+		
 	}
 endif;
