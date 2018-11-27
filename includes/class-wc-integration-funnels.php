@@ -321,7 +321,7 @@ if ( ! class_exists( __NAMESPACE__ . '\\WC_Integration_Funnels' ) ) :
 		public function account_product_categories_page_content( $term ) {
 			?>
 		<div class="product-pages__content">
-			<header class="privatearea-header"> 
+			<header class="product-pages__header"> 
 				<h2><?php echo esc_html( apply_filters( 'single_term_title', $term->name ) ); ?></h2>
 				<?php
 				$description = get_term_field( 'description', $term, 'product_cat' );
