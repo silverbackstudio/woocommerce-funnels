@@ -4,322 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4e1dd40320a991a74036791090645151",
+    "content-hash": "f28125a4d6ac073bc04f430db9f91d02",
     "packages": [
         {
-            "name": "composer/installers",
-            "version": "v1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/composer/installers.git",
-                "reference": "049797d727261bf27f2690430d935067710049c2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/049797d727261bf27f2690430d935067710049c2",
-                "reference": "049797d727261bf27f2690430d935067710049c2",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0"
-            },
-            "replace": {
-                "roundcube/plugin-installer": "*",
-                "shama/baton": "*"
-            },
-            "require-dev": {
-                "composer/composer": "1.0.*@dev",
-                "phpunit/phpunit": "^4.8.36"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "Composer\\Installers\\Plugin",
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Composer\\Installers\\": "src/Composer/Installers"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kyle Robinson Young",
-                    "email": "kyle@dontkry.com",
-                    "homepage": "https://github.com/shama"
-                }
-            ],
-            "description": "A multi-framework Composer library installer",
-            "homepage": "https://composer.github.io/installers/",
-            "keywords": [
-                "Craft",
-                "Dolibarr",
-                "Eliasis",
-                "Hurad",
-                "ImageCMS",
-                "Kanboard",
-                "Lan Management System",
-                "MODX Evo",
-                "Mautic",
-                "Maya",
-                "OXID",
-                "Plentymarkets",
-                "Porto",
-                "RadPHP",
-                "SMF",
-                "Thelia",
-                "WolfCMS",
-                "agl",
-                "aimeos",
-                "annotatecms",
-                "attogram",
-                "bitrix",
-                "cakephp",
-                "chef",
-                "cockpit",
-                "codeigniter",
-                "concrete5",
-                "croogo",
-                "dokuwiki",
-                "drupal",
-                "eZ Platform",
-                "elgg",
-                "expressionengine",
-                "fuelphp",
-                "grav",
-                "installer",
-                "itop",
-                "joomla",
-                "kohana",
-                "laravel",
-                "lavalite",
-                "lithium",
-                "magento",
-                "majima",
-                "mako",
-                "mediawiki",
-                "modulework",
-                "modx",
-                "moodle",
-                "osclass",
-                "phpbb",
-                "piwik",
-                "ppi",
-                "puppet",
-                "pxcms",
-                "reindex",
-                "roundcube",
-                "shopware",
-                "silverstripe",
-                "sydes",
-                "symfony",
-                "typo3",
-                "wordpress",
-                "yawik",
-                "zend",
-                "zikula"
-            ],
-            "time": "2017-12-29T09:13:20+00:00"
-        },
-        {
-            "name": "drewm/mailchimp-api",
-            "version": "v2.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/drewm/mailchimp-api.git",
-                "reference": "fe480bb652f85270227bf6d639b0026a531f21fc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/drewm/mailchimp-api/zipball/fe480bb652f85270227bf6d639b0026a531f21fc",
-                "reference": "fe480bb652f85270227bf6d639b0026a531f21fc",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "php": ">=5.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.0.*",
-                "vlucas/phpdotenv": "^2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "DrewM\\MailChimp\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Drew McLellan",
-                    "email": "drew.mclellan@gmail.com",
-                    "homepage": "http://allinthehead.com/"
-                }
-            ],
-            "description": "Super-simple, minimum abstraction MailChimp API v3 wrapper",
-            "homepage": "https://github.com/drewm/mailchimp-api",
-            "time": "2017-02-16T13:24:20+00:00"
-        },
-        {
-            "name": "getresponse/getresponse",
-            "version": "0.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GetResponse/getresponse-api-php.git",
-                "reference": "a33b1081eeb7c0937e46383344068a2a6e847ce5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GetResponse/getresponse-api-php/zipball/a33b1081eeb7c0937e46383344068a2a6e847ce5",
-                "reference": "a33b1081eeb7c0937e46383344068a2a6e847ce5",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "php": ">=5.2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/GetResponseAPI3.class.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Pawel Maslak",
-                    "email": "pawel.maslak@getresponse.com"
-                },
-                {
-                    "name": "Grzegorz Struczynski",
-                    "email": "grzegorz.struczynski@getresponse.com"
-                }
-            ],
-            "description": "GetResponse API v3 client library.",
-            "homepage": "https://github.com/GetResponse/getresponse-api-php",
-            "keywords": [
-                "api",
-                "email",
-                "getresponse"
-            ],
-            "time": "2015-11-25T12:38:33+00:00"
-        },
-        {
-            "name": "mandrill/mandrill",
-            "version": "1.0.55",
-            "source": {
-                "type": "git",
-                "url": "https://bitbucket.org/mailchimp/mandrill-api-php.git",
-                "reference": "da3adc10042eafac2e53de141b358a52b8e53596"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://bitbucket.org/mailchimp/mandrill-api-php/get/da3adc10042eafac2e53de141b358a52b8e53596.zip",
-                "reference": "da3adc10042eafac2e53de141b358a52b8e53596",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Mandrill": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Mandrill Devs",
-                    "email": "community@mandrill.com",
-                    "homepage": "http://mandrill.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "API client library for the Mandrill email as a service platform",
-            "homepage": "https://bitbucket.org/mailchimp/mandrill-api-php",
-            "keywords": [
-                "api",
-                "email"
-            ],
-            "time": "2015-09-22T13:58:03+00:00"
-        },
-        {
-            "name": "paypal/rest-api-sdk-php",
-            "version": "1.13.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/paypal/PayPal-PHP-SDK.git",
-                "reference": "192e217beed14c8e75624e821fdc8ec51e2a21f5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/paypal/PayPal-PHP-SDK/zipball/192e217beed14c8e75624e821fdc8ec51e2a21f5",
-                "reference": "192e217beed14c8e75624e821fdc8ec51e2a21f5",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "php": ">=5.3.0",
-                "psr/log": "^1.0.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "PayPal": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "PayPal",
-                    "homepage": "https://github.com/paypal/rest-api-sdk-php/contributors"
-                }
-            ],
-            "description": "PayPal's PHP SDK for REST APIs",
-            "homepage": "http://paypal.github.io/PayPal-PHP-SDK/",
-            "keywords": [
-                "payments",
-                "paypal",
-                "rest",
-                "sdk"
-            ],
-            "time": "2017-11-13T19:21:59+00:00"
-        },
-        {
             "name": "psr/log",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
+                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
-                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
+                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
                 "shasum": ""
             },
             "require": {
@@ -353,31 +51,31 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10T12:19:37+00:00"
+            "time": "2018-11-20T15:27:04+00:00"
         },
         {
-            "name": "silverbackstudio/wp-themehelper",
-            "version": "2.4.0",
+            "name": "silverback/wp-helpers",
+            "version": "5.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverbackstudio/wp-themehelpers.git",
-                "reference": "1747afb659f332cd6159ccf79d69efba43400d3b"
+                "reference": "11de60e4914e3780db9a19a7c183aa677e06be30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverbackstudio/wp-themehelpers/zipball/1747afb659f332cd6159ccf79d69efba43400d3b",
-                "reference": "1747afb659f332cd6159ccf79d69efba43400d3b",
+                "url": "https://api.github.com/repos/silverbackstudio/wp-themehelpers/zipball/11de60e4914e3780db9a19a7c183aa677e06be30",
+                "reference": "11de60e4914e3780db9a19a7c183aa677e06be30",
                 "shasum": ""
             },
             "require": {
-                "drewm/mailchimp-api": "^2.4",
-                "getresponse/getresponse": "^0.0.2",
-                "mandrill/mandrill": "^1.0",
-                "paypal/rest-api-sdk-php": "*",
                 "psr/log": "^1.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5.7"
+            },
+            "suggest": {
+                "cloudflare/cf-ip-rewrite": "Allows automatic recognition of CloudFlare IPs",
+                "paypal/rest-api-sdk-php": "Required to use PayPal Payment platform"
             },
             "type": "library",
             "autoload": {
@@ -392,42 +90,22 @@
                     "email": "b.meniconi@silverbackstudio.it"
                 }
             ],
-            "time": "2018-01-24T15:59:25+00:00"
-        },
-        {
-            "name": "wpackagist-plugin/woocommerce",
-            "version": "3.2.6",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/woocommerce/",
-                "reference": "tags/3.2.6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/woocommerce.3.2.6.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/woocommerce/"
+            "time": "2018-11-29T07:52:42+00:00"
         }
     ],
     "packages-dev": [
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "2.9.1",
+            "version": "2.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "dcbed1074f8244661eecddfc2a675430d8d33f62"
+                "reference": "2acf168de78487db620ab4bc524135a13cfe6745"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/dcbed1074f8244661eecddfc2a675430d8d33f62",
-                "reference": "dcbed1074f8244661eecddfc2a675430d8d33f62",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/2acf168de78487db620ab4bc524135a13cfe6745",
+                "reference": "2acf168de78487db620ab4bc524135a13cfe6745",
                 "shasum": ""
             },
             "require": {
@@ -492,7 +170,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2017-05-22T02:43:20+00:00"
+            "time": "2018-11-07T22:31:41+00:00"
         },
         {
             "name": "wimg/php-compatibility",
