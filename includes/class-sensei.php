@@ -235,7 +235,7 @@ class Sensei {
 		<header class="privatearea-header"> 
 			<h2><?php esc_html_e( 'Courses', 'woocommerce-funnels' ); ?></h2>
 			<?php if ( ! empty( $this->user_courses_page_description ) ) :	?>
-			<p class="subtitle"><?php echo $this->user_courses_page_description; ?></p>
+			<p class="subtitle"><?php echo do_shortcode($this->user_courses_page_description); ?></p>
 			<?php endif; ?>
 		</header>		
 		
