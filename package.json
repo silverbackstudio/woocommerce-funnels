@@ -27,6 +27,6 @@
   "dependencies": {
     "gulp-cli": "^2.0.1",
     "gulp-series": "^1.0.2",
-    "npm": "^3.10.10"
+    "npm": "^6.13.4"
   }
 }
